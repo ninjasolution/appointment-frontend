@@ -1,0 +1,44 @@
+.leftbar-layout {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    padding: 12px;
+    width: 50px;
+    z-index: 3;
+    background-color: #101928;
+    border-right: 1px solid rgb(182, 181, 181);
+    color: white;
+
+    svg {
+        width: 30px;
+        height:30px;
+        fill: white !important;
+    }
+    
+    .leftbar-item {
+        width: 50px;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 10px;
+        cursor: pointer;
+
+        svg > path {
+            fill: white;
+        }
+    }
+
+    div:hover {
+        border-radius: 8px;
+        background-color: rgba(255, 255, 255, 0.2);
+        color: white;
+    }
+
+    .active {
+        background-color: #037aff;
+        border-radius: 8px;
+        color: white;
+    }
+}
