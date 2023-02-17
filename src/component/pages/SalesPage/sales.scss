@@ -1,0 +1,26 @@
+.sales-layout {
+    display: flex;
+    width: 100%;
+
+    .inner-siderbar {
+        position: relative;
+        width: 200px;
+        padding: 15px 10px 10px 10px;
+        border-right: 1px solid rgb(184, 184, 184);
+
+        .body:hover {
+            background-color: rgba(141, 204, 255, 0.2);
+            border-radius: 5px;
+        }
+
+        .item.active {
+            background-color: rgba(141, 204, 255, 0.2);
+            border-radius: 5px;
+        }
+    }
+
+    .inner-container  {
+        width: calc(100% - 200px);
+        overflow: auto;
+    }
+}

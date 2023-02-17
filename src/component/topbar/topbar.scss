@@ -1,0 +1,53 @@
+$text-font: candara;
+
+.topbar-layout {
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    height: 70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    color: rgb(20, 20, 20);
+    background-color: #ffffff;
+    border-bottom: 1px solid rgb(195 195 195);
+    z-index: 2;
+
+    svg {
+        width: 30px;
+        height:30px;
+        fill: white !important;
+    }
+
+    .logo {
+        font-size: 30px;
+    }
+
+    .actions {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+
+        .action-item {
+            margin-left: 20px;
+            cursor: pointer;
+        }
+
+        .profile {
+            width: 40px;
+            height: 40px;
+            margin-left: 15px;
+            border-radius: 50%;
+            display: flex;
+            cursor: pointer;
+            justify-content: center;
+            align-items: center;
+            color: rgb(0, 111, 202);
+            font-weight: 600;
+            background-color: rgba(37, 157, 255, 0.2);
+        }
+    }
+}
+

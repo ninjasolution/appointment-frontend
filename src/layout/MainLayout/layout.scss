@@ -1,0 +1,42 @@
+.main-layout {
+    height: 100vh;
+    display: flex;
+
+    .main-layout-container {
+        height: calc(100vh - 70px);
+        margin-top: 70px;
+        display: flex;
+        width: 100vw;
+
+        .inner-siderbar {
+            .item {
+                padding: 14px 16px;
+                cursor: pointer;
+            }
+
+            .header {
+                font-size: 20px;
+                font-weight: 500;
+            }
+
+            .action {
+                position: absolute;
+                background-color: white;
+                top: 25px;
+                right: -17px;
+                border: 1px solid gray;
+                border-radius: 50%;
+                width: 30px;
+                height: 30px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                cursor: pointer;
+                svg {
+                    width: 20px;
+                    height: 20px;
+                }
+            }
+        }
+    }
+}
