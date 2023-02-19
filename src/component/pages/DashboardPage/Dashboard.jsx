@@ -1,11 +1,10 @@
-import React from 'react'
+import React from 'react';
 
-function DashboardPage(props) {
+function Dashboard(props) {
 
     return (
-        <>DashboardPage</>
+        <>Dashboard</>
     )
 }
 
-
-export default DashboardPage;
+export default Dashboard;
