@@ -1,17 +1,16 @@
-.payment-transactions-container {
+.clients-list-container {
     display: flex;
     width: 100%;
     height: 100%;
+    justify-content: center;
 
     .detail-container {
-        border-right: 1px solid #c1c1c1;
         display: flex;
         margin-top: 40px;
         align-items: center;
         width: 100%;
         flex-direction: column;
-        padding-left: 30px;
-        padding-right: 30px;
+        max-width: 1050px;
 
         .content-container {
             max-width: 1500px;
@@ -33,27 +32,53 @@
                 }
             }
 
-            .select-action {
-                height: 50px;
-                width: 120px;
+            .content-action {
                 display: flex;
-                align-items: center;
-                justify-content: center;
-                background-color: white;
-                font-size: 16px;
-                font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
-                font-weight: 700;
-                border-radius: 5px;
-                border: 1.5px solid #d5d5d5;
 
-                svg {
-                    height: 20px;
+                .select-action {
+                    height: 50px;
+                    width: 120px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    background-color: white;
+                    margin: 0 10px;
+                    font-size: 16px;
+                    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+                    font-weight: 700;
+                    border-radius: 5px;
+                    border: 1.5px solid #d5d5d5;
+    
+                    svg {
+                        height: 20px;
+                    }
                 }
-            }
-
-            .select-action:hover {
-                border-color: #1b1b1b;
-                cursor: pointer;
+    
+                .select-action:hover {
+                    border-color: #1b1b1b;
+                    cursor: pointer;
+                }
+    
+                .add-client {
+                    height: 50px;
+                    margin: 0 10px;
+                    width: 120px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    background-color: rgb(8, 13, 32);
+                    color: white;
+                    font-size: 16px;
+                    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+                    font-weight: 700;
+                    border-radius: 5px;
+                    border: 1.5px solid #d5d5d5;
+                }
+    
+                .add-client:hover {
+                    background-color: rgb(20, 28, 63);
+                    cursor: pointer;
+                }
             }
         }
 
@@ -112,20 +137,16 @@
                 }
             }
 
-            .select-month {
-                margin-right: 15px;
-
-                button {
-                    font-size: 16px;
-                    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
-                    font-weight: 700;
-                    padding-right: 20px;
-                    height: 100%;
-                    padding-left: 20px;
-                    background-color: white;
-                    border: 1px solid #c3c3c3;
-                    border-radius: 25px;
-                }
+            .select-filter {
+                font-size: 16px;
+                font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+                font-weight: 700;
+                padding-right: 20px;
+                height: 100%;
+                padding-left: 20px;
+                background-color: white;
+                border: 1px solid #c3c3c3;
+                border-radius: 25px;
             }
         }
 

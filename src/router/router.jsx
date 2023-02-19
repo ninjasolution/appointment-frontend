@@ -3,7 +3,7 @@ import { Routes, Route, BrowserRouter } from 'react-router-dom';
 
 import MainLayout from '../layout/MainLayout';
 
-import DashboardPage from '../component/pages/DashboardPage/Dashboard';
+import Dashboard from '../component/pages/DashboardPage/Dashboard';
 
 import Sales from '../component/pages/SalesPage/Sales';
 
@@ -18,6 +18,12 @@ import DailySalesPage from '../component/pages/SalesPage/DailySales/DailySalesPa
 import AppointmentsPage from '../component/pages/SalesPage/Appointments/AppointmentsPage';
 import SalesPage from '../component/pages/SalesPage/Sales/SalesPage';
 import PaymentTransactionsPage from '../component/pages/SalesPage/PaymentTransactions/PaymentTransactionsPage';
+import VouchersPage from '../component/pages/SalesPage/Vouchers/VouchersPage';
+import MembershipsPage from '../component/pages/SalesPage/Memberships/MembershipsPage';
+
+import Clients from '../component/pages/ClientsPage/Clients';
+
+import ClientsListPage from '../component/pages/ClientsPage/ClientsList/ClientsListPage';
 
 function AppRouter() {
     return (
@@ -25,7 +31,7 @@ function AppRouter() {
             <Routes>
 
                 <Route element={<MainLayout/>}>
-                    <Route path='/' element={<DashboardPage/>}/>
+                    <Route path='/' element={<Dashboard/>}/>
 
                     <Route element={<Sales />}>
                         <Route path='/sales/new-sale' element={<NewSalePage/>}>
@@ -40,6 +46,19 @@ function AppRouter() {
                         <Route path='/sales/appointments-list' element={<AppointmentsPage/>}></Route>
                         <Route path='/sales/sales-list' element={<SalesPage/>}></Route>
                         <Route path='/sales/payment-transactions' element={<PaymentTransactionsPage/>}></Route>
+                        <Route path='/sales/vouchers' element={<VouchersPage/>}></Route>
+                        <Route path='/sales/paid-plans' element={<MembershipsPage/>}></Route>
+                    </Route>
+
+                    <Route element={<Clients />}>
+                        <Route path='/clients/list' element={<ClientsListPage/>}>
+                            <Route path='/clients/list/add' element={<QuickSale/>}/>
+                            <Route path='/clients/list/appointments' element={<Appointments/>}/>
+                            <Route path='/clients/list/products' element={<Products/>}/>
+                            <Route path='/clients/list/services' element={<Services/>}/>
+                            <Route path='/clients/list/memberships' element={<Memberships/>}/>
+                            <Route path='/clients/list/vouchers' element={<Vouchers/>}/>
+                        </Route>
                     </Route>
                 </Route>
             </Routes>
