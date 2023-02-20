@@ -21,19 +21,21 @@ $text-font: candara;
     }
 
     .logo {
+        cursor: pointer;
         font-size: 26px;
         margin-left: 30px;
         display: flex;
         align-items: center;
-        font-weight: 600;
+        font-weight: 700;
+        letter-spacing: -1px;
 
         div {
-            height: 26px;
-            width: 26px;
+            height: 20px;
+            width: 20px;
             border-radius: 50%;
             background: linear-gradient(to top, #6666ff 0%, #ccccff 74%);
-            margin-right: 10px;
-            box-shadow: 0 0 10px 0 #6666ff;
+            margin-right: 5px;
+            box-shadow: 0 2px 10px 0px #6666ff;
         }
     }
 

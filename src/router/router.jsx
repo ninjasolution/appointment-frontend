@@ -30,37 +30,37 @@ function AppRouter() {
     return (
         <BrowserRouter>
             <Routes>
+                <Route element={<MainLayout />}>
+                    <Route path='/' element={<Dashboard />} />
+                    <Route path='/dashboard' element={<Dashboard />} />
 
-                <Route element={<MainLayout/>}>
-                    <Route path='/dashboard' element={<Dashboard/>}/>
-
-                    <Route path='/calendar' element={<Calendar/>}/>
+                    <Route path='/calendar' element={<Calendar />} />
 
                     <Route element={<Sales />}>
-                        <Route path='/sales/new-sale' element={<NewSalePage/>}>
-                            <Route path='/sales/new-sale/quick-sale' element={<QuickSale/>}/>
-                            <Route path='/sales/new-sale/appointments' element={<Appointments/>}/>
-                            <Route path='/sales/new-sale/products' element={<Products/>}/>
-                            <Route path='/sales/new-sale/services' element={<Services/>}/>
-                            <Route path='/sales/new-sale/memberships' element={<Memberships/>}/>
-                            <Route path='/sales/new-sale/vouchers' element={<Vouchers/>}/>
+                        <Route path='/sales/new-sale' element={<NewSalePage />}>
+                            <Route path='/sales/new-sale/quick-sale' element={<QuickSale />} />
+                            <Route path='/sales/new-sale/appointments' element={<Appointments />} />
+                            <Route path='/sales/new-sale/products' element={<Products />} />
+                            <Route path='/sales/new-sale/services' element={<Services />} />
+                            <Route path='/sales/new-sale/memberships' element={<Memberships />} />
+                            <Route path='/sales/new-sale/vouchers' element={<Vouchers />} />
                         </Route>
-                        <Route path='/sales/daily-sales' element={<DailySalesPage/>}></Route>
-                        <Route path='/sales/appointments-list' element={<AppointmentsPage/>}></Route>
-                        <Route path='/sales/sales-list' element={<SalesPage/>}></Route>
-                        <Route path='/sales/payment-transactions' element={<PaymentTransactionsPage/>}></Route>
-                        <Route path='/sales/vouchers' element={<VouchersPage/>}></Route>
-                        <Route path='/sales/paid-plans' element={<MembershipsPage/>}></Route>
+                        <Route path='/sales/daily-sales' element={<DailySalesPage />}></Route>
+                        <Route path='/sales/appointments-list' element={<AppointmentsPage />}></Route>
+                        <Route path='/sales/sales-list' element={<SalesPage />}></Route>
+                        <Route path='/sales/payment-transactions' element={<PaymentTransactionsPage />}></Route>
+                        <Route path='/sales/vouchers' element={<VouchersPage />}></Route>
+                        <Route path='/sales/paid-plans' element={<MembershipsPage />}></Route>
                     </Route>
 
                     <Route element={<Clients />}>
-                        <Route path='/clients/list' element={<ClientsListPage/>}>
-                            <Route path='/clients/list/add' element={<QuickSale/>}/>
-                            <Route path='/clients/list/appointments' element={<Appointments/>}/>
-                            <Route path='/clients/list/products' element={<Products/>}/>
-                            <Route path='/clients/list/services' element={<Services/>}/>
-                            <Route path='/clients/list/memberships' element={<Memberships/>}/>
-                            <Route path='/clients/list/vouchers' element={<Vouchers/>}/>
+                        <Route path='/clients/list' element={<ClientsListPage />}>
+                            <Route path='/clients/list/add' element={<QuickSale />} />
+                            <Route path='/clients/list/appointments' element={<Appointments />} />
+                            <Route path='/clients/list/products' element={<Products />} />
+                            <Route path='/clients/list/services' element={<Services />} />
+                            <Route path='/clients/list/memberships' element={<Memberships />} />
+                            <Route path='/clients/list/vouchers' element={<Vouchers />} />
                         </Route>
                     </Route>
                 </Route>

@@ -1,12 +1,62 @@
-.dashboard-contaier {
+.dashboard-container {
     display: flex;
+    width: 100%;
+    padding: 30px;
+    gap: 20px;
     flex-wrap: wrap;
-    padding: 20px;
 
     .details-container {
-        flex: 50%;
-        max-width: 50%;
-        margin: 10px;
-        border: 1px solid red;
+        border: 1px solid #d9d9d9;
+        min-width: calc(50% - 12px);
+        border-radius: 10px;
+    }
+
+    .recent-sales {
+        .title {
+            display: flex;
+            justify-content: space-between;
+            padding: 15px;
+            align-items: center;
+
+            #title-container {
+                display: flex;
+                flex-direction: column;
+
+                span#title1 {
+                    font-size: 22px;
+                    font-weight: 700;
+                }
+
+                span#title2 {
+                    font-size: 14px;
+                    color: #686868;
+                }
+            }
+
+            button.setting {
+                display: flex;
+                border: none;
+                outline: none;
+                border-radius: 5px;
+                background-color: white;
+
+                svg {
+                    width: 20px;
+                    margin: 5px;
+                }
+            }
+
+            button.setting:hover {
+                background-color: rgba(0, 0, 0, 0.1);
+                cursor: pointer;
+            }
+        }
+    }
+}
+
+
+@media screen and (max-width: 1159px) {
+    .details-container {
+        width: 100%;
     }
 }

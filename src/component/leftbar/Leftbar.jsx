@@ -13,7 +13,7 @@ function LeftBar() {
     return (
         <div className='leftbar-layout'>
             {
-                <Link className={`leftbar-item ${location.pathname.includes("/dashboard") && 'active'}`} to="/dashboard">
+                <Link className={`leftbar-item ${(location.pathname.includes("/dashboard") || location.pathname === "/") && 'active'}`} to="/dashboard">
                     <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" clipRule="evenodd" d="M14.654 3.87a2 2 0 0 1 2.69 0l10.001 9.093a2 2 0 0 1 .655 1.48V26a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V14.442a2 2 0 0 1 .655-1.48l9.999-9.091ZM26 14.444 16 5.35 6 14.442V26h20V14.443Z" fill="#101928"></path></svg>
                 </Link>
             }
@@ -23,7 +23,7 @@ function LeftBar() {
                 </Link>
             }
             {
-                <Link className={`leftbar-item ${location.pathname.includes("/sales") && 'active'}`} to="/sales">
+                <Link className={`leftbar-item ${location.pathname.includes("/sales") && 'active'}`} to="/sales/new-sale">
                     <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path d="M17.3 30.6c-.3 0-.5-.1-.8-.2-.2-.1-.5-.2-.6-.4L2.8 16.9c-.2-.2-.4-.5-.5-.8-.1-.3-.1-.7 0-1L4.3 5c.1-.4.4-.7.8-.8l10.1-2c.3-.1.7 0 1 0 .3.1.6.3.8.5l13 13.2c.2.2.3.4.4.7.1.2.2.5.2.8 0 .3-.1.5-.2.8-.1.2-.2.5-.4.7L18.7 30c-.2.2-.4.3-.7.4-.2.1-.5.2-.7.2ZM6.1 6.1l-1.9 9.4 13.1 13.1 11.3-11.3L15.5 4.2l-.2-1 .2 1-9.4 1.9Z" fill="#101928"></path><path d="M10.5 12c.8 0 1.5-.7 1.5-1.5S11.3 9 10.5 9 9 9.7 9 10.5s.7 1.5 1.5 1.5Z" fill="#101928"></path></svg>
                 </Link>
             }
