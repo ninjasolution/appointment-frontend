@@ -40,7 +40,7 @@ const Appointments = () => {
             <div className='appointment-container'>
                 <div className='none-content'>
                     <div className='none-logo'>
-                        <svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><path fillRule="evenodd" clip-rule="evenodd" d="M20 4a2 2 0 0 1 2 2v2h20V6a2 2 0 1 1 4 0v2h6a4 4 0 0 1 4 4v40a4 4 0 0 1-4 4H12a4 4 0 0 1-4-4V12a4 4 0 0 1 4-4h6V6a2 2 0 0 1 2-2Zm-2 8h-6v8h40v-8h-6v2a2 2 0 1 1-4 0v-2H22v2a2 2 0 1 1-4 0v-2Zm34 12H12v28h40V24Z" fill="url(#a)"></path><defs><linearGradient id="a" x1="15.164" y1="11.761" x2="51.719" y2="45.504" gradientUnits="userSpaceOnUse"><stop stopColor="#7C6BFF"></stop><stop offset="1" stopColor="#473DAD"></stop></linearGradient></defs></svg>
+                        <svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><path fillRule="evenodd" clipRule="evenodd" d="M20 4a2 2 0 0 1 2 2v2h20V6a2 2 0 1 1 4 0v2h6a4 4 0 0 1 4 4v40a4 4 0 0 1-4 4H12a4 4 0 0 1-4-4V12a4 4 0 0 1 4-4h6V6a2 2 0 0 1 2-2Zm-2 8h-6v8h40v-8h-6v2a2 2 0 1 1-4 0v-2H22v2a2 2 0 1 1-4 0v-2Zm34 12H12v28h40V24Z" fill="url(#a)"></path><defs><linearGradient id="a" x1="15.164" y1="11.761" x2="51.719" y2="45.504" gradientUnits="userSpaceOnUse"><stop stopColor="#7C6BFF"></stop><stop offset="1" stopColor="#473DAD"></stop></linearGradient></defs></svg>
                     </div>
                     <p>No appointments to check out</p>
                     <span>Try selecting a different date period above or just</span>

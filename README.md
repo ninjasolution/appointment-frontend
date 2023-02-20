@@ -1,70 +1,108 @@
-# Getting Started with Create React App
+# Basic React Calendar component template
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project was bootstrapped with the Bryntum [Create React App](https://github.com/facebook/create-react-app)
+template `@bryntum/cra-template-javascript-calendar`.
 
-## Available Scripts
+If you use typescript, please use the `@bryntum/cra-template-typescript-calendar` template instead.
 
-In the project directory, you can run:
+The template uses Bryntum Calendar wrapped in the provided `BryntumCalendar` wrapper.
+The template contains a basic integration of the React Calendar control wrapper.
 
-### `npm start`
+# Bryntum Repository access setup
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+**IMPORTANT NOTE!** These access instructions are mandatory when using the private Bryntum NPM repository.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+The template uses npm packages from the Bryntum private NPM repository. You must be logged-in to this repository as a
+licensed or trial user to access the packages.
+If you do use the product under license, please update the **package.json** file and replace:
 
-### `npm test`
+```json
+"@bryntum/calendar": "npm:@bryntum/calendar-trial@5.2.10"
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+with
 
-### `npm run build`
+```json
+"@bryntum/calendar": "5.2.10",
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Please check [Online npm repository guide](https://bryntum.com/products/calendar/docs/npm-repository/)
+for detailed information on the sign-up/login process. Also you can check bundled guide inside distribution zip
+in `docs/guides/npm-repository.md`.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+# React integration guide
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Please check this
+[Bryntum React integration online guide](https://bryntum.com/products/calendar/docs/integration/react)
+for detailed integration information and help. Also you can check bundled guide inside distribution zip
+in `docs/guides/integration/react.md`.
 
-### `npm run eject`
+# Installation
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Use the following command to install the example packages after the successful login.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Using **npm**:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```shell
+$ npm install
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Using **yarn**:
 
-## Learn More
+```shell
+$ yarn install
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+# Running a development server
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+To build example and start development server run this command:
 
-### Code Splitting
+Using **npm**:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+```shell
+$ npm start
+```
 
-### Analyzing the Bundle Size
+Using **yarn**:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+```shell
+$ yarn start
+```
 
-### Making a Progressive Web App
+Navigate to `http://localhost:3000/` or `http://127.0.0.1:3000/` in your browser. We recommend to use latest versions of
+modern browsers like Chrome, FireFox, Safari or Edge (Chromium). The app will automatically reload if you change any of
+the source files.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+# Creating a production build
 
-### Advanced Configuration
+To build production code for the example run this command:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+Using **npm**:
 
-### Deployment
+```shell
+$ npm run build
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+Using **yarn**:
 
-### `npm run build` fails to minify
+```shell
+$ yarn run build
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+The build artifacts will be stored in the `build/` directory.
+
+# Distribution zip references
+
+* Bryntum API docs. Open `docs/index.html` in your browser
+* Bryntum Repository guide `docs/guides/npm-repository.md`
+* Bryntum React integration guide `docs/guides/integration/react.md`
+
+# Online References
+
+* [React Framework](https://github.com/facebook/create-react-app)
+* [Bryntum React integration guide](https://bryntum.com/products/calendar/docs/integration/react/)
+* [Bryntum Calendar documentation](https://bryntum.com/products/calendar/docs/)
+* [Bryntum Calendar examples](https://bryntum.com/products/calendar/examples/)
+* [Bryntum npm repository guide](https://bryntum.com/products/calendar/docs/npm-repository/)
+* [Bryntum support Forum](https://forum.bryntum.com/)
+* [Contacts us](https://bryntum.com/contact/)

@@ -24,6 +24,7 @@ import MembershipsPage from '../component/pages/SalesPage/Memberships/Membership
 import Clients from '../component/pages/ClientsPage/Clients';
 
 import ClientsListPage from '../component/pages/ClientsPage/ClientsList/ClientsListPage';
+import Calendar from '../component/pages/calendar/Calendar';
 
 function AppRouter() {
     return (
@@ -31,7 +32,9 @@ function AppRouter() {
             <Routes>
 
                 <Route element={<MainLayout/>}>
-                    <Route path='/' element={<Dashboard/>}/>
+                    <Route path='/dashboard' element={<Dashboard/>}/>
+
+                    <Route path='/calendar' element={<Calendar/>}/>
 
                     <Route element={<Sales />}>
                         <Route path='/sales/new-sale' element={<NewSalePage/>}>

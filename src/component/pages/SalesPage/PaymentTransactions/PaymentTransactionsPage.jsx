@@ -38,7 +38,7 @@ const PaymentTransactionsPage = () => {
                                     <th className='font-left' style={{ width: '180px' }}>
                                         <span className='header-content'>Payment Date</span>
                                         <span>
-                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">  <path fill="#101928" fill-rule="evenodd" d="M8.35355339 10.35355339c-.17356635.17356635-.44299075.1928515-.63785889.05785545l-.06924789-.05785545-4.00000001-4c-.1952621-.19526215-.1952621-.51184459 0-.70710679.1735664-.1735663.4429908-.1928515.6378589-.0578554l.0692479.0578554L8 9.293l3.64644661-3.6465534c.17356635-.1735663.44299075-.1928515.63785889-.0578554l.06924789.0578554c.17356635.1735664.1928515.44299076.05785545.6378589l-.05785545.06924789-4 4z"></path></svg>
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path fill="#101928" fillRule="evenodd" d="M8.35355339 10.35355339c-.17356635.17356635-.44299075.1928515-.63785889.05785545l-.06924789-.05785545-4.00000001-4c-.1952621-.19526215-.1952621-.51184459 0-.70710679.1735664-.1735663.4429908-.1928515.6378589-.0578554l.0692479.0578554L8 9.293l3.64644661-3.6465534c.17356635-.1735663.44299075-.1928515.63785889-.0578554l.06924789.0578554c.17356635.1735664.1928515.44299076.05785545.6378589l-.05785545.06924789-4 4z"></path></svg>
                                         </span>
                                     </th>
                                     <th className='font-right' style={{ width: '150px' }}>
@@ -106,7 +106,7 @@ const PaymentTransactionsPage = () => {
                                     <td className='font-right'>$127.60</td>
                                     <td className='font-left'>
                                         <button className='btn-action'>
-                                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M18 14a2 2 0 110-4 2 2 0 010 4zm-6 0a2 2 0 110-4 2 2 0 010 4zm-8-2a2 2 0 104 0 2 2 0 00-4 0z" fill="#101928"></path></svg>
+                                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" clipRule="evenodd" d="M18 14a2 2 0 110-4 2 2 0 010 4zm-6 0a2 2 0 110-4 2 2 0 010 4zm-8-2a2 2 0 104 0 2 2 0 00-4 0z" fill="#101928"></path></svg>
                                         </button>
                                     </td>
                                 </tr>
@@ -120,7 +120,7 @@ const PaymentTransactionsPage = () => {
                                     <td className='font-right'>$498.15</td>
                                     <td className='font-left'>
                                         <button className='btn-action'>
-                                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M18 14a2 2 0 110-4 2 2 0 010 4zm-6 0a2 2 0 110-4 2 2 0 010 4zm-8-2a2 2 0 104 0 2 2 0 00-4 0z" fill="#101928"></path></svg>
+                                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" clipRule="evenodd" d="M18 14a2 2 0 110-4 2 2 0 010 4zm-6 0a2 2 0 110-4 2 2 0 010 4zm-8-2a2 2 0 104 0 2 2 0 00-4 0z" fill="#101928"></path></svg>
                                         </button>
                                     </td>
                                 </tr>

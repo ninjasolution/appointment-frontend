@@ -1,11 +1,9 @@
+/**
+ * React Index file
+ */
 import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.scss';
+import ReactDOM from 'react-dom';
 import AppRouter from './router/router';
+import "./App.scss"
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-    <React.StrictMode >
-        <AppRouter />
-    </React.StrictMode>
-);
+ReactDOM.render(<AppRouter />, document.getElementById('container'));

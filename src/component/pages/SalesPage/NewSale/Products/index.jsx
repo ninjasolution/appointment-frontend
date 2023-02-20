@@ -17,7 +17,7 @@ const Products = () => {
             <div className='products-container'>
                 <div className='none-content'>
                     <div className='none-logo'>
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 65 64"><path fill="url(#nav-products2-illustration)" fill-rule="evenodd" d="M4.5 16a4 4 0 0 1 4-4h48a4 4 0 0 1 4 4v6a4 4 0 0 1-4 4v22a4 4 0 0 1-4 4h-40a4 4 0 0 1-4-4V26a4 4 0 0 1-4-4v-6Zm8 10v22h40V26h-40Zm-4-4v-6h48v6h-48Zm16 12a2 2 0 0 1 2-2h12a2 2 0 1 1 0 4h-12a2 2 0 0 1-2-2Z" clip-rule="evenodd"></path><defs><linearGradient id="nav-products2-illustration" x1="12.858" x2="39.542" y1="17.97" y2="55.328" gradientUnits="userSpaceOnUse"><stop stop-color="#7C6BFF"></stop><stop offset="1" stop-color="#473DAD"></stop></linearGradient></defs></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 65 64"><path fill="url(#nav-products2-illustration)" fillRule="evenodd" d="M4.5 16a4 4 0 0 1 4-4h48a4 4 0 0 1 4 4v6a4 4 0 0 1-4 4v22a4 4 0 0 1-4 4h-40a4 4 0 0 1-4-4V26a4 4 0 0 1-4-4v-6Zm8 10v22h40V26h-40Zm-4-4v-6h48v6h-48Zm16 12a2 2 0 0 1 2-2h12a2 2 0 1 1 0 4h-12a2 2 0 0 1-2-2Z" clipRule="evenodd"></path><defs><linearGradient id="nav-products2-illustration" x1="12.858" x2="39.542" y1="17.97" y2="55.328" gradientUnits="userSpaceOnUse"><stop stop-color="#7C6BFF"></stop><stop offset="1" stop-color="#473DAD"></stop></linearGradient></defs></svg>
                     </div>
                     <p>No products added yet</p>
                     <span><a>Click here</a> to add and manage your products.</span>
