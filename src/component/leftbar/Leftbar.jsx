@@ -11,7 +11,6 @@ function LeftBar() {
     }, [])
 
     return (
-
         <div className='leftbar-layout'>
             {
                 <Link className={`leftbar-item ${location.pathname.includes("/dashboard") && 'active'}`} to="/dashboard">
@@ -20,28 +19,26 @@ function LeftBar() {
             }
             {
                 <Link className={`leftbar-item ${location.pathname.includes("/calendar") && 'active'}`} to="/calendar">
-                    <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path d="M17.3 30.6c-.3 0-.5-.1-.8-.2-.2-.1-.5-.2-.6-.4L2.8 16.9c-.2-.2-.4-.5-.5-.8-.1-.3-.1-.7 0-1L4.3 5c.1-.4.4-.7.8-.8l10.1-2c.3-.1.7 0 1 0 .3.1.6.3.8.5l13 13.2c.2.2.3.4.4.7.1.2.2.5.2.8 0 .3-.1.5-.2.8-.1.2-.2.5-.4.7L18.7 30c-.2.2-.4.3-.7.4-.2.1-.5.2-.7.2ZM6.1 6.1l-1.9 9.4 13.1 13.1 11.3-11.3L15.5 4.2l-.2-1 .2 1-9.4 1.9Z" fill="#101928"></path><path d="M10.5 12c.8 0 1.5-.7 1.5-1.5S11.3 9 10.5 9 9 9.7 9 10.5s.7 1.5 1.5 1.5Z" fill="#101928"></path></svg>
+                    <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" clipRule="evenodd" d="M4 6a2 2 0 0 1 2-2h20a2 2 0 0 1 2 2v20a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6Zm22 0H6v20h20V6Z" fill="#101928"></path><path fillRule="evenodd" clipRule="evenodd" d="M22 2a1 1 0 0 1 1 1v4a1 1 0 1 1-2 0V3a1 1 0 0 1 1-1ZM10 2a1 1 0 0 1 1 1v4a1 1 0 1 1-2 0V3a1 1 0 0 1 1-1ZM4 11a1 1 0 0 1 1-1h22a1 1 0 1 1 0 2H5a1 1 0 0 1-1-1Z" fill="#101928"></path></svg>
                 </Link>
             }
             {
-                <Link className={`leftbar-item ${location.pathname.includes("/calendar") && 'active'}`} to="/calendar">
+                <Link className={`leftbar-item ${location.pathname.includes("/sales") && 'active'}`} to="/sales">
                     <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path d="M17.3 30.6c-.3 0-.5-.1-.8-.2-.2-.1-.5-.2-.6-.4L2.8 16.9c-.2-.2-.4-.5-.5-.8-.1-.3-.1-.7 0-1L4.3 5c.1-.4.4-.7.8-.8l10.1-2c.3-.1.7 0 1 0 .3.1.6.3.8.5l13 13.2c.2.2.3.4.4.7.1.2.2.5.2.8 0 .3-.1.5-.2.8-.1.2-.2.5-.4.7L18.7 30c-.2.2-.4.3-.7.4-.2.1-.5.2-.7.2ZM6.1 6.1l-1.9 9.4 13.1 13.1 11.3-11.3L15.5 4.2l-.2-1 .2 1-9.4 1.9Z" fill="#101928"></path><path d="M10.5 12c.8 0 1.5-.7 1.5-1.5S11.3 9 10.5 9 9 9.7 9 10.5s.7 1.5 1.5 1.5Z" fill="#101928"></path></svg>
-                </Link>
-            }
-            {
-
-                <Link className={`leftbar-item ${location.pathname.includes("/sales") && 'active'}`} to="/sales/new-sale">
-                    <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" clipRule="evenodd" d="M16 5C9.925 5 5 9.925 5 16s4.925 11 11 11 11-4.925 11-11S22.075 5 16 5ZM3 16C3 8.82 8.82 3 16 3s13 5.82 13 13-5.82 13-13 13S3 23.18 3 16Z" fill="#101928"></path><path d="M11.5 15a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3ZM20.5 15a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z" fill="#101928"></path><path fillRule="evenodd" clipRule="evenodd" d="M21.698 18.133a1 1 0 0 1 .366 1.366 7.002 7.002 0 0 1-12.127 0 1 1 0 0 1 1.732-1 5.002 5.002 0 0 0 8.663 0 1 1 0 0 1 1.366-.366Z" fill="#101928"></path></svg>
                 </Link>
             }
             {
                 <Link className={`leftbar-item ${location.pathname.includes("/clients") && 'active'}`} to="/clients">
-                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" clipRule="evenodd" d="M1.94 4.94A1.5 1.5 0 0 1 3 4.5h6A3.75 3.75 0 0 1 12 6a3.746 3.746 0 0 1 3-1.5h6A1.5 1.5 0 0 1 22.5 6v12a1.5 1.5 0 0 1-1.5 1.5h-6a2.25 2.25 0 0 0-2.25 2.25.75.75 0 0 1-1.5 0A2.25 2.25 0 0 0 9 19.5H3A1.5 1.5 0 0 1 1.5 18V6c0-.398.158-.78.44-1.06Zm9.31 13.81A3.75 3.75 0 0 0 9 18H3V6h6a2.25 2.25 0 0 1 2.25 2.25v10.5Zm1.5 0A3.75 3.75 0 0 1 15 18h6V6h-6a2.25 2.25 0 0 0-2.25 2.25v10.5Z" fill="#000"></path></svg>
+                    <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" clipRule="evenodd" d="M16 5C9.925 5 5 9.925 5 16s4.925 11 11 11 11-4.925 11-11S22.075 5 16 5ZM3 16C3 8.82 8.82 3 16 3s13 5.82 13 13-5.82 13-13 13S3 23.18 3 16Z" fill="#101928"></path><path d="M11.5 15a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3ZM20.5 15a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z" fill="#101928"></path><path fillRule="evenodd" clipRule="evenodd" d="M21.698 18.133a1 1 0 0 1 .366 1.366 7.002 7.002 0 0 1-12.127 0 1 1 0 0 1 1.732-1 5.002 5.002 0 0 0 8.663 0 1 1 0 0 1 1.366-.366Z" fill="#101928"></path></svg>
                 </Link>
-
             }
             {
-                <Link className={`leftbar-item ${location.pathname.includes("/analytics") && 'active'}`} to="/analytics/dashboard">
+                <Link className={`leftbar-item ${location.pathname.includes("/catalogue") && 'active'}`} to="/catalogue">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" clipRule="evenodd" d="M1.94 4.94A1.5 1.5 0 0 1 3 4.5h6A3.75 3.75 0 0 1 12 6a3.746 3.746 0 0 1 3-1.5h6A1.5 1.5 0 0 1 22.5 6v12a1.5 1.5 0 0 1-1.5 1.5h-6a2.25 2.25 0 0 0-2.25 2.25.75.75 0 0 1-1.5 0A2.25 2.25 0 0 0 9 19.5H3A1.5 1.5 0 0 1 1.5 18V6c0-.398.158-.78.44-1.06Zm9.31 13.81A3.75 3.75 0 0 0 9 18H3V6h6a2.25 2.25 0 0 1 2.25 2.25v10.5Zm1.5 0A3.75 3.75 0 0 1 15 18h6V6h-6a2.25 2.25 0 0 0-2.25 2.25v10.5Z" fill="#000"></path></svg>
+                </Link>
+            }
+            {
+                <Link className={`leftbar-item ${location.pathname.includes("/analytics") && 'active'}`} to="/analytics">
                     <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" clipRule="evenodd" d="M4 5a1 1 0 0 1 1 1v19h23a1 1 0 1 1 0 2H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Z" fill="#101928"></path><path fillRule="evenodd" clipRule="evenodd" d="M26.707 7.293a1 1 0 0 1 0 1.414l-10 10a1 1 0 0 1-1.414 0L12 15.414l-7.293 7.293a1 1 0 0 1-1.414-1.414l8-8a1 1 0 0 1 1.414 0L16 16.586l9.293-9.293a1 1 0 0 1 1.414 0Z" fill="#101928"></path><path fillRule="evenodd" clipRule="evenodd" d="M20 8a1 1 0 0 1 1-1h5a1 1 0 0 1 1 1v5a1 1 0 1 1-2 0V9h-4a1 1 0 0 1-1-1Z" fill="#101928"></path></svg>
                 </Link>
             }

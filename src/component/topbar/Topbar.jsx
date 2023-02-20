@@ -5,6 +5,8 @@ const Topbar = () => {
     return (
         <div className='topbar-layout'>
             <div className='logo'>
+                <div></div>
+                fresha
             </div>
             <div className='actions'>
                 <div className='action-item'>

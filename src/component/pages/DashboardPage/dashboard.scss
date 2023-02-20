@@ -1,0 +1,12 @@
+.dashboard-contaier {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 20px;
+
+    .details-container {
+        flex: 50%;
+        max-width: 50%;
+        margin: 10px;
+        border: 1px solid red;
+    }
+}

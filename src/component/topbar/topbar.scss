@@ -16,12 +16,25 @@ $text-font: candara;
 
     svg {
         width: 30px;
-        height:30px;
+        height: 30px;
         fill: white !important;
     }
 
     .logo {
-        font-size: 30px;
+        font-size: 26px;
+        margin-left: 30px;
+        display: flex;
+        align-items: center;
+        font-weight: 600;
+
+        div {
+            height: 26px;
+            width: 26px;
+            border-radius: 50%;
+            background: linear-gradient(to top, #6666ff 0%, #ccccff 74%);
+            margin-right: 10px;
+            box-shadow: 0 0 10px 0 #6666ff;
+        }
     }
 
     .actions {
@@ -29,6 +42,7 @@ $text-font: candara;
         justify-content: center;
         align-items: center;
         flex-wrap: wrap;
+        margin-right: 30px;
 
         .action-item {
             margin-left: 20px;
@@ -50,4 +64,3 @@ $text-font: candara;
         }
     }
 }
-
