@@ -4,15 +4,21 @@
     height: 100%;
 
     .detail-container {
-        width: calc(100% - 350px);
+        max-width: calc(100% - 350px);
+        min-width: calc(100% - 350px);
         border-right: 1px solid #c1c1c1;
         background-color: rgb(248, 248, 248);
         display: flex;
-        justify-content: center;
         align-items: center;
+        overflow-x: auto;
 
         .content-container {
-            width: 1040px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            padding: 0 30px 0 30px;
+            min-width: 600px;
+            max-width: 1000px;
 
             .content-title {
                 font-size: 30px;
@@ -22,26 +28,36 @@
 
             .content-tab {
                 display: flex;
+                overflow-x: auto;
 
-                div.tab-item {
-                    margin-bottom: 20px;
-                    padding-bottom: 10px;
-                    border-bottom: 3px solid rgb(248, 248, 248);
-                    font-weight: 500;
-                    color: rgb(90, 90, 90);
-                }
+                .content-group {
+                    min-width: 660px;
+                    display: flex;
+                    flex-direction: row;
+                    gap: 25px;
 
-                div.tab-item:hover {
-                    cursor: pointer;
-                }
-
-                div.tab-item.active {
-                    border-bottom: 3px solid black;
-                    color: black;
-                }
-
-                div.tab-space {
-                    width: 30px;
+                    .tab-item {
+                        margin-bottom: 20px;
+                        padding-bottom: 10px;
+                        border-bottom: 3px solid rgb(248, 248, 248);
+                        font-weight: 500;
+                        color: rgb(90, 90, 90);
+                        font-size: 16px;
+                        text-decoration: none;
+                    }
+    
+                    .tab-item:hover {
+                        cursor: pointer;
+                    }
+    
+                    .tab-item.active {
+                        border-bottom: 3px solid black;
+                        color: black;
+                    }
+    
+                    .tab-space {
+                        width: 30px;
+                    }
                 }
             }
 
@@ -49,6 +65,7 @@
                 border: 1px solid #c1c1c1;
                 border-radius: 5px;
                 min-height: 700px;
+                position: relative;
 
                 .none-content {
                     position: absolute;
@@ -171,6 +188,7 @@
                 border: 1px solid #c1c1c1;
                 border-radius: 5px;
                 min-height: 600px;
+                position: relative;
 
                 .none-content {
                     position: absolute;
@@ -293,6 +311,7 @@
                 border: 1px solid #c1c1c1;
                 border-radius: 5px;
                 min-height: 600px;
+                position: relative;
 
                 .none-content {
                     position: absolute;
@@ -415,6 +434,7 @@
                 border: 1px solid #c1c1c1;
                 border-radius: 5px;
                 min-height: 600px;
+                position: relative;
 
                 .none-content {
                     position: absolute;
@@ -537,6 +557,7 @@
                 border: 1px solid #c1c1c1;
                 border-radius: 5px;
                 min-height: 600px;
+                position: relative;
 
                 .none-content {
                     position: absolute;
@@ -659,6 +680,7 @@
                 border: 1px solid #c1c1c1;
                 border-radius: 5px;
                 min-height: 600px;
+                position: relative;
 
                 .none-content {
                     position: absolute;
@@ -720,7 +742,8 @@
     }
 
     .clients-container {
-        width: 350px;
+        max-width: 349px;
+        min-width: 349px;
         height: 100%;
 
         .add-client-button {
@@ -739,6 +762,7 @@
                 color: #037aff;
                 margin-left: 10px;
                 cursor: pointer;
+                font-size: 16px;
             }
 
             span:hover {
@@ -757,6 +781,7 @@
                 flex-direction: column;
                 position: absolute;
                 top: 50%;
+                width: 300px;
 
                 .empty-logo-container {
                     display: flex;
@@ -780,6 +805,7 @@
                     text-align: center;
                     padding-left: 30px;
                     padding-right: 30px;
+                    font-size: 15px;
                 }
             }
         }

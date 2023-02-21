@@ -30,8 +30,7 @@ function AppRouter() {
     return (
         <BrowserRouter>
             <Routes>
-                <Route element={<MainLayout />}>
-                    <Route path='/' element={<Dashboard />} />
+                <Route path='/' element={<MainLayout />}>
                     <Route path='/dashboard' element={<Dashboard />} />
 
                     <Route path='/calendar' element={<Calendar />} />

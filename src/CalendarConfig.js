@@ -1,9 +1,14 @@
 /**
  * Application configuration
  */
+const dateTime = new Date();
+
+const year = dateTime.getFullYear();
+const month = dateTime.getMonth();
+const day = dateTime.getDate();
 
 const calendarConfig = {
-    date : new Date(2022, 2, 15),
+    date : new Date(year, month, day),
 
     crudManager : {
         transport : {

@@ -1,25 +1,44 @@
-import React from 'react';
-import { Outlet } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { Link, Outlet, useLocation, useNavigate } from 'react-router-dom';
 import './newsale.scss';
 
 function NewSalePage() {
+
+    const location = useLocation();
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        setTimeout(() => {
+            navigate('/sales/new-sale/quick-sale', { replace: true });
+        }, 100);
+    }, []);
+
     return (
         <div className='new-sale-container'>
             <div className='detail-container'>
                 <div className='content-container'>
                     <div className='content-title'>New sale</div>
                     <div className='content-tab'>
-                        <div className='tab-item active'>Quick Sale</div>
-                        <div className='tab-space'></div>
-                        <div className='tab-item'>To check out</div>
-                        <div className='tab-space'></div>
-                        <div className='tab-item'>Products</div>
-                        <div className='tab-space'></div>
-                        <div className='tab-item'>Services</div>
-                        <div className='tab-space'></div>
-                        <div className='tab-item'>Memberships</div>
-                        <div className='tab-space'></div>
-                        <div className='tab-item'>Vouchers</div>
+                        <div className="content-group">
+                            <Link className={`tab-item ${location.pathname.includes("/sales/new-sale/quick-sale") && 'active'}`} to={'/sales/new-sale/quick-sale'}>
+                                Quick Sale
+                            </Link>
+                            <Link className={`tab-item ${location.pathname.includes("/sales/new-sale/appointments") && 'active'}`} to={'/sales/new-sale/appointments'}>
+                                To check out
+                            </Link>
+                            <Link className={`tab-item ${location.pathname.includes("/sales/new-sale/products") && 'active'}`} to={'/sales/new-sale/products'}>
+                                Products
+                            </Link>
+                            <Link className={`tab-item ${location.pathname.includes("/sales/new-sale/services") && 'active'}`} to={'/sales/new-sale/services'}>
+                                Services
+                            </Link>
+                            <Link className={`tab-item ${location.pathname.includes("/sales/new-sale/memberships") && 'active'}`} to={'/sales/new-sale/memberships'}>
+                                Memberships
+                            </Link>
+                            <Link className={`tab-item ${location.pathname.includes("/sales/new-sale/vouchers") && 'active'}`} to={'/sales/new-sale/vouchers'}>
+                                Vouchers
+                            </Link>
+                        </div>
                     </div>
                     <>
                         <Outlet />

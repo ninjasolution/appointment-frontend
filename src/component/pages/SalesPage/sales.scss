@@ -1,12 +1,13 @@
 .sales-layout {
     display: flex;
-    width: 100%;
+    width: calc(100vw - 75px);
 
     .inner-siderbar {
         position: relative;
-        width: 200px;
         padding: 15px 10px 10px 10px;
         border-right: 1px solid rgb(184, 184, 184);
+        max-width: 219px;
+        min-width: 199px;
 
         .body:hover {
             background-color: rgba(141, 204, 255, 0.2);
@@ -16,6 +17,14 @@
         .item.active {
             background-color: rgba(141, 204, 255, 0.2);
             border-radius: 5px;
+        }
+
+        .item {
+            a {
+                font-size: 16px;
+                text-decoration: none;
+                color: black;
+            }
         }
     }
 
