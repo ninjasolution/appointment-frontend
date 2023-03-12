@@ -75,7 +75,7 @@ export default function Dashboard() {
           </div>
         </div>
         <div className='graph'>
-          <Chart options={state.options} series={state.series} type="line" width={'100%'}/>
+          <Chart options={state.options} series={state.series} type="line" width={'100%'} height={'300px'}/>
         </div>
       </div>
       <div className='details-container upcoming-appointments'>
@@ -112,7 +112,7 @@ export default function Dashboard() {
           </div>
         </div>
         <div className='graph'>
-          <Chart options={state.options} series={state.series} type="bar" width={'100%'}/>
+          <Chart options={state.options} series={state.series} type="bar" width={'100%'} height={'300px'}/>
         </div>
       </div>
       <div className='details-container appointments-activity'>
@@ -132,7 +132,7 @@ export default function Dashboard() {
                 <span className='detail-date'>Wed, 22 Feb 2023 01:30<span>NEW</span></span>
                 <span className='detail-type'>service-1</span>
                 <span className='detail-service'>Walk-In, 15min with Mykhailo</span>
-                <span className='detail-content'>ajfksdjfklsdjfskl</span>
+                <span className='detail-content'>It's very wonderful</span>
               </div>
             </div>
             <div className='item-price'>RUB 56</div>
@@ -147,7 +147,7 @@ export default function Dashboard() {
                 <span className='detail-date'>Wed, 22 Feb 2023 01:30<span>NEW</span></span>
                 <span className='detail-type'>service-1</span>
                 <span className='detail-service'>Walk-In, 15min with Mykhailo</span>
-                <span className='detail-content'>eruwiiurwi</span>
+                <span className='detail-content'>It's very wonderful</span>
               </div>
             </div>
             <div className='item-price'>RUB 56</div>
@@ -171,7 +171,7 @@ export default function Dashboard() {
                 <span className='detail-date'>Wed, 22 Feb 2023 01:30<span>NEW</span></span>
                 <span className='detail-type'>service-1</span>
                 <span className='detail-service'>Walk-In, 15min with Mykhailo</span>
-                <span className='detail-content'>ajfksdjfklsdjfskl</span>
+                <span className='detail-content'>It's very wonderful</span>
               </div>
             </div>
             <div className='item-price'>RUB 56</div>

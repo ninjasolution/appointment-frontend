@@ -4,6 +4,7 @@
 
 // import bryntum theme
 @import '~@bryntum/calendar/calendar.stockholm.css';
+@import url('bootstrap/dist/css/bootstrap.min.css');
 
 body,
 html {
@@ -22,6 +23,7 @@ html {
 
 * {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
+    // font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 .font-left {
@@ -30,4 +32,25 @@ html {
 
 .font-right {
     text-align: right;
+}
+
+.hide-leftside {
+    min-width: 0px !important;
+}
+
+.hide-item {
+    display: none;
+}
+
+.rotate-180 {
+    transform: rotate(180deg);
+}
+
+.w-100 {
+    width: 100% !important;
+}
+
+.set-max {
+    min-width: calc(100% - 21px) !important;
+    max-width: calc(100% - 21px) !important;
 }

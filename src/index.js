@@ -1,9 +1,20 @@
-/**
- * React Index file
- */
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
 import AppRouter from './router/router';
-import "./App.scss"
+import rootReducer from './reducer';
+import { createStore } from 'redux';
+import { composeWithDevTools } from 'redux-devtools-extension';
+import "./App.scss";
 
-ReactDOM.render(<AppRouter />, document.getElementById('container'));
+const store = createStore(
+    rootReducer,
+    composeWithDevTools()
+);
+
+ReactDOM.render(
+    <Provider store={store}>
+        <AppRouter />
+    </Provider>,
+    document.getElementById('container')
+);

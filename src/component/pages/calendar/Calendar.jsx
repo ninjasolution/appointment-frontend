@@ -5,7 +5,6 @@ import { calendarConfig } from '../../../CalendarConfig';
 export default function Calendar() {
 
   useEffect(() => {
-    alert(calendarConfig.date)
   }, []);
 
   return (

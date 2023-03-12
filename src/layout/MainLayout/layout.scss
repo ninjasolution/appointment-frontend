@@ -1,6 +1,7 @@
 .main-layout {
     height: 100vh;
     display: flex;
+    position: relative;
 
     .main-layout-container {
         height: calc(100vh - 70px);
@@ -10,7 +11,6 @@
 
         .inner-siderbar {
             .item {
-                padding: 14px 16px;
                 cursor: pointer;
             }
 
@@ -23,7 +23,7 @@
                 position: absolute;
                 background-color: white;
                 top: 25px;
-                right: -17px;
+                right: -16px;
                 border: 1px solid gray;
                 border-radius: 50%;
                 width: 30px;
@@ -32,6 +32,7 @@
                 align-items: center;
                 justify-content: center;
                 cursor: pointer;
+
                 svg {
                     width: 20px;
                     height: 20px;

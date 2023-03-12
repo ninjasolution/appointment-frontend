@@ -1,0 +1,135 @@
+.automated-messages-container {
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+    position: relative;
+    margin: auto;
+    max-width: 1100px;
+
+    .content-container {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+
+        .content-title {
+            font-size: 30px;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .content-summary {
+            font-size: 16px;
+
+            a {
+                color: rgb(25, 144, 255);
+            }
+        }
+    }
+
+    .keep-clients-container, .encourage-client-container, .upcoming-appointments-container {
+        margin: 40px 0px;
+
+        .content-title {
+            font-size: 30px;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .alarm-container {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            margin: 20px 0px;
+            flex-wrap: wrap;
+            gap: 20px;
+
+            .alarm-item {
+                width: 240px;
+                min-width: 240px;
+                min-height: 320px;
+                border-radius: 10px;
+                padding: 20px;
+                height: 100%;
+                justify-content: space-between;
+                display: flex;
+                flex-direction: column;
+                border: 1px solid rgba(0, 0, 0, 0.2);
+                gap: 20px;
+
+                .alarm-tool {
+                    display: flex;
+                    justify-content: space-between;
+
+                    span.alarm-logo {
+                        svg {
+                            width: 30px;
+                        }
+                    }
+
+                    span.alarm-action {
+                        svg {
+                            width: 30px;
+                        }
+                    }
+                }
+
+                .alarm-title {
+                    font-size: 18px;
+                    font-weight: 500;
+                }
+
+                .alarm-content {
+                    font-size: 16px;
+                    font-weight: 500;
+                    color: rgba(0, 0, 0, 0.4);
+                }
+
+                .alarm-states {
+                    display: flex;
+                    gap: 10px;
+
+                    .alarm-state {
+                        font-weight: 500;
+                        padding: 2px 10px;
+                        border-radius: 5px;
+                    }
+
+                    .alarm-state.success {
+                        color: #21c177;
+                        border: 1px solid #21c177;
+                        background-color: #dffff0;
+                    }
+
+                    .alarm-state.disable {
+                        border: 1px solid #6c757d;
+                    }
+                }
+
+                .new-container {
+                    display: flex;
+                    width: 100%;
+                    height: 280px;
+                    justify-content: center;
+                    align-items: center;
+                    flex-direction: column;
+
+                    span#logo {
+                        svg {
+                            width: 30px;
+                        }
+                    }
+
+                    span#content {
+                        font-size: 16px;
+                        font-weight: 500;
+                    }
+                }
+            }
+
+            .alarm-item:hover {
+                cursor: pointer;
+                border: 1.5px solid rgba(0, 0, 0, 0.5);
+            }
+        }
+    }
+}

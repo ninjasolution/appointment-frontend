@@ -1,0 +1,10 @@
+.settings-layout {
+    display: flex;
+    width: calc(100vw - 75px);
+
+    .inner-container {
+        min-width: calc(100%);
+        max-width: calc(100%);
+        overflow: auto;
+    }
+}

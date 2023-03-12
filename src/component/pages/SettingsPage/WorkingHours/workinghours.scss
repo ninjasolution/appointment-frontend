@@ -1,0 +1,199 @@
+.working-hours-container {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+
+    .content-container {
+        max-width: calc(1024px + 80px);
+        padding: 40px;
+        width: 100%;
+
+        .content-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+
+            .header-content {
+                display: flex;
+                flex-direction: column;
+
+                .header-link {
+                    font-size: 16px;
+                    color: rgba(0, 0, 0, 0.5);
+                }
+
+                .header-link:hover {
+                    cursor: pointer;
+                    text-decoration: underline;
+                }
+
+                .header-title {
+                    font-size: 30px;
+                    font-weight: 700;
+                }
+
+                .header-sub-title {
+                    font-size: 16px;
+                }
+            }
+
+            .header-action {
+                button.action-save {
+                    height: 48px;
+                    width: 120px;
+                    border: 1px solid #0c1124;
+                    background-color: #0c1124;
+                    border-radius: 5px;
+                    color: white;
+                    font-size: 17px;
+                    font-weight: 500;
+                }
+
+                button.action-save:hover {
+                    background-color: #37383d;
+                    border: 1px solid #37383d;
+                    cursor: pointer;
+                }
+            }
+        }
+
+        .content-setting {
+            display: flex;
+            padding: 15px;
+            background-color: #f5f5f5;
+            justify-content: space-between;
+            width: calc(100%);
+            border-radius: 10px;
+            overflow-x: auto;
+            margin-top: 20px;
+
+            .search-container {
+                display: flex;
+                padding: 5px 15px;
+                border: 1px solid rgba(0, 0, 0, 0.2);
+                background-color: white;
+                border-radius: 25px;
+                align-items: center;
+
+                input {
+                    height: 20px;
+                    font-size: 16px;
+                    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+                    border: none;
+                    outline: none;
+                    margin-left: 10px;
+                    margin-right: 10px;
+                    width: 350px;
+                }
+
+                svg {
+                    height: 30px;
+                }
+            }
+
+            .search-container:hover {
+                border: 1px solid rgba(0, 0, 0, 0.5);
+            }
+
+            .schedule-container {
+                border: 1px solid rgba(0, 0, 0, 0.2);
+                border-radius: 25px;
+                background-color: #fff;
+                padding: 0px 20px;
+                display: flex;
+
+                select {
+                    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+                    font-size: 16px;
+                    font-weight: 500;
+                    border: none;
+                    outline: none;
+                    height: 100%;
+                }
+
+                select:hover {
+                    cursor: pointer;
+                }
+            }
+
+            .schedule-container:hover {
+                cursor: pointer;
+                border: 1px solid rgba(0, 0, 0, 0.5);
+            }
+        }
+
+        .content-details {
+            padding: 20px 0px 50px;
+
+            .content-item {
+                display: flex;
+                margin: 0px 0px 20px;
+                padding: 20px 24px;
+                border-radius: 5px;
+                border: 1px solid rgba(0, 0, 0, 0.2);
+
+                .item-logo {
+                    height: 80px;
+                    width: 80px;
+                    display: flex;
+                    background: rgb(129, 188, 255);
+                    border-radius: 50%;
+                    justify-content: center;
+                    align-items: center;
+
+                    .logo-container {
+                        height: 76px;
+                        width: 76px;
+                        border-radius: 50%;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        background-color: #cde4ff;
+                        border: 2px solid #fff;
+
+                        span {
+                            font-size: 30px;
+                            color: #037aff;
+                        }
+                    }
+                }
+
+                .item-detail {
+                    margin: 0px 20px;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    width: 40%;
+
+                    .item-name {
+                        font-size: 20px;
+                        font-weight: 500;
+                    }
+                }
+
+                .item-info {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    padding: 2px;
+
+                    span.item-email {
+                        font-size: 16px;
+                        color: #037aff;
+                    }
+
+                    span.item-phone {
+                        font-size: 16px;
+                        color: #037aff;
+                    }
+                }
+            }
+
+            .content-item:hover {
+                cursor: pointer;
+                border: 1px solid rgba(0, 0, 0, 0.5);
+            }
+        }
+    }
+}

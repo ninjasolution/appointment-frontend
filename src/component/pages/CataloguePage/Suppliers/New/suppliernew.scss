@@ -1,0 +1,658 @@
+.supplier-new-container {
+    width: 100%;
+    position: relative;
+
+    .topbar {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        height: 84px;
+        justify-content: space-between;
+        position: fixed;
+        background-color: white;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+        z-index: 99;
+        top: 0;
+
+        a.edit-close {
+            padding: 20px;
+            text-decoration: none;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            width: 150px;
+
+            svg {
+                border-radius: 5px;
+                width: 40px;
+                padding: 5px;
+            }
+
+            svg:hover {
+                cursor: pointer;
+                background-color: rgba(0, 0, 0, 0.1);
+            }
+        }
+
+        span.edit-title {
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        button.edit-save {
+            font-size: 17px;
+            font-weight: 500;
+            width: 150px;
+            height: 50px;
+            background-color: #101928;
+            border: 1px solid #101928;
+            color: white;
+            border-radius: 5px;
+            margin: 0px 20px;
+        }
+    }
+
+    div.title {
+        display: flex;
+        justify-content: center;
+        padding: 0 24px 24px;
+        margin-top: 84px;
+
+        span {
+            font-size: 28px;
+            font-weight: 700;
+        }
+    }
+
+    .main-container {
+        max-width: 1050px;
+        display: flex;
+        flex-direction: column;
+        margin: auto;
+        justify-content: space-around;
+
+        .border-danger {
+            border: 1.5px solid #da2346;
+        }
+
+        .group-container {
+            margin: auto;
+            max-width: 800px;
+            width: 100%;
+            border: 1px solid rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            margin-bottom: 20px;
+
+            div.group-title {
+                padding: 20px 25px;
+                border-bottom: 1px solid #cccccc;
+
+                span.title {
+                    font-size: 24px;
+                    font-weight: 700;
+                }
+
+                .sub-title {
+                    font-size: 16px;
+                }
+            }
+
+            .group {
+                width: 100%;
+                gap: 20px;
+
+                span.group-title {
+                    font-size: 16px;
+                    font-weight: 500;
+                    margin-bottom: 10px;
+                }
+
+                span.group-total-title {
+                    font-size: 20px;
+                    font-weight: 700;
+                }
+
+                span.group-sub-title {
+                    font-size: 16px;
+                }
+
+                div.check-container {
+                    display: flex;
+                    align-items: center;
+                    padding: 0px 0px 25px;
+
+                    div.check-logo {
+                        background-color: #037aff;
+                        width: 25px;
+                        height: 25px;
+                        border-radius: 5px;
+                        display: flex;
+                        justify-content: center;
+
+                        svg {
+                            width: 15px;
+                        }
+                    }
+
+                    div.check-logo.unchecked {
+                        background-color: white;
+                    }
+
+                    span {
+                        margin-left: 15px;
+                        font-size: 16px;
+                    }
+                }
+
+                div.input-container {
+                    border: 1px solid #cccccc;
+                    border-radius: 5px;
+                    display: flex;
+                    position: relative;
+                    margin: 5px 0px;
+                    align-items: center;
+
+                    input {
+                        width: calc(100%);
+                        height: 30px;
+                        font-size: 16px;
+                        border: none;
+                        margin: 10px;
+                        outline: none;
+                    }
+
+                    select {
+                        width: calc(100%);
+                        height: 30px;
+                        font-size: 16px;
+                        border: none;
+                        margin: 10px;
+                        outline: none;
+                        cursor: pointer;
+                    }
+
+                    textarea {
+                        width: 100%;
+                        margin: 10px;
+                        border: none;
+                        outline: none;
+                        font-size: 16px;
+                    }
+
+                    .sel-number-region {
+                        height: 52px;
+                        width: 130px;
+                        display: flex;
+                        align-items: center;
+                        border-right: 1px solid #cccccc;
+
+                        span.region-value {
+                            font-size: 16px;
+                            width: 50px;
+                            padding: 10px;
+                            height: 30px;
+                            text-align: left;
+                            display: flex;
+                            align-items: center;
+                        }
+
+                        span.select-icon {
+                            padding: 10px;
+
+                            svg {
+                                width: 20px;
+                            }
+                        }
+                    }
+
+                    .sel-number-region:hover {
+                        border-right: 1px solid #3995ff;
+                        cursor: pointer;
+                    }
+
+                    select.sel-number-region {
+                        position: absolute;
+                        font-size: 16px;
+                        top: 40px;
+                        height: 30px;
+                        outline: none;
+                        border: 1px solid rgba(0, 0, 0, 0.6);
+                    }
+                }
+
+                div.input-container:hover {
+                    border: 1.5px solid #696969;
+                    cursor: pointer;
+                }
+
+                span.group-hint {
+                    font-size: 14px;
+                    color: #da2346;
+                }
+
+                div.form-check {
+                    display: flex;
+                    align-items: center;
+
+                    .form-check-input {
+                        width: 25px;
+                        height: 25px;
+                    }
+
+                    span.check-content {
+                        font-size: 16px;
+                        margin-left: 20px;
+                    }
+                }
+
+                div.form-check:hover {
+                    cursor: pointer;
+                }
+
+                .check-group {
+                    display: flex;
+                    justify-content: space-between;
+                    padding: 10px 0px 30px;
+
+                    .form-group {
+                        display: flex;
+                        align-items: center;
+                        cursor: pointer;
+                        gap: 10px;
+
+                        .form-check-input {
+                            height: 30px;
+                            width: 30px;
+                        }
+
+                        div.user-avatar {
+                            border: 2px solid #0d6efd;
+                            border-radius: 50%;
+
+                            .user-nickname {
+                                font-size: 17px;
+                                font-weight: 500;
+                                color: #0d6efd;
+                                height: 54px;
+                                width: 54px;
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+                                border-radius: 50%;
+                                background-color: #c9dfff;
+                                border: 3px solid white;
+                            }
+                        }
+
+                        span.check-username {
+                            font-size: 18px;
+                            font-weight: 500;
+                        }
+                    }
+                }
+            }
+
+            .two-group {
+                display: flex;
+                gap: 20px;
+            }
+
+            .sub-container {
+                padding: 10px 25px;
+            }
+
+            .option-container {
+                padding: 20px 25px;
+                display: flex;
+                flex-direction: column;
+
+                .option-title {
+                    font-size: 20px;
+                    font-weight: 700;
+                }
+
+                .option-details {
+                    display: flex;
+                    justify-content: center;
+                }
+            }
+        }
+
+        .pricing-duration {
+            display: flex;
+            flex-direction: column;
+
+            .option-container {
+                border: 1.5px solid rgba(0, 0, 0, 0.2);
+                padding: 0px 0px 20px;
+                margin: 20px 25px;
+                border-radius: 10px;
+                background-color: rgba(0, 0, 0, 0.05);
+
+                span.option-title {
+                    padding: 10px 25px;
+                }
+
+                .group {
+                    flex-wrap: wrap;
+                }
+
+                .input-container {
+                    background-color: white;
+                    width: 150px;
+                }
+
+                .option-details {
+                    flex-wrap: wrap;
+                }
+
+                .pricing-name-container {
+                    margin: 0px 3px;
+                    justify-content: flex-start;
+
+                    .input-container {
+                        width: 320px;
+                    }
+                }
+
+                span.advanced-options {
+                    font-size: 18px;
+                    color: #037aff;
+                    margin: 10px 30px 10px;
+                }
+
+                span.advanced-options:hover {
+                    cursor: pointer;
+                    text-decoration: underline;
+                }
+            }
+
+            .add-pricing-option {
+                display: flex;
+                align-items: center;
+
+                span.add-logo {
+                    display: flex;
+                    align-items: center;
+
+                    svg {
+                        width: 20px;
+                    }
+                }
+
+                span.add-content {
+                    margin-left: 10px;
+                    font-size: 16px;
+                    color: #3995ff;
+                }
+            }
+
+            .add-address-action:hover {
+                cursor: pointer;
+
+                span.add-content {
+                    text-decoration: underline;
+                }
+            }
+
+            .extra-time-group {
+                border-top: 1px solid rgba(0, 0, 0, 0.2);
+            }
+
+            .extra-items-container {
+                display: flex;
+                gap: 30px;
+                margin: 30px 0px;
+                flex-wrap: wrap;
+
+                .extra-item {
+                    display: flex;
+                    flex-direction: column;
+                    width: 260px;
+                    padding: 20px 30px;
+                    justify-content: center;
+                    border: 1px solid rgba(0, 0, 0, 0.3);
+                    border-radius: 5px;
+
+                    span.item-title {
+                        font-size: 17px;
+                        font-weight: 500;
+                        text-align: center;
+                    }
+
+                    span.item-content {
+                        text-align: center;
+                        color: rgba(0, 0, 0, 0.6);
+                    }
+                }
+
+                .extra-item:hover {
+                    cursor: pointer;
+                    box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.1);
+                }
+
+                .extra-item.active {
+                    border: 2px solid #037aff;
+                    background-color: #e7f2ff;
+
+                    span.item-content {
+                        color: #000;
+                    }
+                }
+            }
+
+            .extra-duration-container {
+                .duration-group {
+                    max-width: 550px;
+
+                    .duration-group-title {
+                        font-size: 16px;
+                        font-weight: 500;
+                    }
+
+                    .select-duration {
+                        width: 100%;
+                        padding: 10px;
+                        border: 1px solid rgba(0,0,0,0.3);
+                        border-radius: 5px;
+
+                        select {
+                            width: 100%;
+                            font-size: 16px;
+                            height: 30px;
+                            border: none;
+                            outline: none;
+                        }
+                    }
+
+                    .select-duration:hover {
+                        border: 1px solid rgba(0,0,0,0.6);
+                        cursor: pointer;
+
+                        select {
+                            cursor: pointer;
+                        }
+                    }
+                }
+            }
+        }
+
+        .sales-settings {
+            display: flex;
+            margin-bottom: 50px;
+            flex-direction: column;
+
+            .option-container {
+                border: 1.5px solid rgba(0, 0, 0, 0.2);
+                padding: 0px 0px 20px;
+                margin: 20px 25px;
+                border-radius: 10px;
+                background-color: rgba(0, 0, 0, 0.05);
+
+                span.option-title {
+                    padding: 10px 25px;
+                }
+
+                .group {
+                    flex-wrap: wrap;
+                }
+
+                .input-container {
+                    background-color: white;
+                    width: 150px;
+                }
+
+                .option-details {
+                    flex-wrap: wrap;
+                }
+
+                .pricing-name-container {
+                    margin: 0px 3px;
+                    justify-content: flex-start;
+
+                    .input-container {
+                        width: 320px;
+                    }
+                }
+
+                span.advanced-options {
+                    font-size: 18px;
+                    color: #037aff;
+                    margin: 10px 30px 10px;
+                }
+
+                span.advanced-options:hover {
+                    cursor: pointer;
+                    text-decoration: underline;
+                }
+            }
+
+            .add-pricing-option {
+                display: flex;
+                align-items: center;
+
+                span.add-logo {
+                    display: flex;
+                    align-items: center;
+
+                    svg {
+                        width: 20px;
+                    }
+                }
+
+                span.add-content {
+                    margin-left: 10px;
+                    font-size: 16px;
+                    color: #3995ff;
+                }
+            }
+
+            .add-address-action:hover {
+                cursor: pointer;
+
+                span.add-content {
+                    text-decoration: underline;
+                }
+            }
+
+            .extra-time-group {
+                border-top: 1px solid rgba(0, 0, 0, 0.2);
+            }
+
+            .extra-items-container {
+                display: flex;
+                gap: 30px;
+                margin: 30px 0px;
+                flex-wrap: wrap;
+
+                .extra-item {
+                    display: flex;
+                    flex-direction: column;
+                    width: 260px;
+                    padding: 20px 30px;
+                    justify-content: center;
+                    border: 1px solid rgba(0, 0, 0, 0.3);
+                    border-radius: 5px;
+
+                    span.item-title {
+                        font-size: 17px;
+                        font-weight: 500;
+                        text-align: center;
+                    }
+
+                    span.item-content {
+                        text-align: center;
+                        color: rgba(0, 0, 0, 0.6);
+                    }
+                }
+
+                .extra-item:hover {
+                    cursor: pointer;
+                    box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.1);
+                }
+
+                .extra-item.active {
+                    border: 2px solid #037aff;
+
+                    span.item-content {
+                        color: #000;
+                    }
+                }
+            }
+
+            .tax-container, .voucher-expiry-container {
+                .tax-group, .voucher-group {
+                    max-width: 550px;
+
+                    .tax-group-title, .voucher-group-title {
+                        font-size: 16px;
+                        font-weight: 500;
+                    }
+
+                    .select-tax, .select-voucher {
+                        width: 100%;
+                        padding: 10px;
+                        border: 1px solid rgba(0,0,0,0.3);
+                        border-radius: 5px;
+
+                        select {
+                            width: 100%;
+                            font-size: 16px;
+                            height: 30px;
+                            border: none;
+                            outline: none;
+                        }
+                    }
+
+                    .select-tax:hover, .select-voucher:hover {
+                        border: 1px solid rgba(0,0,0,0.6);
+                        cursor: pointer;
+
+                        select {
+                            cursor: pointer;
+                        }
+                    }
+                }
+            }
+
+            .tax-container {
+                padding: 20px 30px;
+            }
+
+            .voucher-sales-group {
+                .group-total-title {
+                    margin: 20px 30px;
+                }
+
+                .form-check {
+                    margin: 10px 30px;
+                    width: 100%;
+                }
+
+                .voucher-expiry-container {
+                    padding: 20px 30px 40px;
+                }
+            }
+        }
+    }
+}

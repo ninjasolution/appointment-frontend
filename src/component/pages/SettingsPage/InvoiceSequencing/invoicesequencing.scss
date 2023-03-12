@@ -1,0 +1,94 @@
+.invoice-sequencimg-container {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+
+    .content-container {
+        max-width: calc(1024px + 80px);
+        padding: 40px;
+        width: 100%;
+
+        .content-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+
+            .header-content {
+                display: flex;
+                flex-direction: column;
+
+                .header-link {
+                    font-size: 16px;
+                    color: rgba(0, 0, 0, 0.5);
+                }
+
+                .header-link:hover {
+                    cursor: pointer;
+                    text-decoration: underline;
+                }
+
+                .header-title {
+                    font-size: 30px;
+                    font-weight: 700;
+                }
+
+                .header-sub-title {
+                    font-size: 16px;
+                }
+            }
+
+            .header-action {
+                button.action-save {
+                    height: 48px;
+                    width: 200px;
+                    border: 1px solid #0c1124;
+                    background-color: #0c1124;
+                    border-radius: 5px;
+                    color: white;
+                    font-size: 17px;
+                    font-weight: 500;
+                }
+
+                button.action-save:hover {
+                    background-color: #37383d;
+                    border: 1px solid #37383d;
+                    cursor: pointer;
+                }
+            }
+        }
+
+        .content-details {
+            padding: 20px 0px 50px;
+
+            .table-container {
+                table {
+                    width: 100%;
+                    border-collapse: collapse;
+
+                    thead {
+
+                        tr {
+                            th {
+                                padding: 10px 13px;
+                                font-size: 16px;
+                                font-weight: 500;
+                            }
+                        }
+                    }
+
+                    tbody {
+
+                        tr {
+                            border-top: 1px solid rgba(0, 0, 0, 0.2);
+                            td {
+                                font-size: 16px;
+                                padding: 10px 13px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
