@@ -20,36 +20,30 @@ const StockOrders = () => {
                         <div className='modal-body'>
                             <div className='group'>
                                 <span className='group-title'>Suppliers</span>
-                                <div className='input-container'>
-                                    <select>
-                                        <option>All suppliers</option>
-                                        <option>Dfsfw</option>
-                                        <option>dfwfe</option>
-                                    </select>
-                                </div>
+                                <select className='form-select'>
+                                    <option>All suppliers</option>
+                                    <option>Dfsfw</option>
+                                    <option>dfwfe</option>
+                                </select>
                             </div>
                             <div className='group'>
                                 <span className='group-title'>Order type</span>
-                                <div className='input-container'>
-                                    <select>
-                                        <option>All statuses</option>
-                                        <option>Purchase</option>
-                                        <option>Transfer</option>
-                                    </select>
-                                </div>
+                                <select className='form-select'>
+                                    <option>All statuses</option>
+                                    <option>Purchase</option>
+                                    <option>Transfer</option>
+                                </select>
                             </div>
                             <div className='group'>
                                 <span className='group-title'>Order status</span>
-                                <div className='input-container'>
-                                    <select>
-                                        <option>All statuses</option>
-                                        <option>Ordered</option>
-                                        <option>Received</option>
-                                        <option>Cancelled</option>
-                                        <option>Partial</option>
-                                        <option>Draft</option>
-                                    </select>
-                                </div>
+                                <select className='form-select'>
+                                    <option>All statuses</option>
+                                    <option>Ordered</option>
+                                    <option>Received</option>
+                                    <option>Cancelled</option>
+                                    <option>Partial</option>
+                                    <option>Draft</option>
+                                </select>
                             </div>
                         </div>
                         <div className='modal-footer'>

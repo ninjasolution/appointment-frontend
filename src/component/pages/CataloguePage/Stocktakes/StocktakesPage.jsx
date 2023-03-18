@@ -19,16 +19,14 @@ const StocktakesPage = () => {
                         <div className='modal-body'>
                             <div className='group'>
                                 <span className='group-title'>Status</span>
-                                <div className='input-container'>
-                                    <select>
-                                        <option>All statuses</option>
-                                        <option>In progress</option>
-                                        <option>Paused</option>
-                                        <option>Review</option>
-                                        <option>Completed</option>
-                                        <option>Cancelled</option>
-                                    </select>
-                                </div>
+                                <select className='form-select'>
+                                    <option>All statuses</option>
+                                    <option>In progress</option>
+                                    <option>Paused</option>
+                                    <option>Review</option>
+                                    <option>Completed</option>
+                                    <option>Cancelled</option>
+                                </select>
                             </div>
                         </div>
                         <div className='modal-footer'>

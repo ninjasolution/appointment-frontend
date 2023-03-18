@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './appointments.scss';
 
 const AppointmentsPage = () => {
 
     const [filterModalState, setFilterModalState] = useState(false);
+    const [actionModalState, setActionModalState] = useState(false);
 
     const visibleFilterModal = () => {
         setFilterModalState(true);
@@ -12,64 +13,72 @@ const AppointmentsPage = () => {
     const hideFilterModal = () => {
         setFilterModalState(false)
     }
-    
+
+    const visibleActionModal = () => {
+        actionModalState ? setActionModalState(false) : setActionModalState(true);
+    }
+
+    useEffect(() => {
+        setActionModalState(false);
+    }, []);
+
     return (
         <div className='appointments-container'>
             {
                 filterModalState ?
-                <div className='filter-modal'>
-                    <div className='modal-header'>
-                        <span id='modal-title'>Filters</span>
-                        <span id='modal-close' onClick={hideFilterModal}>
-                            <svg viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg"><path d="M17 1.914L16.086 1 9 8.086 1.914 1 1 1.914 8.086 9 1 16.086l.914.914L9 9.914 16.086 17l.914-.914L9.914 9z"></path></svg>
-                        </span>
-                    </div>
-                    <div className='modal-body'>
-                        <div className="group">
-                            <span id='select-title'>Team member</span>
-                            <select id='member-list'>
-                                <option>All team members</option>
-                                <option>Mykhailo Savchuk</option>
-                                <option>Wendy Smith (Demo)</option>
-                            </select>
+                    <div className='filter-modal'>
+                        <div className='modal-header'>
+                            <span id='modal-title'>Filters</span>
+                            <span id='modal-close' onClick={hideFilterModal}>
+                                <svg viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg"><path d="M17 1.914L16.086 1 9 8.086 1.914 1 1 1.914 8.086 9 1 16.086l.914.914L9 9.914 16.086 17l.914-.914L9.914 9z"></path></svg>
+                            </span>
                         </div>
-                        <div className="group">
-                            <span id='select-title'>Channel</span>
-                            <select id='channel-list'>
-                                <option>All channels</option>
-                                <option>All online channels</option>
-                                <option>Fresha</option>
-                                <option>Book now link</option>
-                                <option>Facebook</option>
-                                <option>Instagram</option>
-                                <option>Google</option>
-                                <option>Marketing - Auto campaigns</option>
-                                <option>Marketing - Blast messages</option>
-                                <option>Offline</option>
-                            </select>
+                        <div className='modal-body'>
+                            <div className="group">
+                                <span id='select-title'>Team member</span>
+                                <select className='form-select' id='member-list'>
+                                    <option>All team members</option>
+                                    <option>Mykhailo Savchuk</option>
+                                    <option>Wendy Smith (Demo)</option>
+                                </select>
+                            </div>
+                            <div className="group">
+                                <span id='select-title'>Channel</span>
+                                <select className='form-select' id='channel-list'>
+                                    <option>All channels</option>
+                                    <option>All online channels</option>
+                                    <option>Fresha</option>
+                                    <option>Book now link</option>
+                                    <option>Facebook</option>
+                                    <option>Instagram</option>
+                                    <option>Google</option>
+                                    <option>Marketing - Auto campaigns</option>
+                                    <option>Marketing - Blast messages</option>
+                                    <option>Offline</option>
+                                </select>
+                            </div>
+                            <div className="group">
+                                <span id='select-title'>Status</span>
+                                <select className='form-select' id='status-list'>
+                                    <option>All statuses</option>
+                                    <option>New</option>
+                                    <option>Confirmed</option>
+                                    <option>Arrived</option>
+                                    <option>Started</option>
+                                    <option>Cancelled</option>
+                                    <option>No-show</option>
+                                    <option>Completed</option>
+                                </select>
+                            </div>
                         </div>
-                        <div className="group">
-                            <span id='select-title'>Status</span>
-                            <select id='status-list'>
-                                <option>All statuses</option>
-                                <option>New</option>
-                                <option>Confirmed</option>
-                                <option>Arrived</option>
-                                <option>Started</option>
-                                <option>Cancelled</option>
-                                <option>No-show</option>
-                                <option>Completed</option>
-                            </select>
+                        <div className='modal-footer'>
+                            <span onClick={hideFilterModal}>Clear all filters</span>
+                            <div id='actions'>
+                                <button id='action-cancel' onClick={hideFilterModal}>Cancel</button>
+                                <button id='action-apply'>Apply</button>
+                            </div>
                         </div>
-                    </div>
-                    <div className='modal-footer'>
-                        <span onClick={hideFilterModal}>Clear all filters</span>
-                        <div id='actions'>
-                            <button id='action-cancel' onClick={hideFilterModal}>Cancel</button>
-                            <button id='action-apply'>Apply</button>
-                        </div>
-                    </div>
-                </div> : <></>
+                    </div> : <></>
             }
             <div className='content-container'>
                 <div className='content-detail'>
@@ -79,11 +88,26 @@ const AppointmentsPage = () => {
                         <a> Learn more</a>
                     </span>
                 </div>
-                <select className='select-action'>
-                    <option>PDF</option>
-                    <option>Excel</option>
-                    <option>CSV</option>
-                </select>
+                <div className='actions-container'>
+                    <button className='select-action' onClick={visibleActionModal}>
+                        Export
+                        <span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 14.481l6.247-7.14a1 1 0 011.506 1.318l-7 8a1 1 0 01-1.506 0l-7-8a1 1 0 111.506-1.317L12 14.482z"></path></svg></span>
+                    </button>
+                    {
+                        actionModalState ?
+                            <div className='actions-modal'>
+                                <div className='action-item'>
+                                    <span>PDF</span>
+                                </div>
+                                <div className='action-item'>
+                                    <span>Excel</span>
+                                </div>
+                                <div className='action-item'>
+                                    <span>CSV</span>
+                                </div>
+                            </div> : <></>
+                    }
+                </div>
             </div>
             <div className='content-setting'>
                 <div className='search-container'>

@@ -79,7 +79,7 @@ const Vouchers = () => {
                                 </div>
                                 <div className="group">
                                     <span id='select-title'>Valid for</span>
-                                    <select id='valid-list'>
+                                    <select className='form-select'>
                                         <option>14 days</option>
                                         <option>1 month</option>
                                         <option>2 months</option>

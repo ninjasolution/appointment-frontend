@@ -14,12 +14,6 @@ $text-font: candara;
     border-bottom: 1px solid rgb(195 195 195);
     z-index: 2;
 
-    svg {
-        width: 30px;
-        height: 30px;
-        fill: white !important;
-    }
-
     .logo {
         cursor: pointer;
         font-size: 26px;
@@ -28,6 +22,7 @@ $text-font: candara;
         align-items: center;
         font-weight: 700;
         letter-spacing: -1px;
+        position: relative;
 
         div {
             height: 20px;
@@ -36,6 +31,11 @@ $text-font: candara;
             background: linear-gradient(to top, #6666ff 0%, #ccccff 74%);
             margin-right: 5px;
             box-shadow: 0 2px 10px 0px #6666ff;
+        }
+
+        svg {
+            position: absolute;
+            height: 30px;
         }
     }
 
@@ -49,6 +49,13 @@ $text-font: candara;
         .action-item {
             margin-left: 20px;
             cursor: pointer;
+
+            svg {
+                width: 30px;
+                height: 30px;
+                fill: white !important;
+            }
+
         }
 
         .profile {

@@ -1,7 +1,18 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './dailysales.scss';
 
 const DailySalesPage = () => {
+
+    const [actionModalState, setActionModalState] = useState(false);
+
+    useEffect(() => {
+        setActionModalState(false);
+    }, []);
+
+    const visibleActionModal = () => {
+        actionModalState ? setActionModalState(false) : setActionModalState(true);
+    }
+
     return (
         <div className='daily-sales-container'>
             <div className='content-container'>
@@ -12,11 +23,26 @@ const DailySalesPage = () => {
                         <a> Learn more</a>
                     </span>
                 </div>
-                <select className='select-action'>
-                    <option>PDF</option>
-                    <option>Excel</option>
-                    <option>CSV</option>
-                </select>
+                <div className='actions-container'>
+                    <button className='select-action' onClick={visibleActionModal}>
+                        Export
+                        <span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 14.481l6.247-7.14a1 1 0 011.506 1.318l-7 8a1 1 0 01-1.506 0l-7-8a1 1 0 111.506-1.317L12 14.482z"></path></svg></span>
+                    </button>
+                    {
+                        actionModalState ?
+                            <div className='actions-modal'>
+                                <div className='action-item'>
+                                    <span>PDF</span>
+                                </div>
+                                <div className='action-item'>
+                                    <span>Excel</span>
+                                </div>
+                                <div className='action-item'>
+                                    <span>CSV</span>
+                                </div>
+                            </div> : <></>
+                    }
+                </div>
             </div>
             <div className='content-setting'>
                 <button className='select-before'>

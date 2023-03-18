@@ -19,43 +19,37 @@ const CatalogueMemberships = () => {
                         <div className='modal-body'>
                             <div className='group'>
                                 <span className='group-title'>Sessions</span>
-                                <div className='input-container'>
-                                    <select>
-                                        <option>Any number of sessions</option>
-                                        <option>Unlimited</option>
-                                        <option>Limited</option>
-                                    </select>
-                                </div>
+                                <select className='form-select'>
+                                    <option>Any number of sessions</option>
+                                    <option>Unlimited</option>
+                                    <option>Limited</option>
+                                </select>
                             </div>
                             <div className='group'>
                                 <span className='group-title'>Payment</span>
-                                <div className='input-container'>
-                                    <select>
-                                        <option>One-time and recurring</option>
-                                        <option>Recurring</option>
-                                        <option>One-off</option>
-                                    </select>
-                                </div>
+                                <select className='form-select'>
+                                    <option>One-time and recurring</option>
+                                    <option>Recurring</option>
+                                    <option>One-off</option>
+                                </select>
                             </div>
                             <div className='group'>
                                 <span className='group-title'>Valid for</span>
-                                <div className='input-container'>
-                                    <select>
-                                        <option>Any period</option>
-                                        <option>7 days</option>
-                                        <option>14 days</option>
-                                        <option>1 month</option>
-                                        <option>2 months</option>
-                                        <option>3 months</option>
-                                        <option>4 months</option>
-                                        <option>6 months</option>
-                                        <option>8 months</option>
-                                        <option>1 year</option>
-                                        <option>18 months</option>
-                                        <option>2 years</option>
-                                        <option>5 years</option>
-                                    </select>
-                                </div>
+                                <select className='form-select'>
+                                    <option>Any period</option>
+                                    <option>7 days</option>
+                                    <option>14 days</option>
+                                    <option>1 month</option>
+                                    <option>2 months</option>
+                                    <option>3 months</option>
+                                    <option>4 months</option>
+                                    <option>6 months</option>
+                                    <option>8 months</option>
+                                    <option>1 year</option>
+                                    <option>18 months</option>
+                                    <option>2 years</option>
+                                    <option>5 years</option>
+                                </select>
                             </div>
                             <div className='group'>
                                 <div className='check-container'>

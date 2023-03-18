@@ -6,6 +6,7 @@ const VouchersPage = (props) => {
 
     const dispatch = useDispatch();
     const [filterModalState, setFilterModalState] = useState(false);
+    const [actionModalState, setActionModalState] = useState(false);
 
     const hideFilterModal = () => {
         setFilterModalState(false);
@@ -15,8 +16,12 @@ const VouchersPage = (props) => {
         setFilterModalState(true);
     }
 
+    const visibleActionModal = () => {
+        actionModalState ? setActionModalState(false) : setActionModalState(true);
+    }
+
     useEffect(() => {
-        console.log(props)
+        setActionModalState(false);
     }, []);
 
     return (
@@ -33,7 +38,7 @@ const VouchersPage = (props) => {
                         <div className='modal-body'>
                             <div className="group">
                                 <span id='select-title'>Status</span>
-                                <select id='valid-list'>
+                                <select className='form-select'>
                                     <option>All statuses</option>
                                     <option>Unpaid</option>
                                     <option>Valid</option>
@@ -60,10 +65,26 @@ const VouchersPage = (props) => {
                         View, filter and export vouchers purchased by your clients.
                     </span>
                 </div>
-                <select className='select-action'>
-                    <option>Export</option>
-                    <option>CSV</option>
-                </select>
+                <div className='actions-container'>
+                    <button className='select-action' onClick={visibleActionModal}>
+                        Export
+                        <span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 14.481l6.247-7.14a1 1 0 011.506 1.318l-7 8a1 1 0 01-1.506 0l-7-8a1 1 0 111.506-1.317L12 14.482z"></path></svg></span>
+                    </button>
+                    {
+                        actionModalState ?
+                            <div className='actions-modal'>
+                                <div className='action-item'>
+                                    <span>PDF</span>
+                                </div>
+                                <div className='action-item'>
+                                    <span>Excel</span>
+                                </div>
+                                <div className='action-item'>
+                                    <span>CSV</span>
+                                </div>
+                            </div> : <></>
+                    }
+                </div>
             </div>
             <div className='content-setting'>
                 <div className='search-container'>

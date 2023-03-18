@@ -20,44 +20,36 @@ const CatalogueProducts = () => {
                         <div className='modal-body'>
                             <div className='group'>
                                 <span className='group-title'>Categories</span>
-                                <div className='input-container'>
-                                    <select>
-                                        <option>All categories</option>
-                                        <option>No category</option>
-                                        <option>a</option>
-                                        <option>dsw</option>
-                                    </select>
-                                </div>
+                                <select className='form-select'>
+                                    <option>All categories</option>
+                                    <option>No category</option>
+                                    <option>a</option>
+                                    <option>dsw</option>
+                                </select>
                             </div>
                             <div className='group'>
                                 <span className='group-title'>Brands</span>
-                                <div className='input-container'>
-                                    <select>
-                                        <option>All brands</option>
-                                        <option>No brand</option>
-                                        <option>ewbe</option>
-                                    </select>
-                                </div>
+                                <select className='form-select'>
+                                    <option>All brands</option>
+                                    <option>No brand</option>
+                                    <option>ewbe</option>
+                                </select>
                             </div>
                             <div className='group'>
                                 <span className='group-title'>Suppliers</span>
-                                <div className='input-container'>
-                                    <select>
-                                        <option>All suppliers</option>
-                                        <option>No supplier</option>
-                                        <option>dfs</option>
-                                    </select>
-                                </div>
+                                <select className='form-select'>
+                                    <option>All suppliers</option>
+                                    <option>No supplier</option>
+                                    <option>dfs</option>
+                                </select>
                             </div>
                             <div className='group'>
                                 <span className='group-title'>Stock</span>
-                                <div className='input-container'>
-                                    <select>
-                                        <option>All products</option>
-                                        <option>Low in stock</option>
-                                        <option>Out of stock</option>
-                                    </select>
-                                </div>
+                                <select className='form-select'>
+                                    <option>All products</option>
+                                    <option>Low in stock</option>
+                                    <option>Out of stock</option>
+                                </select>
                             </div>
                         </div>
                         <div className='modal-footer'>

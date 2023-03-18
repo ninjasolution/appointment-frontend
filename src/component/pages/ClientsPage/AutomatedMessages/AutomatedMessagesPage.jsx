@@ -48,7 +48,7 @@ const AutomatedMessagesPage = () => {
                         </div>
                     </div>
                     <div className="alarm-item">
-                        <div className='new-container'>
+                        <div className='new-container' onClick={() => window.location.href = '/clients/automated-messages/configure/rules'}>
                             <span id='logo'>
                                 <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><g fill="none" fillRule="evenodd"><circle stroke="#037AFF" cx="12" cy="12" r="11.5"></circle><path d="M12.26 6a.74.74 0 01.74.74V11h4.26a.74.74 0 01.74.74v.52a.74.74 0 01-.74.74H13v4.26a.74.74 0 01-.74.74h-.52a.74.74 0 01-.74-.74v-4.261L6.74 13a.74.74 0 01-.74-.74v-.52a.74.74 0 01.74-.74l4.26-.001V6.74a.74.74 0 01.74-.74h.52z" fill="#037AFF"></path></g></svg>
                             </span>

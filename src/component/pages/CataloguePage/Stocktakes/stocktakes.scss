@@ -74,18 +74,22 @@
                         border: none;
                         outline: none;
                     }
-
-                    select {
-                        font-size: 16px;
-                        width: 100%;
-                        border: none;
-                        outline: none;
-                        cursor: pointer;
-                    }
                 }
 
                 .input-container:hover {
                     border: 1.5px solid rgba(0, 0, 0, 0.5);
+                    cursor: pointer;
+                }
+
+                .form-select {
+                    font-size: 16px;
+                    height: 48px;
+                    min-width: 600px;
+                    box-shadow: none;
+                }
+
+                .form-select:hover {
+                    border: 1px solid rgba(0, 0, 0, 0.5);
                     cursor: pointer;
                 }
 
@@ -112,7 +116,7 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 10px 20px;
+            padding: 20px;
 
             span {
                 font-size: 16px;
@@ -344,6 +348,7 @@
             select {
                 font-size: 16px;
                 font-weight: 500;
+                height: 100%;
                 border: none;
                 outline: none;
                 cursor: pointer;

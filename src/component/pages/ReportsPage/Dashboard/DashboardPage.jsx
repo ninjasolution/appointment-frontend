@@ -40,22 +40,18 @@ const DashboardPage = () => {
                         <div className='modal-body'>
                             <div className='group'>
                                 <span className='group-title'>Location</span>
-                                <div className='input-container'>
-                                    <select>
-                                        <option>All locations</option>
-                                        <option>Nikja</option>
-                                    </select>
-                                </div>
+                                <select className='form-select'>
+                                    <option>All locations</option>
+                                    <option>Nikja</option>
+                                </select>
                             </div>
                             <div className='group'>
                                 <span className='group-title'>Team member</span>
-                                <div className='input-container'>
-                                    <select>
-                                        <option>All team members</option>
-                                        <option>Mykhailo Savchuk</option>
-                                        <option>Wendy Smith (demo)</option>
-                                    </select>
-                                </div>
+                                <select className='form-select'>
+                                    <option>All team members</option>
+                                    <option>Mykhailo Savchuk</option>
+                                    <option>Wendy Smith (demo)</option>
+                                </select>
                             </div>
                         </div>
                         <div className='modal-footer'>
@@ -224,11 +220,11 @@ const DashboardPage = () => {
             </div>
             <div className='appointments-chart'>
                 <span>Total appointmens</span>
-                <Chart options={state.options} series={state.series} type="line" width={'100%'} height={'300px'}/>
+                <Chart options={state.options} series={state.series} type="line" width={'100%'} height={'300px'} />
             </div>
             <div className='sales-chart'>
                 <span>Total sales</span>
-                <Chart options={state.options} series={state.series} type="line" width={'100%'} height={'300px'}/>
+                <Chart options={state.options} series={state.series} type="line" width={'100%'} height={'300px'} />
             </div>
         </div>
     )

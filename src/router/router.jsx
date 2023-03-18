@@ -2,6 +2,7 @@ import React from 'react';
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
 
 import MainLayout from '../layout/MainLayout';
+import EmptyLayout from '../layout/EmptyLayout';
 
 import Dashboard from '../component/pages/DashboardPage/Dashboard';
 
@@ -27,6 +28,9 @@ import ClientsListPage from '../component/pages/ClientsPage/ClientsList/ClientsL
 import AddClient from '../component/pages/ClientsPage/ClientsList/AddClient';
 import ReviewsPage from '../component/pages/ClientsPage/Reviews/ReviewsPage';
 import AutomatedMessagesPage from '../component/pages/ClientsPage/AutomatedMessages/AutomatedMessagesPage';
+import ConfigRulesPage from '../component/pages/ClientsPage/AutomatedMessages/Config/Rules/ConfigRulesPage';
+import ConfigChannelsPage from '../component/pages/ClientsPage/AutomatedMessages/Config/Channels/ConfigChannelsPage';
+import ConfigDonePage from '../component/pages/ClientsPage/AutomatedMessages/Config/Done/ConfigDonePage';
 import FormsPage from '../component/pages/ClientsPage/Forms/FormsPage';
 import FormsList from '../component/pages/ClientsPage/Forms/FormsList';
 import NotificationsPage from '../component/pages/ClientsPage/Notifications/NotificationsPage';
@@ -76,6 +80,22 @@ import TeamMembersPage from '../component/pages/SettingsPage/TeamMembers/TeamMem
 import WorkingHoursPage from '../component/pages/SettingsPage/WorkingHours/WorkingHoursPage';
 import PermissionsPage from '../component/pages/SettingsPage/Permissions/PermissionsPage';
 import CommissionsSettingsPage from '../component/pages/SettingsPage/CommissionsSettings/CommissionsSettingsPage';
+
+import Users from '../component/pages/UsersPage/UsersPage';
+import SignInPage from '../component/pages/UsersPage/SignIn/SignInPage';
+import PasswordPage from '../component/pages/UsersPage/SignIn/Password/PasswordPage';
+import ForgotPasswordPage from '../component/pages/UsersPage/ForgotPassword/ForgotPasswordPage';
+import SignUpPage from '../component/pages/UsersPage/SignUp/SignUpPage';
+import MobileVerificationPage from '../component/pages/UsersPage/MobileVerification/MobileVerificationPage';
+import VerifyCodePage from '../component/pages/UsersPage/MobileVerification/VerifyCode/VerifyCodePage';
+
+import OnBoarding from '../component/pages/Onboarding/OnBoarding';
+import BusinessNamePage from '../component/pages/Onboarding/BusinessName/BusinessNamePage';
+import PartnerServiceTypesPage from '../component/pages/Onboarding/ServiceTypes/PartnerServiceTypesPage';
+import TeamSizePage from '../component/pages/Onboarding/TeamSize/TeamSizePage';
+import LocationAddressPage from '../component/pages/Onboarding/LocationAddress/LocationAddressPage';
+import PreviousSoftwarePage from '../component/pages/Onboarding/PreviousSoftware/PreviousSoftwarePage';
+import RecommendationSourcePage from '../component/pages/Onboarding/RecommendationSource/RecommendationSourcePage';
 
 function AppRouter() {
     return (
@@ -158,17 +178,41 @@ function AppRouter() {
                     </Route>
                 </Route>
 
-                <Route path='/clients/list/add' element={<AddClient />} />
-                <Route path='/catalogue/services/new-item/appointment-type' element={<AppointmentTypePage />} />
-                <Route path='/catalogue/services/add/form' element={<AddFormPage />} />
-                <Route path='/catalogue/services/edit/form' element={<EditFormPage />} />
-                <Route path='/catalogue/vouchers/new/create-voucher' element={<CreateVoucherPage />} />
-                <Route path='/catalogue/memberships/add' element={<CreateMembershipPage />} />
-                <Route path='/catalogue/products/product-add' element={<ProductAddPage />} />
-                <Route path='/catalogue/stocktakes/new' element={<NewStepPage />} />
-                <Route path='/catalogue/stocktakes/count' element={<CountStepPage />} />
-                <Route path='/catalogue/stocktakes/review' element={<ReviewStepPage />} />
-                <Route path='/catalogue/suppliers/new' element={<SupplierNewPage />} />
+                <Route element={<Users />}>
+                    <Route path='/users/sign-in' element={<SignInPage />} />
+                    <Route path='/users/sign-in/password' element={<PasswordPage />} />
+                    <Route path='/users/forgot-password' element={<ForgotPasswordPage />} />
+                    <Route path='/users/sign-up' element={<SignUpPage />} />
+                    <Route path='/mobile-verification' element={<MobileVerificationPage />} />
+                    <Route path='/mobile-verification/code' element={<VerifyCodePage />} />
+                </Route>
+
+                <Route element={<OnBoarding />}>
+                    <Route path='/onboarding/partner_business_name' element={<BusinessNamePage />} />
+                    <Route path='/onboarding/partner_service_types' element={<PartnerServiceTypesPage />} />
+                    <Route path='/onboarding/partner_team_size' element={<TeamSizePage />} />
+                    <Route path='/onboarding/partner_location_address' element={<LocationAddressPage />} />
+                    <Route path='/onboarding/partner_previous_software' element={<PreviousSoftwarePage />} />
+                    <Route path='/onboarding/partner_recommendation_source' element={<RecommendationSourcePage />} />
+                </Route>
+
+                <Route element={<EmptyLayout />}>
+                    <Route path='/clients/list/add' element={<AddClient />} />
+                    <Route path='/clients/automated-messages/configure/rules' element={<ConfigRulesPage />} />
+                    <Route path='/clients/automated-messages/configure/channels' element={<ConfigChannelsPage />} />
+                    <Route path='/clients/automated-messages/configure/done' element={<ConfigDonePage />} />
+                    <Route path='/catalogue/services/new-item/appointment-type' element={<AppointmentTypePage />} />
+                    <Route path='/catalogue/services/add/form' element={<AddFormPage />} />
+                    <Route path='/catalogue/services/edit/form' element={<EditFormPage />} />
+                    <Route path='/catalogue/vouchers/new/create-voucher' element={<CreateVoucherPage />} />
+                    <Route path='/catalogue/memberships/add' element={<CreateMembershipPage />} />
+                    <Route path='/catalogue/products/product-add' element={<ProductAddPage />} />
+                    <Route path='/catalogue/stocktakes/new' element={<NewStepPage />} />
+                    <Route path='/catalogue/stocktakes/count' element={<CountStepPage />} />
+                    <Route path='/catalogue/stocktakes/review' element={<ReviewStepPage />} />
+                    <Route path='/catalogue/suppliers/new' element={<SupplierNewPage />} />
+                </Route>
+                
             </Routes>
         </BrowserRouter>
     )

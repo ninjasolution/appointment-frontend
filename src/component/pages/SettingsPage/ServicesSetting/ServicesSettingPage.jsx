@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import './servicessetting.scss';
 
 const ServicesSettingPage = () => {
@@ -27,20 +26,18 @@ const ServicesSettingPage = () => {
                                     <span className='group-main-title'>Default expiry period</span>
                                     <span className='group-sub-title'></span>
                                 </div>
-                                <div className='input-container'>
-                                    <select>
-                                        <option>14 Days</option>
-                                        <option>1 Month</option>
-                                        <option>2 Months</option>
-                                        <option>3 Months</option>
-                                        <option>4 Months</option>
-                                        <option>6 Months</option>
-                                        <option>1 Year</option>
-                                        <option>3 Years</option>
-                                        <option>5 Years</option>
-                                        <option>No Expiry</option>
-                                    </select>
-                                </div>
+                                <select className='form-select'>
+                                    <option>14 Days</option>
+                                    <option>1 Month</option>
+                                    <option>2 Months</option>
+                                    <option>3 Months</option>
+                                    <option>4 Months</option>
+                                    <option>6 Months</option>
+                                    <option>1 Year</option>
+                                    <option>3 Years</option>
+                                    <option>5 Years</option>
+                                    <option>No Expiry</option>
+                                </select>
                             </div>
                         </div>
                     </div>

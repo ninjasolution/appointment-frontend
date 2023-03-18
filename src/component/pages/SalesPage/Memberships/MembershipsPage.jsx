@@ -33,7 +33,7 @@ const MembershipsPage = (props) => {
                         <div className='modal-body'>
                             <div className="group">
                                 <span id='select-title'>Status</span>
-                                <select id='valid-list'>
+                                <select className='form-select'>
                                     <option>All statuses</option>
                                     <option>Unpaid</option>
                                     <option>Valid</option>
@@ -61,10 +61,6 @@ const MembershipsPage = (props) => {
                         <a> Learn more</a>
                     </span>
                 </div>
-                <select className='select-action'>
-                    <option>Export</option>
-                    <option>CSV</option>
-                </select>
             </div>
             <div className='content-setting'>
                 <div className='search-container'>

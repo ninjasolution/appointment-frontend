@@ -26,22 +26,20 @@ const OnlineBookingPage = () => {
                                     <span className='group-main-title'>Clients can cancel or reschedule online</span>
                                     <span className='group-sub-title'></span>
                                 </div>
-                                <div className='input-container'>
-                                    <select>
-                                        <option>Anytime</option>
-                                        <option>Up to 30 minutes in advance</option>
-                                        <option>Up to 1 hour in advance</option>
-                                        <option>Up to 2 hours in advance</option>
-                                        <option>Up to 3 hours in advance</option>
-                                        <option>Up to 4 hours in advance</option>
-                                        <option>Up to 5 hours in advance</option>
-                                        <option>Up to 6 hours in advance</option>
-                                        <option>Up to 12 hours in advance</option>
-                                        <option>Up to 24 hours in advance</option>
-                                        <option>Up to 48 hours in advance</option>
-                                        <option>Up to 72 hours in advance</option>
-                                    </select>
-                                </div>
+                                <select className='form-select'>
+                                    <option>Anytime</option>
+                                    <option>Up to 30 minutes in advance</option>
+                                    <option>Up to 1 hour in advance</option>
+                                    <option>Up to 2 hours in advance</option>
+                                    <option>Up to 3 hours in advance</option>
+                                    <option>Up to 4 hours in advance</option>
+                                    <option>Up to 5 hours in advance</option>
+                                    <option>Up to 6 hours in advance</option>
+                                    <option>Up to 12 hours in advance</option>
+                                    <option>Up to 24 hours in advance</option>
+                                    <option>Up to 48 hours in advance</option>
+                                    <option>Up to 72 hours in advance</option>
+                                </select>
                             </div>
                         </div>
                     </div>
@@ -56,54 +54,50 @@ const OnlineBookingPage = () => {
                                     <span className='group-main-title'>Clients can book appointments</span>
                                     <span className='group-sub-title'></span>
                                 </div>
-                                <div className='input-container'>
-                                    <select>
-                                        <option>Immediately before start time</option>
-                                        <option>Up to 15 minutes before start time</option>
-                                        <option>Up to 30 minutes before start time</option>
-                                        <option>Up to 1 hour before start time</option>
-                                        <option>Up to 2 hours before start time</option>
-                                        <option>Up to 3 hours before start time</option>
-                                        <option>Up to 4 hours before start time</option>
-                                        <option>Up to 5 hours before start time</option>
-                                        <option>Up to 6 hours before start time</option>
-                                        <option>Up to 7 hours before start time</option>
-                                        <option>Up to 8 hours before start time</option>
-                                        <option>Up to 9 hours before start time</option>
-                                        <option>Up to 10 hours before start time</option>
-                                        <option>Up to 11 hours before start time</option>
-                                        <option>Up to 12 hours before start time</option>
-                                        <option>Up to 13 hours before start time</option>
-                                        <option>Up to 14 hours before start time</option>
-                                        <option>Up to 15 hours before start time</option>
-                                        <option>Up to 16 hours before start time</option>
-                                        <option>Up to 17 hours before start time</option>
-                                        <option>Up to 18 hours before start time</option>
-                                        <option>Up to 19 hours before start time</option>
-                                        <option>Up to 20 hours before start time</option>
-                                        <option>Up to 21 hours before start time</option>
-                                        <option>Up to 22 hours before start time</option>
-                                        <option>Up to 23 hours before start time</option>
-                                        <option>Up to 24 hours before start time</option>
-                                        <option>Up to 48 hours before start time</option>
-                                    </select>
-                                </div>
+                                <select className='form-select'>
+                                    <option>Immediately before start time</option>
+                                    <option>Up to 15 minutes before start time</option>
+                                    <option>Up to 30 minutes before start time</option>
+                                    <option>Up to 1 hour before start time</option>
+                                    <option>Up to 2 hours before start time</option>
+                                    <option>Up to 3 hours before start time</option>
+                                    <option>Up to 4 hours before start time</option>
+                                    <option>Up to 5 hours before start time</option>
+                                    <option>Up to 6 hours before start time</option>
+                                    <option>Up to 7 hours before start time</option>
+                                    <option>Up to 8 hours before start time</option>
+                                    <option>Up to 9 hours before start time</option>
+                                    <option>Up to 10 hours before start time</option>
+                                    <option>Up to 11 hours before start time</option>
+                                    <option>Up to 12 hours before start time</option>
+                                    <option>Up to 13 hours before start time</option>
+                                    <option>Up to 14 hours before start time</option>
+                                    <option>Up to 15 hours before start time</option>
+                                    <option>Up to 16 hours before start time</option>
+                                    <option>Up to 17 hours before start time</option>
+                                    <option>Up to 18 hours before start time</option>
+                                    <option>Up to 19 hours before start time</option>
+                                    <option>Up to 20 hours before start time</option>
+                                    <option>Up to 21 hours before start time</option>
+                                    <option>Up to 22 hours before start time</option>
+                                    <option>Up to 23 hours before start time</option>
+                                    <option>Up to 24 hours before start time</option>
+                                    <option>Up to 48 hours before start time</option>
+                                </select>
                             </div>
                             <div className='group'>
                                 <div className='group-title'>
                                     <span className='group-main-title'></span>
                                     <span className='group-sub-title'></span>
                                 </div>
-                                <div className='input-container'>
-                                    <select>
-                                        <option>No more than 6 months in the future</option>
-                                        <option>No more than 5 months in the future</option>
-                                        <option>No more than 4 months in the future</option>
-                                        <option>No more than 3 months in the future</option>
-                                        <option>No more than 2 months in the future</option>
-                                        <option>No more than 1 months in the future</option>
-                                    </select>
-                                </div>
+                                <select className='form-select'>
+                                    <option>No more than 6 months in the future</option>
+                                    <option>No more than 5 months in the future</option>
+                                    <option>No more than 4 months in the future</option>
+                                    <option>No more than 3 months in the future</option>
+                                    <option>No more than 2 months in the future</option>
+                                    <option>No more than 1 months in the future</option>
+                                </select>
                                 <span className='group-hint'>Controls the time slots available for online booking</span>
                             </div>
                             <div className='group'>
@@ -111,16 +105,14 @@ const OnlineBookingPage = () => {
                                     <span className='group-main-title'>Time slot interval</span>
                                     <span className='group-sub-title'></span>
                                 </div>
-                                <div className='input-container'>
-                                    <select>
-                                        <option>10 minutes (max availability)</option>
-                                        <option>15 minutes</option>
-                                        <option>20 minutes</option>
-                                        <option>30 minutes</option>
-                                        <option>45 minutes</option>
-                                        <option>1 hour (low availability)</option>
-                                    </select>
-                                </div>
+                                <select className='form-select'>
+                                    <option>10 minutes (max availability)</option>
+                                    <option>15 minutes</option>
+                                    <option>20 minutes</option>
+                                    <option>30 minutes</option>
+                                    <option>45 minutes</option>
+                                    <option>1 hour (low availability)</option>
+                                </select>
                                 <span className='group-hint'>Controls the time slots available for online booking</span>
                             </div>
                             <div className='group'>

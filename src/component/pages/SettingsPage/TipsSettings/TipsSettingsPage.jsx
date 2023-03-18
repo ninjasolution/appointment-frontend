@@ -1,5 +1,5 @@
 import React from 'react';
-import './tipssettings.scss'; 
+import './tipssettings.scss';
 
 const TipsSettingsPage = () => {
     return (
@@ -45,127 +45,115 @@ const TipsSettingsPage = () => {
                                     <span className='group-main-title'>1. Tip value</span>
                                     <span className='group-sub-title'></span>
                                 </div>
-                                <div className='input-container'>
-                                    <select>
-                                        <option>5 %</option>
-                                        <option>8 %</option>
-                                        <option>10 %</option>
-                                        <option>15 %</option>
-                                        <option>18 %</option>
-                                        <option>20 %</option>
-                                        <option>25 %</option>
-                                        <option>30 %</option>
-                                        <option>35 %</option>
-                                        <option>40 %</option>
-                                        <option>45 %</option>
-                                        <option>50 %</option>
-                                    </select>
-                                </div>
+                                <select className='form-select'>
+                                    <option>5 %</option>
+                                    <option>8 %</option>
+                                    <option>10 %</option>
+                                    <option>15 %</option>
+                                    <option>18 %</option>
+                                    <option>20 %</option>
+                                    <option>25 %</option>
+                                    <option>30 %</option>
+                                    <option>35 %</option>
+                                    <option>40 %</option>
+                                    <option>45 %</option>
+                                    <option>50 %</option>
+                                </select>
                             </div>
-                            <div className='group'>
-                                <div className='group-title'>
-                                    <span className='group-main-title'>2. Tip value</span>
-                                    <span className='group-sub-title'></span>
-                                </div>
-                                <div className='input-container'>
-                                    <select>
-                                        <option>5 %</option>
-                                        <option>8 %</option>
-                                        <option>10 %</option>
-                                        <option>15 %</option>
-                                        <option>18 %</option>
-                                        <option>20 %</option>
-                                        <option>25 %</option>
-                                        <option>30 %</option>
-                                        <option>35 %</option>
-                                        <option>40 %</option>
-                                        <option>45 %</option>
-                                        <option>50 %</option>
-                                    </select>
-                                </div>
+                        </div>
+                        <div className='group'>
+                            <div className='group-title'>
+                                <span className='group-main-title'>2. Tip value</span>
+                                <span className='group-sub-title'></span>
                             </div>
-                            <div className='group'>
-                                <div className='group-title'>
-                                    <span className='group-main-title'>3. Tip value</span>
-                                    <span className='group-sub-title'></span>
-                                </div>
-                                <div className='input-container'>
-                                    <select>
-                                        <option>5 %</option>
-                                        <option>8 %</option>
-                                        <option>10 %</option>
-                                        <option>15 %</option>
-                                        <option>18 %</option>
-                                        <option>20 %</option>
-                                        <option>25 %</option>
-                                        <option>30 %</option>
-                                        <option>35 %</option>
-                                        <option>40 %</option>
-                                        <option>45 %</option>
-                                        <option>50 %</option>
-                                    </select>
-                                </div>
+                            <select className='form-select'>
+                                <option>5 %</option>
+                                <option>8 %</option>
+                                <option>10 %</option>
+                                <option>15 %</option>
+                                <option>18 %</option>
+                                <option>20 %</option>
+                                <option>25 %</option>
+                                <option>30 %</option>
+                                <option>35 %</option>
+                                <option>40 %</option>
+                                <option>45 %</option>
+                                <option>50 %</option>
+                            </select>
+                        </div>
+                        <div className='group'>
+                            <div className='group-title'>
+                                <span className='group-main-title'>3. Tip value</span>
+                                <span className='group-sub-title'></span>
                             </div>
-                            <div className='group'>
-                                <div className='group-title'>
-                                    <span className='group-main-title'>4. Tip value</span>
-                                    <span className='group-sub-title'></span>
-                                </div>
-                                <div className='input-container'>
-                                    <select>
-                                        <option>5 %</option>
-                                        <option>8 %</option>
-                                        <option>10 %</option>
-                                        <option>15 %</option>
-                                        <option>18 %</option>
-                                        <option>20 %</option>
-                                        <option>25 %</option>
-                                        <option>30 %</option>
-                                        <option>35 %</option>
-                                        <option>40 %</option>
-                                        <option>45 %</option>
-                                        <option>50 %</option>
-                                    </select>
-                                </div>
+                            <select className='form-select'>
+                                <option>5 %</option>
+                                <option>8 %</option>
+                                <option>10 %</option>
+                                <option>15 %</option>
+                                <option>18 %</option>
+                                <option>20 %</option>
+                                <option>25 %</option>
+                                <option>30 %</option>
+                                <option>35 %</option>
+                                <option>40 %</option>
+                                <option>45 %</option>
+                                <option>50 %</option>
+                            </select>
+                        </div>
+                        <div className='group'>
+                            <div className='group-title'>
+                                <span className='group-main-title'>4. Tip value</span>
+                                <span className='group-sub-title'></span>
                             </div>
-                            <div className='group'>
-                                <div className='group-title'>
-                                    <span className='group-main-title'>5. Tip value</span>
-                                    <span className='group-sub-title'></span>
-                                </div>
-                                <div className='input-container'>
-                                    <select>
-                                        <option>5 %</option>
-                                        <option>8 %</option>
-                                        <option>10 %</option>
-                                        <option>15 %</option>
-                                        <option>18 %</option>
-                                        <option>20 %</option>
-                                        <option>25 %</option>
-                                        <option>30 %</option>
-                                        <option>35 %</option>
-                                        <option>40 %</option>
-                                        <option>45 %</option>
-                                        <option>50 %</option>
-                                    </select>
-                                </div>
+                            <select className='form-select'>
+                                <option>5 %</option>
+                                <option>8 %</option>
+                                <option>10 %</option>
+                                <option>15 %</option>
+                                <option>18 %</option>
+                                <option>20 %</option>
+                                <option>25 %</option>
+                                <option>30 %</option>
+                                <option>35 %</option>
+                                <option>40 %</option>
+                                <option>45 %</option>
+                                <option>50 %</option>
+                            </select>
+                        </div>
+                        <div className='group'>
+                            <div className='group-title'>
+                                <span className='group-main-title'>5. Tip value</span>
+                                <span className='group-sub-title'></span>
                             </div>
-                            <div className='group'>
-                                <div className='group-title'>
-                                    <span className='group-main-title'>Default selection</span>
-                                    <span className='group-sub-title'></span>
-                                </div>
-                                <div className='input-container'>
-                                    <select>
-                                        <option>No tip</option>
-                                        <option>10 %</option>
-                                        <option>18 %</option>
-                                        <option>25 %</option>
-                                        <option>35 %</option>
-                                        <option>45 %</option>
-                                    </select>
-                                </div>
+                            <select className='form-select'>
+                                <option>5 %</option>
+                                <option>8 %</option>
+                                <option>10 %</option>
+                                <option>15 %</option>
+                                <option>18 %</option>
+                                <option>20 %</option>
+                                <option>25 %</option>
+                                <option>30 %</option>
+                                <option>35 %</option>
+                                <option>40 %</option>
+                                <option>45 %</option>
+                                <option>50 %</option>
+                            </select>
+                        </div>
+                        <div className='group'>
+                            <div className='group-title'>
+                                <span className='group-main-title'>Default selection</span>
+                                <span className='group-sub-title'></span>
                             </div>
+                            <select className='form-select'>
+                                <option>No tip</option>
+                                <option>10 %</option>
+                                <option>18 %</option>
+                                <option>25 %</option>
+                                <option>35 %</option>
+                                <option>45 %</option>
+                            </select>
                         </div>
                     </div>
                 </div>

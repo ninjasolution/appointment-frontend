@@ -5,6 +5,7 @@ const SalesPage = () => {
 
     const [filterModalState, setFilterModalState] = useState(false);
     const [allCheckedState, setAllCheckedState] = useState(false);
+    const [actionModalState, setActionModalState] = useState(false);
 
     const visibleFilterModal = () => {
         setFilterModalState(true);
@@ -24,6 +25,10 @@ const SalesPage = () => {
         services.forEach(service => {
             document.getElementById(`check-${service}`).click();
         });
+    }
+
+    const visibleActionModal = () => {
+        actionModalState ? setActionModalState(false) : setActionModalState(true);
     }
 
     useEffect(() => {
@@ -48,7 +53,7 @@ const SalesPage = () => {
                         <div className='modal-body'>
                             <div className="group">
                                 <span id='select-title'>Status</span>
-                                <select id='valid-list'>
+                                <select className='form-select' id='valid-list'>
                                     <option>All statuses</option>
                                     <option>Unpaid</option>
                                     <option>Part paid</option>
@@ -85,10 +90,6 @@ const SalesPage = () => {
                             <div className="group" id='check-group'>
                                 <span id='select-title'>Including items</span>
                                 <div className='select-all-group'>
-                                    <div id='mark-all'>
-                                        <svg id='all-sel' viewBox="0 0 12 10"><path fill="#FFF" fillRule="evenodd" d="M4.716 7.558L1.646 4.96A1 1 0 00.354 6.486l3.872 3.277a1 1 0 001.44-.155l6.128-8A1 1 0 0010.206.392l-5.49 7.166z"></path></svg>
-                                        <svg id='sub-sel' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="#FFF" fillRule="evenodd" d="M22 11H2a1 1 0 000 2h20a1 1 0 000-2z"></path></svg>
-                                    </div>
                                     <span id='action-select-all' onClick={checkAllServices}>Select all</span>
                                 </div>
                                 <div className='checkbox-group'>
@@ -140,11 +141,20 @@ const SalesPage = () => {
                         <a> Learn more</a>
                     </span>
                 </div>
-                <select className='select-action'>
-                    <option>PDF</option>
-                    <option>Excel</option>
-                    <option>CSV</option>
-                </select>
+                <div className='actions-container'>
+                    <button className='select-action' onClick={visibleActionModal}>
+                        Options
+                        <span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 14.481l6.247-7.14a1 1 0 011.506 1.318l-7 8a1 1 0 01-1.506 0l-7-8a1 1 0 111.506-1.317L12 14.482z"></path></svg></span>
+                    </button>
+                    {
+                        actionModalState ?
+                            <div className='actions-modal'>
+                                <div className='action-item'>
+                                    <span>Add new sale</span>
+                                </div>
+                            </div> : <></>
+                    }
+                </div>
             </div>
             <div className='content-setting'>
                 <div className='search-container'>

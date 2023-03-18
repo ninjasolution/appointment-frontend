@@ -51,59 +51,51 @@ const AccountSettingPage = () => {
                                     <span className='group-main-title'>Time zone</span>
                                     <span className='group-sub-title'></span>
                                 </div>
-                                <div className='input-container'>
-                                    <select>
-                                        <option>(GMT +03:00) Kuwait</option>
-                                        <option>(GMT +03:00) Qatar</option>
-                                        <option>(GMT +03:00) Moscow</option>
-                                        <option>(GMT +03:00) Vlogorad</option>
-                                        <option>(GMT +03:00) Kirov</option>
-                                        <option>(GMT +03:00) Istanbul</option>
-                                        <option>(GMT +03:00) Riyadh</option>
-                                    </select>
-                                </div>
+                                <select className='form-select'>
+                                    <option>(GMT +03:00) Kuwait</option>
+                                    <option>(GMT +03:00) Qatar</option>
+                                    <option>(GMT +03:00) Moscow</option>
+                                    <option>(GMT +03:00) Vlogorad</option>
+                                    <option>(GMT +03:00) Kirov</option>
+                                    <option>(GMT +03:00) Istanbul</option>
+                                    <option>(GMT +03:00) Riyadh</option>
+                                </select>
                             </div>
                             <div className='group'>
                                 <div className='group-title'>
                                     <span className='group-main-title'>Time format</span>
                                     <span className='group-sub-title'></span>
                                 </div>
-                                <div className='input-container'>
-                                    <select>
-                                        <option>12 hours (e.g. 9:00pm)</option>
-                                        <option>24 hours (e.g. 21:00)</option>
-                                    </select>
-                                </div>
+                                <select className='form-select'>
+                                    <option>12 hours (e.g. 9:00pm)</option>
+                                    <option>24 hours (e.g. 21:00)</option>
+                                </select>
                             </div>
                             <div className='group'>
                                 <div className='group-title'>
                                     <span className='group-main-title'>Week start</span>
                                     <span className='group-sub-title'></span>
                                 </div>
-                                <div className='input-container'>
-                                    <select>
-                                        <option>Sunday</option>
-                                        <option>Monday</option>
-                                        <option>Tuesday</option>
-                                        <option>Wednesday</option>
-                                        <option>Thursday</option>
-                                        <option>Friday</option>
-                                        <option>Saturday</option>
-                                    </select>
-                                </div>
+                                <select className='form-select'>
+                                    <option>Sunday</option>
+                                    <option>Monday</option>
+                                    <option>Tuesday</option>
+                                    <option>Wednesday</option>
+                                    <option>Thursday</option>
+                                    <option>Friday</option>
+                                    <option>Saturday</option>
+                                </select>
                             </div>
                             <div className='group'>
                                 <div className='group-title'>
                                     <span className='group-main-title'>Appointment color source</span>
                                     <span className='group-sub-title'></span>
                                 </div>
-                                <div className='input-container'>
-                                    <select>
-                                        <option>Team member</option>
-                                        <option>Service group</option>
-                                        <option>Status</option>
-                                    </select>
-                                </div>
+                                <select className='form-select'>
+                                    <option>Team member</option>
+                                    <option>Service group</option>
+                                    <option>Status</option>
+                                </select>
                             </div>
                         </div>
                     </div>
@@ -118,77 +110,71 @@ const AccountSettingPage = () => {
                                     <span className='group-main-title'>Client notification language</span>
                                     <span className='group-sub-title'></span>
                                 </div>
-                                <div className='input-container'>
-                                    <select>
-                                        <option>🇧🇬 Bulgarian (български)</option>
-                                        <option>🇨🇿 Czech (čeština)</option>
-                                        <option>🇩🇰 Danish (dansk)</option>
-                                        <option>🇩🇪 German (Deutsch)</option>
-                                        <option>🇬🇷 Greek (Ελληνικά)</option>
-                                        <option>🇬🇧 English (English)</option>
-                                        <option>🇪🇸 Spanish (español)</option>
-                                        <option>🇫🇮 Finnish (suomi)</option>
-                                        <option>🇫🇷 French (français)</option>
-                                        <option>🇭🇷 Croatian (hrvatski)</option>
-                                        <option>🇭🇺 Hungarian (magyar)</option>
-                                        <option>🇮🇹 Italian (italiano)</option>
-                                        <option>🇳🇴 Norwegian Bokmål (norsk bokmål)</option>
-                                        <option>🇳🇱 Dutch (Nederlands)</option>
-                                        <option>🇵🇱 Polish (polski)</option>
-                                        <option>🇧🇷 Brazilian Portuguese (português (Brasil))</option>
-                                        <option>🇷🇴 Romanian (română)</option>
-                                        <option>🇸🇪 Swedish (svenska)</option>
-                                        <option>🇷🇺 Russian (русский)</option>
-                                        <option>🇺🇦 Ukrainian (українська)</option>
-                                        <option>🇸🇮 Slovenian (slovenščina)</option>
-                                        <option>🇱🇹 Lithuanian (lietuvių)</option>
-                                    </select>
-                                </div>
+                                <select className='form-select'>
+                                    <option>🇧🇬 Bulgarian (български)</option>
+                                    <option>🇨🇿 Czech (čeština)</option>
+                                    <option>🇩🇰 Danish (dansk)</option>
+                                    <option>🇩🇪 German (Deutsch)</option>
+                                    <option>🇬🇷 Greek (Ελληνικά)</option>
+                                    <option>🇬🇧 English (English)</option>
+                                    <option>🇪🇸 Spanish (español)</option>
+                                    <option>🇫🇮 Finnish (suomi)</option>
+                                    <option>🇫🇷 French (français)</option>
+                                    <option>🇭🇷 Croatian (hrvatski)</option>
+                                    <option>🇭🇺 Hungarian (magyar)</option>
+                                    <option>🇮🇹 Italian (italiano)</option>
+                                    <option>🇳🇴 Norwegian Bokmål (norsk bokmål)</option>
+                                    <option>🇳🇱 Dutch (Nederlands)</option>
+                                    <option>🇵🇱 Polish (polski)</option>
+                                    <option>🇧🇷 Brazilian Portuguese (português (Brasil))</option>
+                                    <option>🇷🇴 Romanian (română)</option>
+                                    <option>🇸🇪 Swedish (svenska)</option>
+                                    <option>🇷🇺 Russian (русский)</option>
+                                    <option>🇺🇦 Ukrainian (українська)</option>
+                                    <option>🇸🇮 Slovenian (slovenščina)</option>
+                                    <option>🇱🇹 Lithuanian (lietuvių)</option>
+                                </select>
                             </div>
                             <div className='group'>
                                 <div className='group-title'>
                                     <span className='group-main-title'>Default language for your team</span>
                                     <span className='group-sub-title'></span>
                                 </div>
-                                <div className='input-container'>
-                                    <select>
-                                        <option>🇧🇬 Bulgarian (български)</option>
-                                        <option>🇨🇿 Czech (čeština)</option>
-                                        <option>🇩🇰 Danish (dansk)</option>
-                                        <option>🇩🇪 German (Deutsch)</option>
-                                        <option>🇬🇷 Greek (Ελληνικά)</option>
-                                        <option>🇬🇧 English (English)</option>
-                                        <option>🇪🇸 Spanish (español)</option>
-                                        <option>🇫🇮 Finnish (suomi)</option>
-                                        <option>🇫🇷 French (français)</option>
-                                        <option>🇭🇷 Croatian (hrvatski)</option>
-                                        <option>🇭🇺 Hungarian (magyar)</option>
-                                        <option>🇮🇹 Italian (italiano)</option>
-                                        <option>🇳🇴 Norwegian Bokmål (norsk bokmål)</option>
-                                        <option>🇳🇱 Dutch (Nederlands)</option>
-                                        <option>🇵🇱 Polish (polski)</option>
-                                        <option>🇧🇷 Brazilian Portuguese (português (Brasil))</option>
-                                        <option>🇷🇴 Romanian (română)</option>
-                                        <option>🇸🇪 Swedish (svenska)</option>
-                                        <option>🇷🇺 Russian (русский)</option>
-                                        <option>🇺🇦 Ukrainian (українська)</option>
-                                        <option>🇸🇮 Slovenian (slovenščina)</option>
-                                        <option>🇱🇹 Lithuanian (lietuvių)</option>
-                                    </select>
-                                </div>
+                                <select className='form-select'>
+                                    <option>🇧🇬 Bulgarian (български)</option>
+                                    <option>🇨🇿 Czech (čeština)</option>
+                                    <option>🇩🇰 Danish (dansk)</option>
+                                    <option>🇩🇪 German (Deutsch)</option>
+                                    <option>🇬🇷 Greek (Ελληνικά)</option>
+                                    <option>🇬🇧 English (English)</option>
+                                    <option>🇪🇸 Spanish (español)</option>
+                                    <option>🇫🇮 Finnish (suomi)</option>
+                                    <option>🇫🇷 French (français)</option>
+                                    <option>🇭🇷 Croatian (hrvatski)</option>
+                                    <option>🇭🇺 Hungarian (magyar)</option>
+                                    <option>🇮🇹 Italian (italiano)</option>
+                                    <option>🇳🇴 Norwegian Bokmål (norsk bokmål)</option>
+                                    <option>🇳🇱 Dutch (Nederlands)</option>
+                                    <option>🇵🇱 Polish (polski)</option>
+                                    <option>🇧🇷 Brazilian Portuguese (português (Brasil))</option>
+                                    <option>🇷🇴 Romanian (română)</option>
+                                    <option>🇸🇪 Swedish (svenska)</option>
+                                    <option>🇷🇺 Russian (русский)</option>
+                                    <option>🇺🇦 Ukrainian (українська)</option>
+                                    <option>🇸🇮 Slovenian (slovenščina)</option>
+                                    <option>🇱🇹 Lithuanian (lietuvių)</option>
+                                </select>
                             </div>
                             <div className='group'>
                                 <div className='group-title'>
                                     <span className='group-main-title'>Appointment color source</span>
                                     <span className='group-sub-title'></span>
                                 </div>
-                                <div className='input-container'>
-                                    <select>
-                                        <option>Team member</option>
-                                        <option>Service group</option>
-                                        <option>Status</option>
-                                    </select>
-                                </div>
+                                <select className='form-select'>
+                                    <option>Team member</option>
+                                    <option>Service group</option>
+                                    <option>Status</option>
+                                </select>
                             </div>
                             <div className='group'>
                                 <div className='toastr-container default'>

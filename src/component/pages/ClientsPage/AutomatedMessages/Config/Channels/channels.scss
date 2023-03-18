@@ -1,0 +1,237 @@
+.configure-channels-container {
+    width: 100%;
+
+    .topbar-container {
+        display: flex;
+        align-items: center;
+        height: 84px;
+        justify-content: space-between;
+        padding: 0px 25px;
+
+        .action-left {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+
+            .action-close {
+                padding: 5px;
+                border-radius: 5px;
+
+                span {
+                    svg {
+                        width: 25px;
+                    }
+                }
+            }
+
+            .action-close:hover {
+                cursor: pointer;
+                background-color: rgba(0, 0, 0, 0.03);
+            }
+
+            .action-previous {
+                font-size: 18px;
+                color: #037aff;
+            }
+
+            .action-previous:hover {
+                cursor: pointer;
+                text-decoration: underline;
+            }
+        }
+
+        .action-right {
+            display: flex;
+            gap: 20px;
+
+            .action-remove {
+                background-color: #fff;
+                color: #da2346;
+                border: 1px solid rgba(0, 0, 0, 0.2);
+                border-radius: 5px;
+                font-size: 18px;
+                font-weight: 500;
+                padding: 10px 0px;
+                height: 50px;
+                width: 120px;
+                min-width: 100px;
+            }
+
+            .action-remove:hover {
+                cursor: pointer;
+                border: 1px solid #da2346;
+            }
+
+            .action-remove::selection {
+                border: 1px solid #da2346;
+                background-color: #da2346;
+                color: #fff;
+            }
+
+            .action-next {
+                background-color: #101928;
+                color: #fff;
+                border: 1px solid rgba(0, 0, 0, 0.2);
+                border-radius: 5px;
+                font-size: 18px;
+                font-weight: 500;
+                padding: 10px 0px;
+                height: 50px;
+                width: 160px;
+                min-width: 120px;
+            }
+
+            .action-next:hover {
+                cursor: pointer;
+                border: 1px solid #52575e;
+                background-color: #52575e;
+            }
+        }
+    }
+
+    .progress-container {
+        height: 2px;
+        background-color: #d5d7da;
+        width: 100%;
+
+        .progress-percent {
+            height: 100%;
+            width: 67%;
+            background-color: #037aff;
+        }
+    }
+
+    .detail-container {
+        max-width: 870px;
+        padding: 10px 20px 40px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: auto;
+
+        .small-title {
+            font-size: 16px;
+            color: rgba(0, 0, 0, 0.5);
+            text-align: center;
+        }
+
+        .container-title {
+            display: flex;
+            flex-direction: column;
+
+            .title {
+                font-size: 28px;
+                font-weight: 700;
+                text-align: center;
+            }
+
+            .title-content {
+                font-size: 16px;
+                text-align: center;
+
+                a {
+                    text-decoration: none;
+                }
+
+                a:hover {
+                    cursor: pointer;
+                    text-decoration: underline;
+                }
+            }
+        }
+
+        .content-container {
+            display: flex;
+            flex-direction: column;
+            margin: 30px 0px 0px;
+            max-width: 550px;
+            width: 100%;
+            gap: 30px;
+
+            .content-item {
+                border: 1px solid rgba(0, 0, 0, 0.2);
+                border-radius: 10px;
+                width: 100%;
+                display: flex;
+
+                .content-image {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    min-height: 100%;
+                    padding: 0px 32px;
+                    background-color: rgba(0, 0, 0, 0.03);
+                }
+
+                .content-details {
+                    display: flex;
+                    flex-direction: column;
+                    padding: 24px 32px 32px 24px;
+                    gap: 20px;
+
+                    .content-title {
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+
+                        .title {
+                            font-size: 22px;
+                            font-weight: 700;
+                        }
+
+                        .form-check {
+                            input {
+                                height: 25px;
+                                width: 50px;
+                                cursor: pointer;
+                                box-shadow: none;
+                            }
+                        }
+                    }
+
+                    .status {
+                        display: flex;
+                        width: 50px;
+                        justify-content: center;
+                        border-radius: 5px;
+
+                        span {
+                            font-size: 16px;
+                            font-weight: 500;
+                        }
+                    }
+
+                    .status.success {
+                        background-color: #c0f0d1;
+                        border: 1px solid #7ad7ae;
+
+                        span {
+                            color: #00a36d;
+                        }
+                    }
+
+                    .content-summary {
+                        span {
+                            font-size: 16px;
+                        }
+                    }
+
+                    .action-preview {
+                        font-size: 16px;
+                        font-weight: 500;
+                        height: 40px;
+                        background-color: #fff;
+                        border: 1px solid rgba(0, 0, 0, 0.2);
+                        border-radius: 5px;
+                        width: 150px;
+                    }
+
+                    .action-preview:hover {
+                        border-color: rgba(0, 0, 0, 0.5);
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
+    }
+}
