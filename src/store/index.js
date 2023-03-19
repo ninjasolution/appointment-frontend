@@ -37,7 +37,7 @@ const middlewares = [thunk, asyncDispatchMiddleware];
 let composeEnhancers = compose;
 
 if(!process.env.NODE_ENV || process.env.NODE_ENV === 'development') {
-    // middlewares.push(createLogger());
+    middlewares.push(createLogger());
     composeEnhancers = composeWithDevTools
 }
 

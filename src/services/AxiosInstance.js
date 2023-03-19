@@ -1,12 +1,12 @@
 import axios from 'axios';
-import { backendLink } from '../config';
+import { BACKEND_LINK } from '../config';
 
 const axiosInstance = axios.create({
-    baseURL: backendLink
+    baseURL: BACKEND_LINK
 });
 
 axiosInstance.interceptors.request.use((config) => {
-    const tokenDetailsString = localStorage.getItem('lottery-user-detail');
+    const tokenDetailsString = localStorage.getItem('freshauser-detail');
     if(tokenDetailsString) {
         const token = JSON.parse(tokenDetailsString).token
         

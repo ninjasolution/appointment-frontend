@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { Outlet, useNavigate } from 'react-router-dom';
-import { connect } from 'react-redux';
 import ItemDetailsModal from '../ItemDetailsModal';
 import ItemInfoModal from '../ItemInfoModal';
 import LeftBar from '../../component/leftbar/Leftbar';
@@ -19,18 +18,11 @@ function MainLayout(props) {
         }, 100);
     }, []);
 
-    useEffect(() => {
-        props.detailModal.status ? setDetailModalState(true) : setDetailModalState(false);
-    }, [props.detailModal.status]);
-
-    useEffect(() => {
-        props.infoModal.status ? setInfoModalState(true) : setInfoModalState(false);
-    }, [props.infoModal.status]);
-
+    
     return (
         <div className='main-layout'>
-            { detailModalState ? <ItemDetailsModal /> : <></> }
-            { infoModalState ? <ItemInfoModal /> : <></> }
+            { detailModalState && <ItemDetailsModal />}
+            { infoModalState && <ItemInfoModal /> }
             <Topbar />
             <div className='main-layout-container'>
                 <LeftBar />
@@ -40,9 +32,4 @@ function MainLayout(props) {
     )
 }
 
-export default connect((state) => {
-    return {
-        detailModal: state.detailModalState,
-        infoModal: state.infoModalState
-    }
-})(MainLayout);
+export default MainLayout;

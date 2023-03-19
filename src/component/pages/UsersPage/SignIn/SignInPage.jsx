@@ -1,8 +1,27 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { getPosts, headPosts } from '../../../../services/PostsService';
+import { useNavigate } from "react-router-dom"
 import '../users.scss';
+import { useDispatch } from 'react-redux';
+import { setupUserAction } from '../../../../store/actions/GlobalAction';
 
 const SignInPage = () => {
+
+    const navigate = useNavigate()
+    const [ email, setEmail ] = useState("");
+    const dispatch = useDispatch();
+
+    const checkUserHandler = () => {
+        dispatch(setupUserAction({email}))
+        headPosts(`/api/user/${email}`)
+        .then(res => {
+            navigate("/users/sign-up")
+        }).catch(err => {
+            navigate("/users/sign-in/password")
+        })
+    }
+
     return (
         <div className='signin-container'>
             <div className='group-container'>
@@ -11,10 +30,10 @@ const SignInPage = () => {
                     <span className='title-content'>Create an account or log in to manage your Fresha business.</span>
                 </div>
                 <div className='input-container'>
-                    <input type="text" placeholder='Enter your email address' />
+                    <input type="text" placeholder='Enter your email address' value={email} onChange={e => setEmail(e.target.value)}/>
                     <span className='group-hint'></span>
                 </div>
-                <button className='action-continue'>Continue</button>
+                <button className='action-continue' onClick={checkUserHandler}>Continue</button>
                 <div className='spliter'>
                     <div></div>
                     <span>OR</span>

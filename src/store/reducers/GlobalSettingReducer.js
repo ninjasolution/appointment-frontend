@@ -10,14 +10,17 @@ const initialState = {
 export default function GlobalSettingReducer(state = initialState, actions) {
     if(actions.type === SET_SIDE_BAR) {
         return {
-            sidebar: actions.payload
+            ...state,
+            sidebar: actions.payload,
         }
     } else if(actions.type === SET_IS_LOADING) {
         return {
+            ...state,
             isLoading: actions.payload
         }
     } else if(actions.type === SETUP_USER) {
         return {
+            ...state,
             setupUser: actions.payload
         }
     } else {

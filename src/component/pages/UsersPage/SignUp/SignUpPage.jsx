@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { createPost, getPosts } from '../../../../services/PostsService';
 import '../users.scss';
 
 const SignUpPage = () => {
@@ -9,10 +10,34 @@ const SignUpPage = () => {
     const [ firstName, setFirstName ] = useState("")
     const [ lastName, setLastName ] = useState("")
     const [ phone, setPhone ] = useState("")
-    const [ countryId, setCountryId ] = useState("")
+    const [ selectedCountry, setSelectedCountry ] = useState()
     const [ countries, setCountries ] = useState([])
     const [ timeZones, setTimeZones ] = useState([])
     const [ languages, setLanguages ] = useState([])
+    const [ isAgree, setIsAgree ] = useState(false)
+
+    useEffect(() => {
+        getPosts(`/api/country`)
+        .then(res => {
+            setCountries(res.data.data)
+        })
+    }, [])
+
+    const submitHandler = () => {
+        if(!isAgree) return
+        const data = {
+            firstName,
+            lastName,
+            password,
+            phone,
+            country: selectedCountry
+
+        }
+        createPost(`/api/auth/signup`, data)
+        .then(res => {
+
+        })
+    }
 
     useEffect(() => {
         setEditCountryState(false);
@@ -28,28 +53,28 @@ const SignUpPage = () => {
                 <div className='group'>
                     <span className='group-title'>First name</span>
                     <div className='input-container'>
-                        <input type="text" placeholder='Enter your first name' />
+                        <input type="text" placeholder='Enter your first name' value={firstName} onChange={e => setFirstName(e.target.value)}/>
                     </div>
                     <span className='group-hint'></span>
                 </div>
                 <div className='group'>
                     <span className='group-title'>Last name</span>
                     <div className='input-container'>
-                        <input type="text" placeholder='Enter your last name' />
+                        <input type="text" placeholder='Enter your last name'  value={lastName} onChange={e => setLastName(e.target.value)}/>
                     </div>
                     <span className='group-hint'></span>
                 </div>
                 <div className='group'>
                     <span className='group-title'>Password</span>
                     <div className='input-container'>
-                        <input type="password" placeholder='Enter a password' />
+                        <input type="password" placeholder='Enter a password'  value={password} onChange={e => setPassword(e.target.value)}/>
                     </div>
                     <span className='group-hint'></span>
                 </div>
                 <div className='group'>
                     <span className='group-title'>Mobile number</span>
                     <div className='input-container'>
-                        <input type="text" placeholder='Enter your mobile number' />
+                        <input type="text" placeholder='Enter your mobile number'  value={phone} onChange={e => setPhone(e.target.value)}/>
                     </div>
                     <span className='group-hint'></span>
                 </div>
@@ -59,10 +84,12 @@ const SignUpPage = () => {
                             <div className='group'>
                                 <span className='group-title'>Country</span>
                                 <div className='input-container'>
-                                    <select>
-                                        <option>Cyprus</option>
-                                        <option>Latvia</option>
-                                        <option>Russian Federation</option>
+                                    <select value={selectedCountry} onChange={value => {setSelectedCountry(value); console.log(value.target.value)}}>
+                                        {
+                                            countries.map((item, id) => (
+                                                <option value={item._id} key={id}>{item.name}</option>
+                                            ))
+                                        }
                                     </select>
                                 </div>
                             </div>
@@ -70,9 +97,7 @@ const SignUpPage = () => {
                                 <span className='group-title'>Time zone</span>
                                 <div className='input-container'>
                                     <select>
-                                        <option>(GMT +03:00) Moscow</option>
-                                        <option>(GMT +03:00) Istanbul</option>
-                                        <option>(GMT +05:00) Aqtau</option>
+                                        <option>GMT</option>
                                     </select>
                                 </div>
                             </div>
@@ -109,14 +134,14 @@ const SignUpPage = () => {
                 <div className='group'>
                     <div className='check-container'>
                         <div className='form-check'>
-                            <input className="form-check-input" id='check-all-services' type="checkbox" />
+                            <input className="form-check-input" id='check-all-services' type="checkbox" checked={isAgree} onChange={e => setIsAgree(e.target.checked)}/>
                             <span className='check-content' onClick={() => document.getElementById('check-all-services').click()}>
                                 I agree to the <Link to='https://terms.fresha.com/privacy-policy'>Privacy Policy</Link>, <Link to='https://terms.fresha.com/terms-service'>Terms of Service</Link> and <Link to='https://terms.fresha.com/partner-terms'>Terms of Business</Link>
                             </span>
                         </div>
                     </div>
                 </div>
-                <button className='action-continue'>Create account</button>
+                <button className='action-continue' onClick={submitHandler}>Create account</button>
             </div>
         </div>
     )

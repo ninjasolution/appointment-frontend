@@ -4,6 +4,10 @@ export function getPosts(url) {
     return axiosInstance.get(url);
 }
 
+export function headPosts(url) {
+    return axiosInstance.get(url);
+}
+
 export function createPost(url, postData) {
     return axiosInstance.post(url, postData);
 }

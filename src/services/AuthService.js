@@ -1,51 +1,42 @@
 import axios from 'axios';
 import swal from "sweetalert";
-import { backendLink, ROLE_TYPE_AGENCY, ROLE_TYPE_ROOM_MEMBER } from '../config';
+import { BACKEND_LINK } from '../config';
 import {
     loginConfirmedAction,
     logout
 } from '../store/actions/AuthActions';
-import { selectGameAction, selectRoomAction } from '../store/actions/BettingActions';
 
-export function signin(name, password, browser,  device) {
+export function signin(email, password) {
 
     const postData = {
-        name,
+        email,
         password,
-        roles: `${ROLE_TYPE_AGENCY}-${ROLE_TYPE_ROOM_MEMBER}`,
-        browser,
-        device
     };
 
     return axios.post(
-        `${backendLink}/auth/signin/super-admin`,
+        `${BACKEND_LINK}/auth/signin`,
         postData,
     );
 }
 
 
+
 export function formatError(errorResponse) {
     
     if (errorResponse.includes('EMAIL_EXISTS')) {
-        swal("Oops", "账户已存在!", "error");
+        swal("Oops", "Email already exists", "error");
         return;
     } else if (errorResponse.includes('USERNAME_EXISTS')) {
-        swal("Oops", "此用户名已存在！", "error");
+        swal("Oops", "User name already exists", "error");
         return;
     } else if (errorResponse.includes('EMAIL_NOT_EXISTS')) {
-        swal("Oops", "找不到帐户", "error", { button: "再试一次！", });
+        swal("Oops", "Email not found", "error", { button: "Try Again!", });
         return;
     } else if (errorResponse.includes('INVALID_PASSWORD')) {
-        swal("Oops", "无效的密码", "error", { button: "再试一次！", });
+        swal("Oops", "Invalid Password", "error", { button: "Try Again!", });
         return;
-    }else if (errorResponse.includes('ROLE_NOT_EXISTS')) {
-        swal("Oops", "角色不存在", "error");
-        return;
-    }else if (errorResponse.includes('Wallet')) {
-        swal("Oops", "Go to wallet connect", "error");
-        return;
-    }else {
-        swal("Oops", "有问题", "error", { button: "再试一次！", });
+    } else {
+        swal("Oops", "Has something wrong", "error", { button: "Try Again!", });
     }
 }
 
@@ -57,20 +48,20 @@ export function saveTokenInLocalStorage(tokenDetails) {
         ),
         data: tokenDetails.data
     }
-    localStorage.setItem('lottery-user-detail', JSON.stringify(token));
+    localStorage.setItem('freshauser-detail', JSON.stringify(token));
 }
 
 export function removeTokenInLocalStorage() {
-    localStorage.removeItem("lottery-room");
-    localStorage.removeItem("lottery-user-detail");
+    localStorage.removeItem("fresharoom");
+    localStorage.removeItem("freshauser-detail");
 }
 
 export function saveRoomInLocalStorage(room) {
-    localStorage.setItem('lottery-room', JSON.stringify(room));
+    localStorage.setItem('fresharoom', JSON.stringify(room));
 }
 
 export function saveGameInLocalStorage(game) {
-    localStorage.setItem('lottery-game', JSON.stringify(game));
+    localStorage.setItem('freshagame', JSON.stringify(game));
 }
 
 export function runLogoutTimer(dispatch, timer, history) {
@@ -80,7 +71,7 @@ export function runLogoutTimer(dispatch, timer, history) {
 }
 
 export function checkToken() {
-    const tokenDetailsString = localStorage.getItem('lottery-user-detail');
+    const tokenDetailsString = localStorage.getItem('freshauser-detail');
     if(tokenDetailsString) {
         return true;
     }else {
@@ -89,22 +80,12 @@ export function checkToken() {
 }
 
 export function checkAutoLogin(dispatch, history) {
-    const tokenDetailsString = localStorage.getItem('lottery-user-detail');
+    const tokenDetailsString = localStorage.getItem('freshauser-detail');
     let tokenDetails = '';
 
     if (!tokenDetailsString) {
         dispatch(logout(history));
         return;
-    }
-
-    const curRoom = localStorage.getItem('lottery-room');
-    if(curRoom) {
-        dispatch(selectRoomAction(JSON.parse(curRoom)))
-    }
-
-    const curGame = localStorage.getItem('lottery-game');
-    if(curGame) {
-        dispatch(selectGameAction(JSON.parse(curGame)))
     }
 
     tokenDetails = JSON.parse(tokenDetailsString);
@@ -126,7 +107,7 @@ export function checkAutoLogin(dispatch, history) {
 }
 
 export function existToken() {
-    const tokenDetailsString = localStorage.getItem('lottery-user-detail');
+    const tokenDetailsString = localStorage.getItem('freshauser-detail');
 
     if (!tokenDetailsString) {
         return false;

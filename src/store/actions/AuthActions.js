@@ -1,11 +1,8 @@
-import { SUPER_ADMIN_ROOM_NUMBER } from '../../config';
 import {
     formatError,
     saveTokenInLocalStorage,
     signin,
 } from '../../services/AuthService';
-import { getPosts } from '../../services/PostsService';
-import { selectRoomAction } from './BettingActions';
 
 export const LOGIN_CONFIRMED_ACTION = '[login action] confirmed login';
 export const UPDATE_USER = "UPDATE_USER";
@@ -31,11 +28,6 @@ export function loginAction(name, password, browserName, device, navigation) {
                 saveTokenInLocalStorage(response.data);
                 dispatch(loginConfirmedAction(response.data));
 
-                getPosts(`/user/room/${SUPER_ADMIN_ROOM_NUMBER}`)
-                .then(res => {
-                    dispatch(selectRoomAction(res.data.data))
-
-                })
                 navigation("/")
             })
             .catch((error) => {

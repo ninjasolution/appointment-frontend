@@ -3,8 +3,6 @@ import {
     LOGIN_CONFIRMED_ACTION,
     LOGIN_FAILED_ACTION,
     LOGOUT_ACTION,
-    UPDATE_FINANCIAL_USER,
-    UPDATE_USER,
 } from '../actions/AuthActions';
 
 const initialState = {
@@ -15,26 +13,6 @@ const initialState = {
 
 export function AuthReducer(state = initialState, action) {
 
-    if(action.type === UPDATE_FINANCIAL_USER) {
-        return {
-            ...state,
-            user: {
-                ...state.user,
-                points: action.payload?.points,
-                totalBetAmount: action.payload.totalBetAmount,
-                rebateAmount: action.payload.rebateAmount,
-                resultAmountForOpen: action.payload.resultAmountForOpen,
-                resultAmountForToday: action.payload.resultAmountForToday,
-            }
-        }
-    }
-
-    if(action.type ===  UPDATE_USER) {
-        return {
-            ...state,
-            user: action.payload
-        }
-    }
     
     if (action.type === LOGIN_CONFIRMED_ACTION) {
         return {
