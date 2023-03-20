@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import '../users.scss';
 
 const ForgotPasswordPage = () => {
 
     const [sentEmailState, setSentEmailState] = useState(false);
+    const user = useSelector(s => s.globals.setupUser)
 
     useEffect(() => {
         setSentEmailState(false);
@@ -28,7 +30,7 @@ const ForgotPasswordPage = () => {
                             <div className='title-container'>
                                 <span className='title'>Forgot your business account password, Yuri?</span>
                                 <span className='title-content'>We’ll send you a secure link to create a new password to</span>
-                                <span className='email-content'>inozemtsev1996@gmail.com</span>
+                                <span className='email-content'>{user?.email}</span>
                             </div>
                             <button className='action-continue' onClick={() => setSentEmailState(true)}>Reset password</button>
                             <div className='custom-group'>

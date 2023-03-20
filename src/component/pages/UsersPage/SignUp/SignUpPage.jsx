@@ -1,20 +1,23 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { Link, useNavigate } from 'react-router-dom';
 import { createPost, getPosts } from '../../../../services/PostsService';
 import '../users.scss';
 
 const SignUpPage = () => {
 
+    const user = useSelector(s => s.globals.setupUser)
     const [editCountryState, setEditCountryState] = useState(false);
     const [ password, setPassword ] = useState("")
     const [ firstName, setFirstName ] = useState("")
     const [ lastName, setLastName ] = useState("")
     const [ phone, setPhone ] = useState("")
-    const [ selectedCountry, setSelectedCountry ] = useState()
+    const [ selectedCountry, setSelectedCountry ] = useState({})
     const [ countries, setCountries ] = useState([])
     const [ timeZones, setTimeZones ] = useState([])
     const [ languages, setLanguages ] = useState([])
     const [ isAgree, setIsAgree ] = useState(false)
+    const navigate = useNavigate();
 
     useEffect(() => {
         getPosts(`/api/country`)
@@ -26,6 +29,7 @@ const SignUpPage = () => {
     const submitHandler = () => {
         if(!isAgree) return
         const data = {
+            email: user.email,
             firstName,
             lastName,
             password,
@@ -35,7 +39,7 @@ const SignUpPage = () => {
         }
         createPost(`/api/auth/signup`, data)
         .then(res => {
-
+            navigate(`/users/sign-in`)
         })
     }
 
@@ -48,7 +52,7 @@ const SignUpPage = () => {
             <div className='group-container'>
                 <div className='title-container'>
                     <span className='title'>Create a business account</span>
-                    <span className='title-content'>You’re almost there! Create your new account for <b>nataliiayemeil@gmail.com</b> by completing these details.</span>
+                    <span className='title-content'>You’re almost there! Create your new account for <b>{user?.email}</b> by completing these details.</span>
                 </div>
                 <div className='group'>
                     <span className='group-title'>First name</span>
@@ -84,10 +88,10 @@ const SignUpPage = () => {
                             <div className='group'>
                                 <span className='group-title'>Country</span>
                                 <div className='input-container'>
-                                    <select value={selectedCountry} onChange={value => {setSelectedCountry(value); console.log(value.target.value)}}>
+                                    <select value={selectedCountry?.name}>
                                         {
                                             countries.map((item, id) => (
-                                                <option value={item._id} key={id}>{item.name}</option>
+                                                <option value={item} key={id} onClick={() => setSelectedCountry(item)}>{item.name}</option>
                                             ))
                                         }
                                     </select>
@@ -126,7 +130,7 @@ const SignUpPage = () => {
                         <div className='group'>
                             <span className='group-title'>Country</span>
                             <div className='country-container'>
-                                <span className='country-name'>Russian Federation</span>
+                                <span className='country-name'>{selectedCountry?.name}</span>
                                 <span className='country-edit' onClick={() => setEditCountryState(true)}>Edit</span>
                             </div>
                         </div>

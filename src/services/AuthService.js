@@ -14,7 +14,7 @@ export function signin(email, password) {
     };
 
     return axios.post(
-        `${BACKEND_LINK}/auth/signin`,
+        `${BACKEND_LINK}/api/auth/signin`,
         postData,
     );
 }

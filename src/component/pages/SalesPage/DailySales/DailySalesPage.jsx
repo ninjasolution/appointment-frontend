@@ -13,6 +13,10 @@ const DailySalesPage = () => {
         actionModalState ? setActionModalState(false) : setActionModalState(true);
     }
 
+    useEffect(() => {
+        console.log(new Date().toUTCString())
+    }, [])
+
     return (
         <div className='daily-sales-container'>
             <div className='content-container'>
@@ -50,7 +54,7 @@ const DailySalesPage = () => {
                 </button>
                 <button className='select-today'>Today</button>
                 <div className='select-date' onClick={() => document.getElementById('select-date').click()}>
-                    <input type="date" id='select-date' />
+                    <input type="date" id='select-date' onChange={e => console.log(e.target.value)}/>
                 </div>
                 <button className='select-after'>
                     <svg viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg"><path d="M6.684 13.762l-.458-.48c-.15-.168-.226-.362-.226-.585 0-.227.075-.42.226-.578L9.196 9l-2.97-3.12C6.076 5.723 6 5.53 6 5.304c0-.223.075-.417.226-.584l.458-.476C6.84 4.08 7.024 4 7.24 4c.22 0 .404.08.55.244l3.978 4.178c.155.154.232.347.232.578 0 .227-.077.422-.232.584L7.79 13.762c-.15.16-.334.238-.55.238-.21 0-.397-.08-.556-.238z"></path></svg>

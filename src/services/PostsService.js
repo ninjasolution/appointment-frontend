@@ -5,7 +5,7 @@ export function getPosts(url) {
 }
 
 export function headPosts(url) {
-    return axiosInstance.get(url);
+    return axiosInstance.head(url);
 }
 
 export function createPost(url, postData) {

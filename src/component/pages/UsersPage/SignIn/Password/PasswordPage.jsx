@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { signin } from '../../../../../services/AuthService';
+import { loginAction } from '../../../../../store/actions/AuthActions';
 import '../../users.scss';
 
 const PasswordPage = () => {
@@ -9,12 +10,10 @@ const PasswordPage = () => {
     const user = useSelector(s => s.globals.setupUser)
     const [ password, setPassword ] = useState("")
     const navigate = useNavigate();
+    const dispatch = useDispatch();
 
     const signinHandler = () => {
-        signin(user.email, password)
-        .then(res => {
-            navigate("/")
-        })
+        dispatch(loginAction(user.email, password, navigate))
     }
 
     return (

@@ -21,9 +21,9 @@ export function logout(navigate) {
     };
 }
 
-export function loginAction(name, password, browserName, device, navigation) {
+export function loginAction(name, password, navigation) {
     return (dispatch) => {
-        signin(name, password, browserName, device)
+        signin(name, password)
             .then((response) => {
                 saveTokenInLocalStorage(response.data);
                 dispatch(loginConfirmedAction(response.data));
