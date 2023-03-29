@@ -11,7 +11,7 @@ axiosInstance.interceptors.request.use((config) => {
         const token = JSON.parse(tokenDetailsString).token
         
         config.params = config.params || {};
-        config.headers['Authorization'] = `Bearer ${token}`
+        config.headers['x-access-token'] = `${token}`
     }
     
 

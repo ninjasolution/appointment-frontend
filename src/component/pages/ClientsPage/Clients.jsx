@@ -6,12 +6,7 @@ const Clients = () => {
 
     const location = useLocation();
     const [hideState, setHideState] = useState(true);
-
-    useEffect(() => {
-
-        console.log(location)
-    }, []);
-
+    
     const hideMiniLeftBar = () => {
 
         hideState ? setHideState(false) : setHideState(true);

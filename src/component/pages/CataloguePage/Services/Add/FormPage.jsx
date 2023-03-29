@@ -1,16 +1,93 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { CATEGORY_TYPE_SERVICE, SERVICE_TARGET } from '../../../../../config';
+import { createPost, getPosts } from '../../../../../services/PostsService';
 import '../services.scss';
 
 const AddFormPage = () => {
+
+    const [ name, setName ] = useState("");
+    const [ treatmentId, setTreatmentId ] = useState(0);
+    const [ categoryId, setCategoryId ] = useState(0);
+    const [ description, setDescription ] = useState("");
+    const [ aftercareDescription, setAftercareDescription ] = useState("");
+    const [ target, setTarget ] = useState(0);
+    const [ enableOnline, setEnableOnline ] = useState(false);
+    const [ enableCommission, setEnableCommission ] = useState(false);
+    const [ enableExtraTime, setEnableExtraTime ] = useState(false);
+    const [ extraTime, setExtraTime ] = useState({});
+    const [ memberIds, setMemberIds ] = useState([]);
+    const [ priceAndDurations, setPriceAndDurations ] = useState([]);
+    const [ taxId, setTaxId ] = useState(0);
+    const [ enableVoucherSales, setEnableVoucherSales ] = useState(false);
+    const [ voucherExpirePeriod, setVoucherExpirePeriod ] = useState(0);
+    const [ enableUnSell, setEnableUnSell ] = useState(0);
+    const [ serviceIds, setServiceIds ] = useState([]);
+    const [ discountPercent, setDiscountPercent ] = useState(0);
+    const [ categories, setCategores ] = useState([]);
+    const [ treatments, setTreatments ] = useState([]);
+    const [ teams, setTeams ] = useState([])
+    const [ taxes, setTaxes ] = useState([])
+    const [ expirePeriod, setExpirePeriod ] = useState(0);
+
+    useEffect(() => {
+        getPosts(`/api/category?type=${CATEGORY_TYPE_SERVICE}`)
+        .then(res => {
+            setCategores(res.data.data)
+        })
+
+        getPosts(`/api/treatment`)
+        .then(res => {
+            setTreatments(res.data.data)
+        })
+
+        getPosts(`/api/tax`)
+        .then(res => {
+            setTaxes(res.data.data)
+        })
+    }, [])
+    
+    const navigate = useNavigate();
+
+    const submitHandler = () => {
+
+        const client = {
+            name,
+            treatmentId,
+            categoryId,
+            description,
+            aftercareDescription,
+            target,
+            enableOnline,
+            enableCommission,
+            enableExtraTime,
+            extraTime,
+            memberIds,
+            priceAndDurations,
+            taxId,
+            enableVoucherSales,
+            voucherExpirePeriod,
+            enableUnSell,
+            serviceIds,
+            discountPercent,
+            expirePeriod
+        }
+        console.log(client)
+        // createPost(`/api/service`, client)
+        // .then(res => {
+        //     navigate("/")
+        // }).catch(err => {
+
+        // })
+    }
+
     return (
         <div className='add-form-container' id='add-form-container'>
             <div className='topbar'>
                 <Link className='edit-close' to='/catalogue/services'>
                     <svg viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg"><path d="M17 1.914L16.086 1 9 8.086 1.914 1 1 1.914 8.086 9 1 16.086l.914.914L9 9.914 16.086 17l.914-.914L9.914 9z"></path></svg>
                 </Link>
-                <span className='edit-title'>Add a new single service</span>
-                <button className='edit-save'>Save</button>
+                <button className='edit-save' onClick={submitHandler}>Save</button>
             </div>
             <div className='title'>
                 <span>Add a new single service</span>
@@ -25,7 +102,7 @@ const AddFormPage = () => {
                         <div className='group'>
                             <span className='group-title'>Service name</span>
                             <div className='input-container'>
-                                <input type="text" id='first-name' />
+                                <input type="text" id='first-name' value={name} onChange={e => setName(e.target.value)}/>
                             </div>
                         </div>
                     </div>
@@ -33,11 +110,12 @@ const AddFormPage = () => {
                         <div className='group'>
                             <span className='group-title'>Treatment type</span>
                             <div className='input-container'>
-                                <select>
-                                    <option>Female</option>
-                                    <option>Male</option>
-                                    <option>Non-binary</option>
-                                    <option>Prefer not to say</option>
+                                <select value={treatmentId} onChange={e => setTreatmentId(e.target.value)}>
+                                    {
+                                        treatments?.map((item, idx) => (
+                                            <option key={idx} value={item._id}>{item.name}</option>
+                                        ))
+                                    }
                                 </select>
                             </div>
                         </div>
@@ -46,11 +124,12 @@ const AddFormPage = () => {
                         <div className='group'>
                             <span className='group-title'>Service category</span>
                             <div className='input-container'>
-                                <select>
-                                    <option>Female</option>
-                                    <option>Male</option>
-                                    <option>Non-binary</option>
-                                    <option>Prefer not to say</option>
+                                <select value={categoryId} onChange={e => setCategoryId(e.target.value)}>
+                                {
+                                    categories?.map((item, key) => (
+                                        <option key={key} value={item._id}>{item?.name}</option>
+                                    ))
+                                }
                                 </select>
                             </div>
                         </div>
@@ -59,7 +138,7 @@ const AddFormPage = () => {
                         <div className='group'>
                             <span className='group-title'>Service description</span>
                             <div className='input-container'>
-                                <textarea cols="30" rows="5" placeholder='Add a short description'></textarea>
+                                <textarea cols="30" rows="5" placeholder='Add a short description' value={description} onChange={e => setDescription(e.target.value)}/>
                             </div>
                         </div>
                     </div>
@@ -67,7 +146,7 @@ const AddFormPage = () => {
                         <div className='group'>
                             <span className='group-title'>Aftercare description</span>
                             <div className='input-container'>
-                                <textarea cols="30" rows="5" placeholder='Add aftercare description'></textarea>
+                                <textarea cols="30" rows="5" placeholder='Add aftercare description' value={aftercareDescription} onChange={e => setAftercareDescription(e.target.value)}/>
                             </div>
                         </div>
                     </div>
@@ -75,10 +154,12 @@ const AddFormPage = () => {
                         <div className='group'>
                             <span className='group-title'>Service available for</span>
                             <div className='input-container'>
-                                <select>
-                                    <option>Everyone</option>
-                                    <option>Females only</option>
-                                    <option>Male only</option>
+                                <select value={target} onChange={e => setTarget(e.target.value)}>
+                                    {
+                                        Object.keys(SERVICE_TARGET).map((item) => (
+                                            <option key={item} value={item}>{ SERVICE_TARGET[item] }</option>
+                                        ))
+                                    }
                                 </select>
                             </div>
                         </div>
@@ -92,7 +173,7 @@ const AddFormPage = () => {
                     <div className='two-group sub-container' style={{ padding: '20px 30px 30px' }}>
                         <div className='group'>
                             <div className='form-check form-switch'>
-                                <input className="form-check-input" type="checkbox" defaultChecked />
+                                <input className="form-check-input" type="checkbox" defaultChecked value={enableOnline} onChange={e => setEnableOnline(e.target.checked)}/>
                                 <span className='check-content'>Enable online bookings</span>
                             </div>
                         </div>
@@ -134,7 +215,7 @@ const AddFormPage = () => {
                             <span className='group-total-title'>Team member commission</span><br />
                             <span className='group-sub-title'>Calculate team member commission when the service is sold.</span>
                             <div className='form-check form-switch' style={{ margin: '20px 0px 0px' }}>
-                                <input className="form-check-input" type="checkbox" defaultChecked />
+                                <input className="form-check-input" type="checkbox" defaultChecked value={enableCommission} onChange={e => setEnableCommission(e.target.checked)}/>
                                 <span className='check-content'>Enable team member commission</span>
                             </div>
                         </div>
@@ -213,7 +294,7 @@ const AddFormPage = () => {
                             <span className='group-total-title'>Extra time</span><br />
                             <span className='group-sub-title'>Enable extra time after the service.</span>
                             <div className='form-check form-switch' style={{ margin: '20px 0px 0px' }}>
-                                <input className="form-check-input" type="checkbox" defaultChecked />
+                                <input className="form-check-input" type="checkbox" defaultChecked value={enableExtraTime} onChange={e => setEnableExtraTime(e.target.checked)}/>
                                 <span className='check-content'>Enable extra time</span>
                             </div>
                             <div className='extra-items-container'>
@@ -253,9 +334,12 @@ const AddFormPage = () => {
                             <div className='tax-group'>
                                 <span className='tax-group-title'>Tax</span>
                                 <div className='select-tax'>
-                                    <select>
-                                        <option>No tax</option>
-                                        <option>Default: No tax</option>
+                                    <select value={taxId} onChange={e => setTaxId(e.target.value)}>
+                                        {
+                                            taxes?.map((item, key) => (
+                                                <option key={key}>{item.name}</option>
+                                            ))
+                                        }
                                     </select>
                                 </div>
                             </div>
@@ -271,18 +355,18 @@ const AddFormPage = () => {
                             <div className='voucher-group'>
                                 <span className='voucher-group-title'>Voucher expiry period</span>
                                 <div className='select-voucher'>
-                                    <select>
-                                        <option>Default (6 Months)</option>
-                                        <option>14 Days</option>
-                                        <option>1 Month</option>
-                                        <option>2 Months</option>
-                                        <option>3 Months</option>
-                                        <option>4 Months</option>
-                                        <option>6 Months</option>
-                                        <option>1 Year</option>
-                                        <option>3 Years</option>
-                                        <option>5 Years</option>
-                                        <option>No Expiry</option>
+                                    <select value={expirePeriod} onChange={e => setExpirePeriod(e.target.value)}>
+                                        <option value={30 * 6}>Default (6 Months)</option>
+                                        <option value={14 * 6}>14 Days</option>
+                                        <option value={30 * 1}>1 Month</option>
+                                        <option value={30 * 2}>2 Months</option>
+                                        <option value={30 * 3}>3 Months</option>
+                                        <option value={30 * 4}>4 Months</option>
+                                        <option value={30 * 6}>6 Months</option>
+                                        <option value={365}>1 Year</option>
+                                        <option value={365 * 3}>3 Years</option>
+                                        <option value={365 * 5}>5 Years</option>
+                                        <option value={365 * 1000}>No Expiry</option>
                                     </select>
                                 </div>
                             </div>

@@ -1,7 +1,10 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import './teammembers.scss';
 
 const TeamMembersPage = () => {
+    const navigate = useNavigate();
+
     return (
         <div className='team-members-container'>
             <div className='content-container'>
@@ -11,7 +14,7 @@ const TeamMembersPage = () => {
                         <span className='header-title'>Team members</span>
                     </div>
                     <div className='header-action'>
-                        <button className='action-save'>Add a team member</button>
+                        <button className='action-save' onClick={() => {navigate("/employee/add")}}>Add a team member</button>
                     </div>
                 </div>
                 <div className='content-setting'>

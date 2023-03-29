@@ -1,11 +1,25 @@
 import React, { useEffect, useState } from 'react';
 import './clientslist.scss';
 import { Link } from 'react-router-dom';
+import { getPosts } from '../../../../services/PostsService';
+import { genderByIndex } from '../../../../config';
+import { formatDate } from '../../../../utils';
 
 const ClientsListPage = () => {
 
     const [adState, setAdState] = useState(true);
     const [optionModalState, setOptionModal] = useState(false);
+
+    const [clients, setClients] = useState([]);
+
+    useState(() => {
+        getPosts(`/api/user/client`)
+            .then(res => {
+                console.log(res.data.data);
+                setClients(res.data.data)
+            })
+    }, [])
+
 
     const hideAdvertisement = () => {
         setAdState(false);
@@ -133,48 +147,32 @@ const ClientsListPage = () => {
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td className='font-left'>
-                                    <input type="checkbox" />
-                                </td>
-                                <td className='font-left'>
-                                    <div id='client-container'>
-                                        <div className='client-avatar'>
-                                            <span>J</span>
-                                        </div>
-                                        <div className='client-info'>
-                                            <span id='client-name'>Jack Doe</span>
-                                            <span id='client-email'>jack@example.com</span>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td className='font-left ref-name'>-</td>
-                                <td className='font-left'>18 Jan 2023</td>
-                                <td className='font-left'>Male</td>
-                                <td className='font-left'>-</td>
-                                <td className='font-left'>RUB 30</td>
-                            </tr>
-                            <tr>
-                                <td className='font-left'>
-                                    <input type="checkbox" />
-                                </td>
-                                <td className='font-left'>
-                                    <div id='client-container'>
-                                        <div className='client-avatar'>
-                                            <span>J</span>
-                                        </div>
-                                        <div className='client-info'>
-                                            <span id='client-name'>Jack Doe</span>
-                                            <span id='client-email'>jack@example.com</span>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td className='font-left ref-name'>-</td>
-                                <td className='font-left'>18 Jan 2023</td>
-                                <td className='font-left'>Male</td>
-                                <td className='font-left'>-</td>
-                                <td className='font-left'>-</td>
-                            </tr>
+                            {
+                                clients?.map((item, key) => (
+
+                                    <tr key={key}>
+                                        <td className='font-left'>
+                                            <input type="checkbox" />
+                                        </td>
+                                        <td className='font-left'>
+                                            <div id='client-container'>
+                                                <div className='client-avatar'>
+                                                    <span>J</span>
+                                                </div>
+                                                <div className='client-info'>
+                                                    <span id='client-name'>{`${item.firstName} ${item.lastName}`}</span>
+                                                    <span id='client-email'>{item.email}</span>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td className='font-left ref-name'>{item.phone}</td>
+                                        <td className='font-left'>{formatDate(item.createdAt)}</td>
+                                        <td className='font-left'>{genderByIndex[item.gender]}</td>
+                                        <td className='font-left'>-</td>
+                                        <td className='font-left'>RUB 30</td>
+                                    </tr>
+                                ))
+                            }
                         </tbody>
                     </table>
                 </div>

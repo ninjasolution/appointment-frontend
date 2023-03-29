@@ -42,9 +42,9 @@ export function formatError(errorResponse) {
 
 export function saveTokenInLocalStorage(tokenDetails) {
     var token = {
-        token: tokenDetails.token.token,
+        token: tokenDetails.token,
         expiresIn: new Date(
-            new Date().getTime() + tokenDetails.token.expiresIn,
+            new Date().getTime() + tokenDetails.expiresIn,
         ),
         data: tokenDetails.data
     }
@@ -54,14 +54,6 @@ export function saveTokenInLocalStorage(tokenDetails) {
 export function removeTokenInLocalStorage() {
     localStorage.removeItem("fresharoom");
     localStorage.removeItem("freshauser-detail");
-}
-
-export function saveRoomInLocalStorage(room) {
-    localStorage.setItem('fresharoom', JSON.stringify(room));
-}
-
-export function saveGameInLocalStorage(game) {
-    localStorage.setItem('freshagame', JSON.stringify(game));
 }
 
 export function runLogoutTimer(dispatch, timer, history) {
