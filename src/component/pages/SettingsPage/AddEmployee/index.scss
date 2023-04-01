@@ -41,7 +41,7 @@
     }
 }
 
-.new-client-container {
+.new-employee-container {
     width: 100%;
     position: relative;
 
@@ -228,7 +228,82 @@
                         }
                     }
                 }
+
+                .list-group {
+                    width: 100%;
+                    border: 1px solid rgba(0, 0, 0, 0.2);
+                    border-radius: 10px;
+                    padding: 20px;
+                    margin: 0px 0px 20px;
+
+                    .list-item {
+                        font-size: 18px;
+                        font-weight: 500;
+                        padding: 5px 0px;
+                        text-decoration: none;
+                        color: #0b0b0c;
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+
+                        div.check-container {
+                            display: flex;
+                            align-items: center;
+                            gap: 10px;
+                            padding: 10px 0px 10px 0px;
+
+                            div#check-logo {
+                                background-color: #037aff;
+                                width: 25px;
+                                height: 25px;
+                                border-radius: 5px;
+                                display: flex;
+                                justify-content: center;
+
+                                svg {
+                                    width: 15px;
+                                }
+                            }
+
+                            div#check-logo.unchecked {
+                                background-color: white;
+                            }
+
+                            .item-detail {
+                                display: flex;
+                                flex-direction: column;
+
+                                .item-name {
+                                    font-size: 17px;
+                                    font-weight: 500;
+                                }
+
+                                .item-content {
+                                    font-size: 16px;
+                                }
+                            }
+                        }
+
+                        .item-price {
+                            span {
+                                font-size: 17px;
+                                font-weight: 500;
+                            }
+                        }
+                    }
+
+                    .list-item:hover {
+                        cursor: pointer;
+                    }
+
+                    .item-spliter {
+                        border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+                    }
+                }
+
             }
+
+
         }
 
         .modal-footer {
@@ -336,30 +411,22 @@
     }
 
     .main-container {
-        max-width: 1050px;
+        max-width: 2000px;
         display: flex;
         margin: auto;
         justify-content: space-around;
-
-        .left-side {
-            width: 100%;
-            max-width: 650px;
-        }
-
-        .right-side {
-            width: 100%;
-            max-width: 350px;
-        }
+        flex-direction: column;
+        align-items: center;
 
         .border-danger {
             border: 1.5px solid #da2346;
         }
 
         .group-container {
-            max-width: 650px;
             width: 100%;
             border: 1px solid rgba(0, 0, 0, 0.2);
             border-radius: 10px;
+            max-width: 1000px;
             margin-bottom: 20px;
 
             .group-title {
@@ -391,19 +458,21 @@
                     align-items: center;
                     padding: 0px 0px 25px;
 
-                    .form-check {
+                    div#check-logo {
+                        background-color: #037aff;
+                        width: 25px;
+                        height: 25px;
+                        border-radius: 5px;
                         display: flex;
-                        align-items: center;
+                        justify-content: center;
 
-                        input {
-                            height: 25px;
-                            width: 25px;
+                        svg {
+                            width: 15px;
                         }
+                    }
 
-                        .check-content {
-                            user-select: none;
-                            cursor: pointer;
-                        }
+                    div#check-logo.unchecked {
+                        background-color: white;
                     }
 
                     span {
@@ -495,6 +564,55 @@
                     font-size: 14px;
                     color: #da2346;
                 }
+
+                .colour-group {
+                    margin-top: 10px;
+                    display: flex;
+                    gap: 10px;
+                    align-items: center;
+
+                    .colour-container {
+                        border: 2px solid white;
+                        cursor: pointer;
+                        border-radius: 50%;
+
+                        .select-colour {
+                            width: 40px;
+                            height: 40px;
+                            border-radius: 50%;
+                            border: 2px solid white;
+                        }
+
+                        .select-blue {
+                            background: linear-gradient(-225deg, rgb(11, 109, 217) 0%, rgb(95, 171, 255) 100%);
+                        }
+
+                        .select-black {
+                            background: linear-gradient(-225deg, rgb(16, 25, 40) 0%, rgb(32, 48, 71) 100%);
+                        }
+
+                        .select-green {
+                            background: linear-gradient(-45deg, rgb(0, 166, 156) 0%, rgb(0, 157, 98) 100%);
+                        }
+
+                        .select-orange {
+                            background: linear-gradient(-45deg, rgb(237, 176, 27) 0%, rgb(222, 100, 38) 100%);
+                        }
+
+                        .select-purple {
+                            background: linear-gradient(-45deg, rgb(190, 74, 244) 0%, rgb(92, 55, 246) 100%);
+                        }
+                    }
+
+                    .colour-container.active {
+                        border: 2px solid #0b6dd9;
+                    }
+
+                    .colour-container:not(.active):hover {
+                        border: 2px solid #71b5ff;
+                    }
+                }
+
             }
 
             .two-group {

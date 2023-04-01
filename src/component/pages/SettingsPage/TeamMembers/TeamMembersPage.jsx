@@ -1,9 +1,21 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { getPosts } from '../../../../services/PostsService';
 import './teammembers.scss';
 
 const TeamMembersPage = () => {
     const navigate = useNavigate();
+
+    const [ empoyees, setEmployees ] = useState([]);
+
+    useEffect(() => {
+      getPosts(`/api/user/member`)
+      .then(res => {
+        console.log(res.data.data)
+        setEmployees(res.data.data)
+      })
+    }, [])
+    
 
     return (
         <div className='team-members-container'>

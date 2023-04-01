@@ -20,7 +20,6 @@ const ClientsListPage = () => {
             })
     }, [])
 
-
     const hideAdvertisement = () => {
         setAdState(false);
     }

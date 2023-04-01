@@ -16,13 +16,13 @@ const AddClient = () => {
     const [enableAcceptText, setEnableAcceptText] = useState(false);
     const [email, setEmail] = useState("");
     const [gender, setGender] = useState(0);
-    const [ birthday, setBirthday ] = useState("2023-03-25");
+    const [birthday, setBirthday] = useState("2023-03-25");
     const [clientInfo, setClientInfo] = useState("");
-    const [address, setAddress] = useState({home: "", work: "", other: ""});
-    const [ addressTab, setAddressTab ] = useState("home")
-    const [ language, setLanguage ] = useState(1)
-    const [ addrContent, setAddrContent ] = useState("")
-    const [ languages, setLanguages ] = useState([])
+    const [address, setAddress] = useState({ home: "", work: "", other: "" });
+    const [addressTab, setAddressTab] = useState("home")
+    const [language, setLanguage] = useState(1)
+    const [addrContent, setAddrContent] = useState("")
+    const [languages, setLanguages] = useState([])
 
     const submitHandler = () => {
 
@@ -49,16 +49,16 @@ const AddClient = () => {
         }
         console.log(client)
         createPost(`/api/user/client`, client)
-        .then(res => {
-            console.log(res.data)
-        })
+            .then(res => {
+                console.log(res.data)
+            })
     }
 
     useEffect(() => {
         getPosts(`/api/static/language`)
-        .then(res => {
-            setLanguages(res.data.data)
-        })
+            .then(res => {
+                setLanguages(res.data.data)
+            })
     }, [])
 
     const visibleAddressModal = () => {
@@ -100,7 +100,7 @@ const AddClient = () => {
                         <div className='group'>
                             <span className='group-title'>Address name</span>
                             <div className='input-container'>
-                                <input type="text text-capitalize" id='address-name' value={addressTab} readOnly/>
+                                <input type="text text-capitalize" id='address-name' value={addressTab} readOnly />
                             </div>
                         </div>
                         <div className='group'>
@@ -111,7 +111,7 @@ const AddClient = () => {
                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 18"><path d="M7 .75c3.653 0 6.75 2.79 6.75 6.75 0 1.12-.452 2.416-1.266 3.873-.507.906-1.146 1.857-1.886 2.833a40.249 40.249 0 01-3.064 3.571.75.75 0 01-1.068 0 38.437 38.437 0 01-.962-1.033 40.249 40.249 0 01-2.102-2.538c-.74-.976-1.379-1.927-1.886-2.833C.702 9.916.25 8.621.25 7.5.25 3.54 3.347.75 7 .75zm0 1.5c-2.858 0-5.25 2.155-5.25 5.25 0 .813.375 1.888 1.076 3.14.47.84 1.07 1.735 1.772 2.66A38.771 38.771 0 007 16.16l.38-.417c.69-.77 1.38-1.595 2.022-2.443.702-.925 1.303-1.82 1.772-2.66.701-1.252 1.076-2.327 1.076-3.14 0-3.095-2.392-5.25-5.25-5.25zM7 4.5a3 3 0 110 6 3 3 0 010-6zM7 6a1.5 1.5 0 100 3 1.5 1.5 0 000-3z"></path></svg>
                                     </span>
                                 </div>
-                                <input type="text" id='mobile-number' value={addrContent} onChange={e => {setAddrContent(e.target.value); setAddress({...address, [addressTab]: addrContent})}} />
+                                <input type="text" id='mobile-number' value={addrContent} onChange={e => { setAddrContent(e.target.value); setAddress({ ...address, [addressTab]: addrContent }) }} />
                             </div>
                         </div>
                         {/* <div className='group'>
@@ -211,7 +211,7 @@ const AddClient = () => {
                                 <div className='input-container'>
                                     <select value={gender} onChange={e => setGender(e.target.value)}>
                                         {
-                                            
+
                                             Object.keys(genderByIndex).map((item, key) => (
                                                 <option key={key} value={item}>{genderByIndex[item]}</option>
                                             ))
@@ -252,10 +252,10 @@ const AddClient = () => {
                         <div className='two-group sub-container'>
                             <div className='group'>
                                 <div className='check-container'>
-                                    <div id='check-logo'>
-                                        <svg viewBox="0 0 12 10"><path fill="#FFF" fillRule="evenodd" d="M4.716 7.558L1.646 4.96A1 1 0 00.354 6.486l3.872 3.277a1 1 0 001.44-.155l6.128-8A1 1 0 0010.206.392l-5.49 7.166z"></path></svg>
+                                    <div className='form-check'>
+                                        <input className="form-check-input" id='display-all-select' type="checkbox" defaultChecked value={enableSendEmail} onChange={e => setEnableSendEmail(e.target.checked)} />
+                                        <span className='check-content' onClick={() => document.getElementById('display-all-select').click()}>Display all settings</span>
                                     </div>
-                                    <span>Display on all bookings</span>
                                 </div>
                                 <span className='group-hint'></span>
                             </div>
@@ -310,7 +310,7 @@ const AddClient = () => {
                             <div className='group'>
                                 <span id='group-title'>Client notifications</span>
                                 <div className='form-check form-switch'>
-                                    <input className="form-check-input" type="checkbox" defaultChecked value={enableSendEmail} onChange={e => setEnableSendEmail(e.target.checked)}/>
+                                    <input className="form-check-input" type="checkbox" defaultChecked value={enableSendEmail} onChange={e => setEnableSendEmail(e.target.checked)} />
                                     <span className='check-content'>Send email notifications</span>
                                 </div>
                             </div>
@@ -319,11 +319,11 @@ const AddClient = () => {
                             <div className='group'>
                                 <span id='group-title'>Marketing notifications</span>
                                 <div className='form-check form-switch'>
-                                    <input className="form-check-input" type="checkbox" defaultChecked value={enableAcceptEmail} onChange={e => setEnableAcceptEmail(e.target.checked)}/>
+                                    <input className="form-check-input" type="checkbox" defaultChecked value={enableAcceptEmail} onChange={e => setEnableAcceptEmail(e.target.checked)} />
                                     <span className='check-content'>Client accepts email marketing notifications</span>
                                 </div>
                                 <div className='form-check form-switch'>
-                                    <input className="form-check-input" type="checkbox" defaultChecked value={enableAcceptText} onChange={e => setEnableAcceptText(e.target.checked)}/>
+                                    <input className="form-check-input" type="checkbox" defaultChecked value={enableAcceptText} onChange={e => setEnableAcceptText(e.target.checked)} />
                                     <span className='check-content'>Client accepts text message marketing notifications</span>
                                 </div>
                             </div>
