@@ -6,16 +6,16 @@ import './teammembers.scss';
 const TeamMembersPage = () => {
     const navigate = useNavigate();
 
-    const [ empoyees, setEmployees ] = useState([]);
+    const [empoyees, setEmployees] = useState([]);
 
     useEffect(() => {
-      getPosts(`/api/user/member`)
-      .then(res => {
-        console.log(res.data.data)
-        setEmployees(res.data.data)
-      })
+        getPosts(`/api/user/member`)
+            .then(res => {
+                console.log(res.data.data)
+                setEmployees(res.data.data)
+            })
     }, [])
-    
+
 
     return (
         <div className='team-members-container'>
@@ -26,7 +26,7 @@ const TeamMembersPage = () => {
                         <span className='header-title'>Team members</span>
                     </div>
                     <div className='header-action'>
-                        <button className='action-save' onClick={() => {navigate("/employee/add")}}>Add a team member</button>
+                        <button className='action-save' onClick={() => { navigate("/employee/add") }}>Add a team member</button>
                     </div>
                 </div>
                 <div className='content-setting'>
@@ -47,34 +47,26 @@ const TeamMembersPage = () => {
                     </div>
                 </div>
                 <div className='content-details'>
-                    <div className='content-item'>
-                        <div className='item-logo'>
-                            <div className='logo-container'>
-                                <span>MS</span>
+                    {
+                        empoyees?.map((item, key) => (
+
+                            <div className='content-item' key={key}>
+                                <div className='item-logo'>
+                                    <div className='logo-container'>
+                                        <span>MS</span>
+                                    </div>
+                                </div>
+                                <div className='item-detail'>
+                                    <span className='item-name'>{`${item.firstName} ${item.lastName}`}</span>
+                                </div>
+                                <div className='item-info'>
+                                    <span className='item-email'>{item.email}</span>
+                                    <span className='item-phone'>{item.phone}</span>
+                                </div>
                             </div>
-                        </div>
-                        <div className='item-detail'>
-                            <span className='item-name'>Mykhailo Savchuk</span>
-                        </div>
-                        <div className='item-info'>
-                            <span className='item-email'>top1successfulman@gmail.com</span>
-                            <span className='item-phone'>+1 815-414-2952</span>
-                        </div>
-                    </div>
-                    <div className='content-item'>
-                        <div className='item-logo'>
-                            <div className='logo-container'>
-                                <span>WS</span>
-                            </div>
-                        </div>
-                        <div className='item-detail'>
-                            <span className='item-name'>Wendy Smith</span>
-                        </div>
-                        <div className='item-info'>
-                            <span className='item-email'></span>
-                            <span className='item-phone'></span>
-                        </div>
-                    </div>
+                        ))
+                    }
+                  
                 </div>
             </div>
         </div>

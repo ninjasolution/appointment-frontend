@@ -12,12 +12,6 @@ function MainLayout(props) {
     const [detailModalState, setDetailModalState] = useState(false);
     const [infoModalState, setInfoModalState] = useState(false);
 
-    useEffect(() => {
-        setTimeout(() => {
-            navigate('/dashboard', { replace: true });
-        }, 100);
-    }, []);
-
     
     return (
         <div className='main-layout'>

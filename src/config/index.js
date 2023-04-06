@@ -35,3 +35,188 @@ export const calendarColorByIndex = {
     "8": "rgb(255, 236, 120)",
     "9": "rgb(255, 191, 105)",
 }
+
+export const timesByIndex = {
+    "0": {
+        "value": 5,
+        "label": "5min"
+    },
+    "1": {
+        "value": 10,
+        "label": "10min"
+    },
+    "2": {
+        "value": 15,
+        "label": "15min"
+    },
+    "3": {
+        "value": 20,
+        "label": "20min"
+    },
+    "4": {
+        "value": 25,
+        "label": "25min"
+    },
+    "5": {
+        "value": 30,
+        "label": "30min"
+    },
+    "6": {
+        "value": 35,
+        "label": "35min"
+    },
+    "7": {
+        "value": 40,
+        "label": "40min"
+    },
+    "8": {
+        "value": 45,
+        "label": "45min"
+    },
+    "9": {
+        "value": 50,
+        "label": "50min"
+    },
+    "10": {
+        "value": 55,
+        "label": "55min"
+    },
+    "11": {
+        "value": 60,
+        "label": "1h"
+    },
+    "12": {
+        "value": 65,
+        "label": "1h 5min"
+    },
+    "13": {
+        "value": 70,
+        "label": "1h 10min"
+    },
+    "14": {
+        "value": 75,
+        "label": "1h 15min"
+    },
+    "15": {
+        "value": 80,
+        "label": "1h 20min"
+    },
+    "16": {
+        "value": 85,
+        "label": "1h 25min"
+    },
+    "17": {
+        "value": 90,
+        "label": "1h 30min"
+    },
+    "18": {
+        "value": 95,
+        "label": "1h 35min"
+    },
+    "19": {
+        "value": 100,
+        "label": "1h 40min"
+    },
+    "20": {
+        "value": 105,
+        "label": "1h 45min"
+    },
+    "21": {
+        "value": 110,
+        "label": "1h 50min"
+    },
+    "22": {
+        "value": 115,
+        "label": "1h 55min"
+    },
+    "23": {
+        "value": 120,
+        "label": "2h"
+    },
+    "24": {
+        "value": 135,
+        "label": "2h 15min"
+    },
+    "25": {
+        "value": 150,
+        "label": "2h 30min"
+    },
+    "26": {
+        "value": 165,
+        "label": "2h 45min"
+    },
+    "27": {
+        "value": 180,
+        "label": "3h"
+    },
+    "28": {
+        "value": 195,
+        "label": "3h 15min"
+    },
+    "29": {
+        "value": 210,
+        "label": "3h 30min"
+    },
+    "30": {
+        "value": 225,
+        "label": "3h 45min"
+    },
+    "31": {
+        "value": 240,
+        "label": "4h"
+    },
+    "32": {
+        "value": 270,
+        "label": "4h 30min"
+    },
+    "33": {
+        "value": 300,
+        "label": "5h"
+    },
+    "34": {
+        "value": 330,
+        "label": "5h 30min"
+    },
+    "35": {
+        "value": 360,
+        "label": "6h"
+    },
+    "36": {
+        "value": 390,
+        "label": "6h 30min"
+    },
+    "38": {
+        "value": 420,
+        "label": "7h"
+    },
+    "39": {
+        "value": 450,
+        "label": "7h 30min"
+    },
+    "40": {
+        "value": 480,
+        "label": "8h"
+    },
+    "41": {
+        "value": 540,
+        "label": "9h"
+    },
+    "42": {
+        "value": 600,
+        "label": "10h"
+    },
+    "43": {
+        "value": 660,
+        "label": "11h"
+    },
+    "44": {
+        "value": 720,
+        "label": "12h"
+    },
+}
+
+export const priceTypeByIndex = {
+    "0": "Free",
+    "1": "From",
+    "2": "Fixed"
+}
