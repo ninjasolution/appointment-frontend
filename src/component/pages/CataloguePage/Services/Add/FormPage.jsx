@@ -2,43 +2,37 @@ import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { CATEGORY_TYPE_SERVICE, priceTypeByIndex, SERVICE_TARGET, timesByIndex } from '../../../../../config';
 import { createPost, getPosts } from '../../../../../services/PostsService';
+import { getLogo } from '../../../../../utils';
 import '../services.scss';
 
 const AddFormPage = () => {
 
     const [employees, setEmployees] = useState([])
-
-    useEffect(() => {
-        getPosts(`/api/user/member`)
-            .then(res => {
-                console.log(res.data)
-                setEmployees(res.data.data);
-            })
-    }, [])
-
     const [name, setName] = useState("");
+    const [enableSelectAllTeam, setEnableSelectAllTeam] = useState(true);
     const [treatmentId, setTreatmentId] = useState(0);
     const [categoryId, setCategoryId] = useState(0);
     const [description, setDescription] = useState("");
     const [aftercareDescription, setAftercareDescription] = useState("");
     const [target, setTarget] = useState(0);
-    const [enableOnline, setEnableOnline] = useState(false);
+    const [enableOnline, setEnableOnline] = useState(true);
     const [enableCommission, setEnableCommission] = useState(false);
     const [enableExtraTime, setEnableExtraTime] = useState(false);
     const [extraTime, setExtraTime] = useState({});
     const [memberIds, setMemberIds] = useState([]);
-    const [priceAndDurations, setPriceAndDurations] = useState([{}, {}]);
+    const [priceAndDurations, setPriceAndDurations] = useState([{}]);
     const [taxId, setTaxId] = useState(0);
     const [enableVoucherSales, setEnableVoucherSales] = useState(false);
     const [voucherExpirePeriod, setVoucherExpirePeriod] = useState(0);
-    const [enableUnSell, setEnableUnSell] = useState(0);
-    const [serviceIds, setServiceIds] = useState([]);
-    const [discountPercent, setDiscountPercent] = useState(0);
     const [categories, setCategores] = useState([]);
     const [treatments, setTreatments] = useState([]);
-    const [teams, setTeams] = useState([])
     const [taxes, setTaxes] = useState([])
-    const [expirePeriod, setExpirePeriod] = useState(0);
+
+    useEffect(() => {
+        if (enableSelectAllTeam) {
+            setMemberIds(employees.map(item => item._id));
+        }
+    }, [enableSelectAllTeam])
 
     useEffect(() => {
         getPosts(`/api/category?type=${CATEGORY_TYPE_SERVICE}`)
@@ -54,6 +48,10 @@ const AddFormPage = () => {
         getPosts(`/api/tax`)
             .then(res => {
                 setTaxes(res.data.data)
+            })
+        getPosts(`/api/user/member`)
+            .then(res => {
+                setEmployees(res.data.data);
             })
     }, [])
 
@@ -77,10 +75,6 @@ const AddFormPage = () => {
             taxId,
             enableVoucherSales,
             voucherExpirePeriod,
-            enableUnSell,
-            serviceIds,
-            discountPercent,
-            expirePeriod
         }
         console.log(client)
         // createPost(`/api/service`, client)
@@ -183,7 +177,7 @@ const AddFormPage = () => {
                     <div className='two-group sub-container' style={{ padding: '20px 30px 30px' }}>
                         <div className='group'>
                             <div className='form-check form-switch'>
-                                <input className="form-check-input" type="checkbox" defaultChecked value={enableOnline} onChange={e => setEnableOnline(e.target.checked)} />
+                                <input className="form-check-input" type="checkbox" value={enableOnline} onChange={e => setEnableOnline(e.target.checked)} />
                                 <span className='check-content'>Enable online bookings</span>
                             </div>
                         </div>
@@ -198,7 +192,7 @@ const AddFormPage = () => {
                         <div className='group'>
                             <div className='check-group'>
                                 <div className='form-group'>
-                                    <input className="form-check-input" type="checkbox" defaultChecked />
+                                    <input className="form-check-input" type="checkbox" value={enableSelectAllTeam} onChange={e => setEnableSelectAllTeam(e.target.checked)} />
                                     <span className='check-username'>Select All</span>
                                 </div>
                             </div>
@@ -207,9 +201,15 @@ const AddFormPage = () => {
                                     employees?.map((item, key) => (
 
                                         <div key={key} className='form-group'>
-                                            <input className="form-check-input" type="checkbox" defaultChecked />
+                                            <input className="form-check-input" type="checkbox" checked={memberIds.includes(item._id)} onChange={e => {
+                                                if (e.target.checked) {
+                                                    setMemberIds([...memberIds, item._id])
+                                                } else {
+                                                    setMemberIds(memberIds.filter(m => m != item._id))
+                                                }
+                                            }} />
                                             <div className='user-avatar'>
-                                                <div className='user-nickname'>MS</div>
+                                                <div className='user-nickname'>{getLogo(item.firstName, item.lastName)}</div>
                                             </div>
                                             <span className='check-username'>{`${item.firstName} ${item.lastName}`}</span>
                                         </div>
@@ -237,7 +237,7 @@ const AddFormPage = () => {
                     {
                         priceAndDurations?.map((item, key) => (
 
-                            <div className='tow-group option-container'>
+                            <div key={key} className='tow-group option-container'>
                                 <span className='option-title'>Pricing option {key + 1}</span>
                                 <div className='option-details'>
                                     <div className='two-group sub-container'>
@@ -246,13 +246,13 @@ const AddFormPage = () => {
                                             <div className='input-container'>
                                                 <select value={item["duration"]} onChange={e => {
                                                     setPriceAndDurations(priceAndDurations.map((_item, _key) => {
-                                                        if(key == _key) {
+                                                        if (key == _key) {
                                                             return {
-                                                                ...item,
+                                                                ..._item,
                                                                 "duration": e.target.value
                                                             }
-                                                        }else {
-                                                            return item
+                                                        } else {
+                                                            return _item
                                                         }
                                                     }))
                                                 }}>
@@ -267,15 +267,15 @@ const AddFormPage = () => {
                                         <div className='group'>
                                             <span className='group-title'>Price type</span>
                                             <div className='input-container'>
-                                                <select  value={item["type"]} onChange={e => {
+                                                <select value={item["type"]} onChange={e => {
                                                     setPriceAndDurations(priceAndDurations.map((_item, _key) => {
-                                                        if(key == _key) {
+                                                        if (key == _key) {
                                                             return {
-                                                                ...item,
+                                                                ..._item,
                                                                 "type": e.target.value
                                                             }
-                                                        }else {
-                                                            return item
+                                                        } else {
+                                                            return _item
                                                         }
                                                     }))
                                                 }}>
@@ -292,35 +292,35 @@ const AddFormPage = () => {
                                         <div className='group'>
                                             <span className='group-title'>Price</span>
                                             <div className='input-container'>
-                                                <input type="text" placeholder='RUB 0.00'  value={item["price"]} onChange={e => {
+                                                <input type="text" placeholder='RUB 0.00' value={item["price"]} onChange={e => {
                                                     setPriceAndDurations(priceAndDurations.map((_item, _key) => {
-                                                        if(key == _key) {
+                                                        if (key == _key) {
                                                             return {
                                                                 ..._item,
                                                                 "price": e.target.value
                                                             }
-                                                        }else {
+                                                        } else {
                                                             return _item
                                                         }
                                                     }))
-                                                }}/>
+                                                }} />
                                             </div>
                                         </div>
                                         <div className='group'>
                                             <span className='group-title'>Special price</span>
                                             <div className='input-container'>
-                                                <input type="text" placeholder='RUB 0.00'  value={item["specialPrice"]} onChange={e => {
+                                                <input type="text" placeholder='RUB 0.00' value={item["specialPrice"]} onChange={e => {
                                                     setPriceAndDurations(priceAndDurations.map((_item, _key) => {
-                                                        if(key == _key) {
+                                                        if (key == _key) {
                                                             return {
-                                                                ...item,
+                                                                ..._item,
                                                                 "specialPrice": e.target.value
                                                             }
-                                                        }else {
-                                                            return item
+                                                        } else {
+                                                            return _item
                                                         }
                                                     }))
-                                                }}/>
+                                                }} />
                                             </div>
                                         </div>
                                     </div>
@@ -332,17 +332,16 @@ const AddFormPage = () => {
                                             <div className='input-container'>
                                                 <input type="text" placeholder='e.g. Long hair' value={item["label"]} onChange={e => {
                                                     setPriceAndDurations(priceAndDurations.map((_item, _key) => {
-                                                        if(key == _key) {
-                                                            console.log(key, _key)
+                                                        if (key == _key) {
                                                             return {
-                                                                ...item,
+                                                                ..._item,
                                                                 "label": e.target.value
                                                             }
-                                                        }else {
-                                                            return item
+                                                        } else {
+                                                            return _item
                                                         }
                                                     }))
-                                                }}/>
+                                                }} />
                                             </div>
                                         </div>
                                     </div>
@@ -353,7 +352,7 @@ const AddFormPage = () => {
                     }
                     <div className='two-group sub-container' style={{ padding: '15px 25px 30px' }}>
                         <div className='group'>
-                            <div className='add-pricing-option' style={{cursor: "pointer"}} onClick={() => setPriceAndDurations([...priceAndDurations, {}])}>
+                            <div className='add-pricing-option' style={{ cursor: "pointer" }} onClick={() => setPriceAndDurations([...priceAndDurations, {}])}>
                                 <span className='add-logo'>
                                     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><g fill="none" fillRule="evenodd"><circle stroke="#037AFF" cx="12" cy="12" r="11.5"></circle><path d="M12.26 6a.74.74 0 01.74.74V11h4.26a.74.74 0 01.74.74v.52a.74.74 0 01-.74.74H13v4.26a.74.74 0 01-.74.74h-.52a.74.74 0 01-.74-.74v-4.261L6.74 13a.74.74 0 01-.74-.74v-.52a.74.74 0 01.74-.74l4.26-.001V6.74a.74.74 0 01.74-.74h.52z" fill="#037AFF"></path></g></svg>
                                 </span>
@@ -370,11 +369,11 @@ const AddFormPage = () => {
                                 <span className='check-content'>Enable extra time</span>
                             </div>
                             <div className='extra-items-container'>
-                                <div className='extra-item'>
+                                <div className={`extra-item ${extraTime?.type == 0 && "active"}`} onClick={e => { setExtraTime({ ...extraTime, "type": 0 }) }}>
                                     <span className='item-title'>Processing time</span>
                                     <span className='item-content'>Take other bookings during this time</span>
                                 </div>
-                                <div className='extra-item active'>
+                                <div className={`extra-item ${extraTime?.type == 1 && "active"}`} onClick={e => { setExtraTime({ ...extraTime, "type": 1 }) }}>
                                     <span className='item-title'>Blocked time</span>
                                     <span className='item-content'>Block time between appointments</span>
                                 </div>
@@ -383,13 +382,15 @@ const AddFormPage = () => {
                                 <div className='duration-group'>
                                     <span className='duration-group-title'>Duration</span>
                                     <div className='select-duration'>
-                                        <select>
-                                            <option>5min</option>
-                                            <option>10min</option>
-                                            <option>15min</option>
-                                            <option>30min</option>
-                                            <option>45min</option>
-                                            <option>1h</option>
+                                        <select onChange={e => {
+                                            setExtraTime({ ...extraTime, time: e.target.value })
+                                        }}>
+                                            {
+                                                Object.keys(timesByIndex).map((key) => (
+                                                    <option key={key} value={timesByIndex[key].value}>{timesByIndex[key].label}</option>
+                                                ))
+                                            }
+
                                         </select>
                                     </div>
                                 </div>
@@ -397,6 +398,32 @@ const AddFormPage = () => {
                         </div>
                     </div>
                 </div>
+
+                {/* <div className="sales-settings group-container">
+                    <div className='group-title'>
+                        <span className='title'>Resources</span> <br />
+                        <span className='sub-title'>Enable resources required for the service.</span>
+
+                    </div>
+
+                    <div className='group voucher-sales-group'>
+                        <div className='check-group'>
+                            {
+                                employees?.map((item, key) => (
+
+                                    <div key={key} className='form-group'>
+                                        <input className="form-check-input" type="checkbox" defaultChecked />
+                                        <div className='user-avatar'>
+                                            <div className='user-nickname'>MS</div>
+                                        </div>
+                                        <span className='check-username'>{`${item.firstName} ${item.lastName}`}</span>
+                                    </div>
+                                ))
+                            }
+                        </div>
+                    </div>
+                </div> */}
+
                 <div className="sales-settings group-container">
                     <div className='group-title'>
                         <span className='title'>Pricing and Duration</span>
@@ -420,14 +447,14 @@ const AddFormPage = () => {
                     <div className='group voucher-sales-group'>
                         <span className='group-total-title'>Voucher sales</span>
                         <div className='form-check form-switch'>
-                            <input className="form-check-input" type="checkbox" defaultChecked />
+                            <input className="form-check-input" type="checkbox" value={enableVoucherSales} defaultChecked onChange={e => setEnableVoucherSales(e.target.checked)} />
                             <span className='check-content'>Enable voucher sales</span>
                         </div>
                         <div className='voucher-expiry-container'>
                             <div className='voucher-group'>
                                 <span className='voucher-group-title'>Voucher expiry period</span>
                                 <div className='select-voucher'>
-                                    <select value={expirePeriod} onChange={e => setExpirePeriod(e.target.value)}>
+                                    <select value={voucherExpirePeriod} onChange={e => setVoucherExpirePeriod(e.target.value)}>
                                         <option value={30 * 6}>Default (6 Months)</option>
                                         <option value={14 * 6}>14 Days</option>
                                         <option value={30 * 1}>1 Month</option>
