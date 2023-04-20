@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { CATEGORY_TYPE_SERVICE, priceTypeByIndex, SERVICE_TARGET, timesByIndex } from '../../../../../config';
 import { createPost, getPosts } from '../../../../../services/PostsService';
@@ -27,10 +28,17 @@ const AddFormPage = () => {
     const [categories, setCategores] = useState([]);
     const [treatments, setTreatments] = useState([]);
     const [taxes, setTaxes] = useState([])
+    const selectedCategoryType = useSelector(s => s.globals.selectedCategoryType);
+
+    useEffect(() => {
+        if(selectedCategoryType > 0)  {
+            setCategoryId(selectedCategoryType);
+        }
+    }, [])
 
     useEffect(() => {
         if (enableSelectAllTeam) {
-            setMemberIds(employees.map(item => item._id));
+            setMemberIds(employees?.map(item => item._id));
         }
     }, [enableSelectAllTeam])
 
@@ -59,30 +67,31 @@ const AddFormPage = () => {
 
     const submitHandler = () => {
 
-        const client = {
+        const service = {
             name,
             treatmentId,
             categoryId,
             description,
             aftercareDescription,
             target,
+            memberIds,
             enableOnline,
-            enableCommission,
+            priceAndDurations,
             enableExtraTime,
             extraTime,
-            memberIds,
-            priceAndDurations,
+            enableCommission,
             taxId,
             enableVoucherSales,
             voucherExpirePeriod,
         }
-        console.log(client)
-        // createPost(`/api/service`, client)
-        // .then(res => {
-        //     navigate("/")
-        // }).catch(err => {
+        
+        
+        createPost(`/api/service`, service)
+        .then(res => {
+            navigate("/")
+        }).catch(err => {
 
-        // })
+        })
     }
 
     return (

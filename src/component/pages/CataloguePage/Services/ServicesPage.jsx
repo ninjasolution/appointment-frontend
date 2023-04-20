@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import './services.scss';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { createPost, getPosts } from '../../../../services/PostsService';
-import { CATEGORY_TYPE_SERVICE } from '../../../../config';
+import { CATEGORY_TYPE_SERVICE, timesByIndex } from '../../../../config';
+import { useDispatch } from 'react-redux';
+import { selectCategoryType } from '../../../../store/actions/GlobalAction';
 
 const ServicesPage = () => {
 
@@ -11,6 +13,9 @@ const ServicesPage = () => {
     const [serviceActionModal, setServiceActionModal] = useState(false);
     const [newCategoryModal, setNewCategoryMoal] = useState(false);
     const [categories, setCategories] = useState([]);
+    const [services, setServices] = useState([]);
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const [serviceActionModalPosX, setServiceActionModalPosX] = useState(0);
     const [serviceActionModalPosY, setServiceActionModalPosY] = useState(0);
@@ -23,6 +28,10 @@ const ServicesPage = () => {
         getPosts(`/api/category?type=${CATEGORY_TYPE_SERVICE}`)
             .then(res => {
                 setCategories(res.data.data)
+            })
+        getPosts(`/api/service?page=0&limit=100`)
+            .then(res => {
+                setServices(res.data.data)
             })
     }, [])
 
@@ -49,7 +58,7 @@ const ServicesPage = () => {
             {
                 serviceActionModal &&
                 <div className='service-actions-modal' style={{ top: `${serviceActionModalPosY - 50}px`, right: `0` }}>
-                    <span className='action-item'>Add new service</span>
+                    <span className='action-item' onClick={() => {navigate("/catalogue/services/new-item/appointment-type")}}>Add new service</span>
                     <span className='action-item'>Edit category</span>
                     <span className='action-item danger'>Delete category</span>
                 </div>
@@ -115,7 +124,7 @@ const ServicesPage = () => {
                         }
                     </div>
                     <div className='add-group'>
-                        <button className='btn btn-add' onClick={() => { addModal ? setAddModal(false) : setAddModal(true) }}>
+                        <button className='btn btn-add' onClick={() => {  addModal ? setAddModal(false) : setAddModal(true);  }}>
                             Add new
                             <span>
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill='#fff' d="M12 14.481l6.247-7.14a1 1 0 011.506 1.318l-7 8a1 1 0 01-1.506 0l-7-8a1 1 0 111.506-1.317L12 14.482z"></path></svg>
@@ -150,23 +159,29 @@ const ServicesPage = () => {
                                     </span>
                                     <span className='title'>{item?.name}</span>
                                 </div>
-                                <div className='header-actions' onMouseDown={(e) => visibleServiceActionModal(e)}>
+                                <div className='header-actions' onMouseDown={(e) => {visibleServiceActionModal(e); dispatch(selectCategoryType(item._id))}}>
                                     <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" clipRule="evenodd" d="M18 14a2 2 0 110-4 2 2 0 010 4zm-6 0a2 2 0 110-4 2 2 0 010 4zm-8-2a2 2 0 104 0 2 2 0 00-4 0z" fill="#101928"></path></svg>
                                 </div>
                             </div>
-                            <div className='service-item' onClick={() => window.location.href = '/catalogue/services/edit/form'}>
-                                <div className='item-title'>
-                                    <span className='logo'>
-                                        <svg viewBox="0 0 13 17" xmlns="http://www.w3.org/2000/svg"><g fill="#B7BABE" fillRule="evenodd"><path d="M11.5 0a1.5 1.5 0 01.144 2.993L11.5 3h-10A1.5 1.5 0 011.356.007L1.5 0h10zM11.5 7a1.5 1.5 0 01.144 2.993L11.5 10h-10a1.5 1.5 0 01-.144-2.993L1.5 7h10zM11.5 14a1.5 1.5 0 01.144 2.993L11.5 17h-10a1.5 1.5 0 01-.144-2.993L1.5 14h10z"></path></g></svg>
-                                    </span>
-                                    <span className='title'>Haircut</span>
-                                </div>
-                                <div className='item-detail'>
-                                    <span className='item-time'>1h 30min</span>
-                                    <span className='item-last-price'>RUB 59</span>
-                                    <span className='item-current-price'>RUB 25</span>
-                                </div>
-                            </div>
+                            {
+                                services?.filter(s => s.category == item._id)
+                                    .map((s, idx) => (
+
+                                        <div key={idx} className='service-item' onClick={() => window.location.href = '/catalogue/services/edit/form'}>
+                                            <div className='item-title'>
+                                                <span className='logo'>
+                                                    <svg viewBox="0 0 13 17" xmlns="http://www.w3.org/2000/svg"><g fill="#B7BABE" fillRule="evenodd"><path d="M11.5 0a1.5 1.5 0 01.144 2.993L11.5 3h-10A1.5 1.5 0 011.356.007L1.5 0h10zM11.5 7a1.5 1.5 0 01.144 2.993L11.5 10h-10a1.5 1.5 0 01-.144-2.993L1.5 7h10zM11.5 14a1.5 1.5 0 01.144 2.993L11.5 17h-10a1.5 1.5 0 01-.144-2.993L1.5 14h10z"></path></g></svg>
+                                                </span>
+                                                <span className='title'>{s.name}</span>
+                                            </div>
+                                            <div className='item-detail'>
+                                                <span className='item-time'>{timesByIndex[s.priceAndDurations[0].time || 0].label }</span>
+                                                <span className='item-last-price'>RUB {s.priceAndDurations[0].price}</span>
+                                                <span className='item-current-price'>RUB {s.priceAndDurations[0].specialPrice}</span>
+                                            </div>
+                                        </div>
+                                    ))
+                            }
                         </div>
                     ))
                 }

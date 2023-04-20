@@ -1,73 +1,83 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { getPosts } from '../../../../services/PostsService';
 import './memberships.scss';
 
 const CatalogueMemberships = () => {
 
+    const [memberships, setMemberships] = useState([]);
+
     const [filterModal, setFilterModal] = useState(false);
+
+    useEffect(() => {
+        getPosts(`/api/membership`)
+            .then(res => {
+                setMemberships(res.data.data)
+            })
+    }, [])
 
     return (
         <div className='catalogue-memberships-container'>
             {
-                filterModal ?
-                    <div className='filter-modal'>
-                        <div className='modal-header'>
-                            <span id='modal-title'>Filters</span>
-                            <span id='modal-close' onClick={() => setFilterModal(false)}>
-                                <svg viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg"><path d="M17 1.914L16.086 1 9 8.086 1.914 1 1 1.914 8.086 9 1 16.086l.914.914L9 9.914 16.086 17l.914-.914L9.914 9z"></path></svg>
-                            </span>
+                filterModal &&
+                <div className='filter-modal'>
+                    <div className='modal-header'>
+                        <span id='modal-title'>Filters</span>
+                        <span id='modal-close' onClick={() => setFilterModal(false)}>
+                            <svg viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg"><path d="M17 1.914L16.086 1 9 8.086 1.914 1 1 1.914 8.086 9 1 16.086l.914.914L9 9.914 16.086 17l.914-.914L9.914 9z"></path></svg>
+                        </span>
+                    </div>
+                    <div className='modal-body'>
+                        <div className='group'>
+                            <span className='group-title'>Sessions</span>
+                            <select className='form-select'>
+                                <option>Any number of sessions</option>
+                                <option>Unlimited</option>
+                                <option>Limited</option>
+                            </select>
                         </div>
-                        <div className='modal-body'>
-                            <div className='group'>
-                                <span className='group-title'>Sessions</span>
-                                <select className='form-select'>
-                                    <option>Any number of sessions</option>
-                                    <option>Unlimited</option>
-                                    <option>Limited</option>
-                                </select>
-                            </div>
-                            <div className='group'>
-                                <span className='group-title'>Payment</span>
-                                <select className='form-select'>
-                                    <option>One-time and recurring</option>
-                                    <option>Recurring</option>
-                                    <option>One-off</option>
-                                </select>
-                            </div>
-                            <div className='group'>
-                                <span className='group-title'>Valid for</span>
-                                <select className='form-select'>
-                                    <option>Any period</option>
-                                    <option>7 days</option>
-                                    <option>14 days</option>
-                                    <option>1 month</option>
-                                    <option>2 months</option>
-                                    <option>3 months</option>
-                                    <option>4 months</option>
-                                    <option>6 months</option>
-                                    <option>8 months</option>
-                                    <option>1 year</option>
-                                    <option>18 months</option>
-                                    <option>2 years</option>
-                                    <option>5 years</option>
-                                </select>
-                            </div>
-                            <div className='group'>
-                                <div className='check-container'>
-                                    <div className='form-check' onClick={() => document.getElementById('check-all-services').click()}>
-                                        <input className="form-check-input" id='check-all-services' type="checkbox" />
-                                        <span className='check-content'>Display only memberships which cover all services</span>
-                                    </div>
+                        <div className='group'>
+                            <span className='group-title'>Payment</span>
+                            <select className='form-select'>
+                                <option>One-time and recurring</option>
+                                <option>Recurring</option>
+                                <option>One-off</option>
+                            </select>
+                        </div>
+                        <div className='group'>
+                            <span className='group-title'>Valid for</span>
+                            <select className='form-select'>
+                                <option>Any period</option>
+                                <option>7 days</option>
+                                <option>14 days</option>
+                                <option>1 month</option>
+                                <option>2 months</option>
+                                <option>3 months</option>
+                                <option>4 months</option>
+                                <option>6 months</option>
+                                <option>8 months</option>
+                                <option>1 year</option>
+                                <option>18 months</option>
+                                <option>2 years</option>
+                                <option>5 years</option>
+                            </select>
+                        </div>
+                        <div className='group'>
+                            <div className='check-container'>
+                                <div className='form-check' onClick={() => document.getElementById('check-all-services').click()}>
+                                    <input className="form-check-input" id='check-all-services' type="checkbox" />
+                                    <span className='check-content'>Display only memberships which cover all services</span>
                                 </div>
                             </div>
                         </div>
-                        <div className='modal-footer'>
-                            <span onClick={() => setFilterModal(false)}>Clear all filters</span>
-                            <div id='actions'>
-                                <button id='action-cancel' onClick={() => setFilterModal(false)}>Cancel</button>
-                                <button id='action-apply'>Apply</button>
-                            </div>
+                    </div>
+                    <div className='modal-footer'>
+                        <span onClick={() => setFilterModal(false)}>Clear all filters</span>
+                        <div id='actions'>
+                            <button id='action-cancel' onClick={() => setFilterModal(false)}>Cancel</button>
+                            <button id='action-apply'>Apply</button>
                         </div>
-                    </div> : <></>
+                    </div>
+                </div>
             }
             <div className='content-container'>
                 <div className='content-detail'>
@@ -103,20 +113,25 @@ const CatalogueMemberships = () => {
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td className='voucher-info'>
-                                    <div className='voucher-logo'>
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 14"><path d="M9.333 4.667A4.68 4.68 0 0114 9.333 4.68 4.68 0 019.333 14a4.68 4.68 0 01-4.666-4.667 4.68 4.68 0 014.666-4.666zm.187 2.8H8.4v2.8h2.8v-1.12H9.52v-1.68zM11.2 0c1.03 0 1.867.836 1.867 1.867l-.001 3.266h-.933v-.934L.933 4.2v4.2c0 .479.36.873.825.927l.109.006h1.399v.933h-1.4A1.867 1.867 0 010 8.4V1.867C0 .836.836 0 1.867 0H11.2zm0 .933H1.867a.933.933 0 00-.927.825l-.007.109v1.4l11.2-.001v-1.4A.933.933 0 0011.31.94L11.2.933z" fill="#FFF" fillRule="evenodd"></path></svg>
-                                    </div>
-                                    <div className='voucher-detail'>
-                                        <span className='voucher-name'>tyri</span>
-                                        <span className='voucher-content'>All services</span>
-                                    </div>
-                                </td>
-                                <td className='voucher-service'>1 month</td>
-                                <td className='voucher-price'>5 sessions</td>
-                                <td className='voucher-sold'>RUB 30</td>
-                            </tr>
+                            {
+                                memberships?.map((item, key) => (
+
+                                    <tr key={key}>
+                                        <td className='voucher-info'>
+                                            <div className='voucher-logo'>
+                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 14"><path d="M9.333 4.667A4.68 4.68 0 0114 9.333 4.68 4.68 0 019.333 14a4.68 4.68 0 01-4.666-4.667 4.68 4.68 0 014.666-4.666zm.187 2.8H8.4v2.8h2.8v-1.12H9.52v-1.68zM11.2 0c1.03 0 1.867.836 1.867 1.867l-.001 3.266h-.933v-.934L.933 4.2v4.2c0 .479.36.873.825.927l.109.006h1.399v.933h-1.4A1.867 1.867 0 010 8.4V1.867C0 .836.836 0 1.867 0H11.2zm0 .933H1.867a.933.933 0 00-.927.825l-.007.109v1.4l11.2-.001v-1.4A.933.933 0 0011.31.94L11.2.933z" fill="#FFF" fillRule="evenodd"></path></svg>
+                                            </div>
+                                            <div className='voucher-detail'>
+                                                <span className='voucher-name'>{item.name}</span>
+                                                <span className='voucher-content'>{item.services?.length} services</span>
+                                            </div>
+                                        </td>
+                                        <td className='voucher-service'>{item.duration}</td>
+                                        <td className='voucher-price'>{item.countOfSale}</td>
+                                        <td className='voucher-sold'>RUB {item.price}</td>
+                                    </tr>
+                                ))
+                            }
                         </tbody>
                     </table>
                     <div className='voucher-count'>

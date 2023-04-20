@@ -1,8 +1,60 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { basicBgColorByIndex, calendarColorByIndex, numberOfSale, timesByIndex } from '../../../../../config';
+import { createPost, getPosts } from '../../../../../services/PostsService';
 import './createvoucher.scss';
 
 const CreateVoucherPage = () => {
+
+    const [name, setName] = useState("");
+    const [value, setvalue] = useState(0);
+    const [description, setDescription] = useState("");
+    const [retailPrice, setRetailPrice] = useState(0);
+    const [duration, setDuration] = useState(0);
+    const [enableOnlineSale, setEnableOnlineSale] = useState(false);
+    const [enableLimitedSale, setEnableLimitedSale] = useState(false);
+    const [quantity, setQuantity] = useState(false);
+    const [services, setServices] = useState([]);
+    const [allServices, setAllServices] = useState([]);
+    const [title, setTitle] = useState("")
+    const [enableAddButton, setEnableAddButton] = useState(false);
+    const [serviceModal, setServiceModal] = useState(false);
+    const [color, setColor] = useState(0);
+    const [enableNote, setEnableNode] = useState(false)
+    const [step, setStep] = useState(0)
+
+    const createHandler = () => {
+
+        const voucher = {
+            name,
+            value,
+            retailPrice,
+            enableLimitedSale,
+            services,
+            quantity,
+            duration,
+            title,
+            enableOnlineSale,
+            description,
+            color,
+            enableNote,
+            enableAddButton
+        }
+        console.log(voucher)
+        createPost(`/api/voucher`, voucher)
+            .then(res => {
+                console.log(res.data.data)
+            })
+    }
+
+    useEffect(() => {
+        getPosts(`/api/service`)
+            .then(res => {
+                console.log(res.data.data)
+                setAllServices(res.data.data)
+            })
+    }, [])
+
     return (
         <div className='create-voucher-container' id='create-client-container'>
             <div className='topbar'>
@@ -10,16 +62,22 @@ const CreateVoucherPage = () => {
                     <Link className='action-close' to='/catalogue/vouchers'>
                         <svg viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg"><path d="M17 1.914L16.086 1 9 8.086 1.914 1 1 1.914 8.086 9 1 16.086l.914.914L9 9.914 16.086 17l.914-.914L9.914 9z"></path></svg>
                     </Link>
+                    {
+                    step == 1 &&
+                    <button className='action-previous' onClick={() => setStep(0)}>{"Previous"}</button>
+                }
                 </div>
+                
                 <div className='topbar-title'>
-                    <span id='step-content'>Step 1 of 2: Add your voucher type info</span>
+                    <span id='step-content'>Step {step + 1} of 2: Add your voucher type info</span>
                     <span className='title-content'>Create a voucher type</span>
                 </div>
-                <button className='action-save'>Next step</button>
+                <button className='action-save' onClick={() => step == 0 ? setStep(1) : createHandler()}>{step == 0 ? "Next step" : "Save"}</button>
             </div>
             <div className='main-container'>
+
                 <div className="left-side">
-                    <div style={{ display: 'none' }}>
+                    <div style={{ display: `${step == 0 ? "block" : "none"}` }}>
                         <div className="voucher-info group-container">
                             <div className='group-container-title'>
                                 <span className='title'>Voucher info</span>
@@ -28,7 +86,7 @@ const CreateVoucherPage = () => {
                             <div className='group'>
                                 <span className='group-title'>Voucher name</span>
                                 <div className='input-container'>
-                                    <input type="text" id='first-name' />
+                                    <input type="text" id='first-name' value={name} onChange={e => setName(e.target.value)} />
                                 </div>
                                 <span className='group-hint'>This field is required</span>
                             </div>
@@ -36,14 +94,14 @@ const CreateVoucherPage = () => {
                                 <div className='group'>
                                     <span className='group-title'>Value</span>
                                     <div className='input-container'>
-                                        <input type="text" id='mobile-number' />
+                                        <input type="text" id='mobile-number' value={value} onChange={e => setvalue(e.target.value)} />
                                     </div>
                                     <span className='group-hint'></span>
                                 </div>
                                 <div className='group'>
                                     <span className='group-title'>Retail price</span>
                                     <div className='input-container'>
-                                        <input type="text" id='email-address' />
+                                        <input type="text" id='email-address' value={retailPrice} onChange={e => setRetailPrice(e.target.value)} />
                                     </div>
                                     <span className='group-hint'></span>
                                 </div>
@@ -51,24 +109,24 @@ const CreateVoucherPage = () => {
                             <div className='group'>
                                 <span className='group-title'>Valid for</span>
                                 <div className='input-container'>
-                                    <select>
-                                        <option>14 days</option>
-                                        <option>1 month</option>
-                                        <option>2 months</option>
-                                        <option>3 months</option>
-                                        <option>4 months</option>
-                                        <option>6 months</option>
-                                        <option>1 month</option>
-                                        <option>3 months</option>
-                                        <option>5 months</option>
-                                        <option>Forever</option>
+                                    <select value={duration} onChange={e => setDuration(e.target.value)}>
+                                        <option value={14}>14 days</option>
+                                        <option value={30}>1 month</option>
+                                        <option value={30 * 2}>2 months</option>
+                                        <option value={30 * 3}>3 months</option>
+                                        <option value={30 * 4}>4 months</option>
+                                        <option value={30 * 6}>6 months</option>
+                                        <option value={365}>1 year</option>
+                                        <option value={365 * 3}>3 years</option>
+                                        <option value={365 * 5}>5 years</option>
+                                        <option value={365 * 100}>Forever</option>
                                     </select>
                                 </div>
                             </div>
                             <div className='group'>
                                 <div className='check-container'>
                                     <div className='form-check form-switch'>
-                                        <input className="form-check-input" id='check-limited' type="checkbox" />
+                                        <input className="form-check-input" id='check-limited' type="checkbox" value={enableLimitedSale} onChange={e => setEnableLimitedSale(e.target.checked)} />
                                         <span className='check-content'>Limit amount of sales</span>
                                     </div>
                                 </div>
@@ -76,8 +134,12 @@ const CreateVoucherPage = () => {
                             <div className='group'>
                                 <span className='group-title'>Number of sales</span>
                                 <div className='input-container'>
-                                    <select disabled>
-                                        <option>50</option>
+                                    <select value={quantity} onChange={e => setQuantity(e.target.value)}>
+                                        {
+                                            numberOfSale.map((item, key) => (
+                                                <option key={key}>{item}</option>
+                                            ))
+                                        }
                                     </select>
                                 </div>
                             </div>
@@ -88,13 +150,9 @@ const CreateVoucherPage = () => {
                                 <span className='title'>Services included</span>
                             </div>
                             <div className='group'>
-                                <span className='group-title'>Services included</span>
-                                <div className='input-container'>
-                                    <select>
-                                        <option>All services</option>
-                                        <option>Hair</option>
-                                        <option>Blow dry</option>
-                                    </select>
+                                <div className='input-container  two-group'>
+                                    <input type="text" disabled value={`${services.length == allServices.length ? "All" : services.length} Services`} />
+                                    <Link to={"#"} onClick={() => setServiceModal(true)} style={{ marginRight: "20px" }}> <span style={{ color: "#037aff", fontSize: "17px", fontWeight: "400" }}>Edit</span></Link>
                                 </div>
                             </div>
                         </div>
@@ -107,7 +165,7 @@ const CreateVoucherPage = () => {
                             <div className='group'>
                                 <div className='check-container'>
                                     <div className='form-check form-switch'>
-                                        <input className="form-check-input" id='enable-online-sales' type="checkbox" />
+                                        <input className="form-check-input" id='enable-online-sales' type="checkbox" value={enableOnlineSale} onChange={e => setEnableOnlineSale(e.target.checked)} />
                                         <span className='check-content'>Enable online sales</span>
                                     </div>
                                 </div>
@@ -119,7 +177,7 @@ const CreateVoucherPage = () => {
                             </div>
                         </div>
                     </div>
-                    <div>
+                    <div style={{ display: `${step == 1 ? "block" : "none"}` }}>
                         <div className="text-container group-container">
                             <div className='group-container-title'>
                                 <span className='title'>Text</span>
@@ -128,14 +186,14 @@ const CreateVoucherPage = () => {
                             <div className='group'>
                                 <span className='group-title'>Voucher title</span>
                                 <div className='input-container'>
-                                    <input type="text" id='first-name' />
+                                    <input type="text" id='first-name' value={title} onChange={e => setTitle(e.target.value)} />
                                 </div>
                                 <span className='group-hint'>This field is required</span>
                             </div>
                             <div className='group'>
                                 <span className='group-title'>Voucher description</span>
                                 <div className='input-container'>
-                                    <textarea cols="30" rows="6"></textarea>
+                                    <textarea cols="30" rows="6" value={description} onChange={e => setDescription(e.target.value)} />
                                 </div>
                             </div>
                         </div>
@@ -147,22 +205,14 @@ const CreateVoucherPage = () => {
                             </div>
                             <div className='group'>
                                 <span className='group-title'>Choose a colour</span>
-                                <div className='colour-group'>
-                                    <div className='blue-container colour-container active'>
-                                        <div className='select-blue select-colour'></div>
-                                    </div>
-                                    <div className='black-container colour-container'>
-                                        <div className='select-black select-colour'></div>
-                                    </div>
-                                    <div className='green-container colour-container'>
-                                        <div className='select-green select-colour'></div>
-                                    </div>
-                                    <div className='orange-container colour-container'>
-                                        <div className='select-orange select-colour'></div>
-                                    </div>
-                                    <div className='purple-container colour-container'>
-                                        <div className='select-purple select-colour'></div>
-                                    </div>
+                                <div className='colour-group' style={{display: "flex"}}>
+                                    {
+                                        Object.keys(basicBgColorByIndex).map((key) => (
+                                            <div key={key} style={{ cursor: "pointer" }} className={`blue-container colour-container ${key == color && "active"}`} onClick={() => setColor(key)}>
+                                                <div style={{ background: basicBgColorByIndex[key] }} className='select-colour'></div>
+                                            </div>
+                                        ))
+                                    }
                                 </div>
                             </div>
                         </div>
@@ -175,7 +225,7 @@ const CreateVoucherPage = () => {
                             <div className='group'>
                                 <div className='check-container'>
                                     <div className='form-check form-switch'>
-                                        <input className="form-check-input" id='enable-online-sales' type="checkbox" defaultChecked />
+                                        <input className="form-check-input" id='enable-online-sales' type="checkbox" value={enableAddButton} onChange={e => setEnableAddButton(e.target.checked)}/>
                                         <span className='check-content'>Add a Book now button</span>
                                     </div>
                                 </div>
@@ -190,7 +240,7 @@ const CreateVoucherPage = () => {
                             <div className='group'>
                                 <div className='check-container'>
                                     <div className='form-check form-switch'>
-                                        <input className="form-check-input" id='enable-online-sales' type="checkbox" />
+                                        <input className="form-check-input" id='enable-online-sales' type="checkbox" checked={enableNote} onChange={e => setEnableNode(e.target.checked)}/>
                                         <span className='check-content'>Enable notes for clients</span>
                                     </div>
                                 </div>
@@ -234,6 +284,58 @@ const CreateVoucherPage = () => {
                         </div>
                     </div>
                 </div>
+
+                {
+                    serviceModal &&
+                    <div className='add-address-modal'>
+                        <div className='modal-header'>
+                            <span className='modal-title'>Select Services</span>
+                            <span className='modal-close' onClick={() => setServiceModal(false)}>
+                                <svg viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg"><path d="M17 1.914L16.086 1 9 8.086 1.914 1 1 1.914 8.086 9 1 16.086l.914.914L9 9.914 16.086 17l.914-.914L9.914 9z"></path></svg>
+                            </span>
+                        </div>
+                        <div className='modal-body'>
+                            <div className='group'>
+                                <div className="list-group">
+                                    {
+                                        allServices?.map((item, key) => (
+
+                                            <div key={key}>
+
+                                                <div className='list-item'>
+                                                    <div className='check-container'>
+                                                        <div className='form-check'>
+                                                            <input className="form-check-input" style={{ height: "20px", width: "20px" }} checked={services.includes(item._id)} name='test-check' onChange={e => services.includes(item._id) ? setServices(services.filter(s => s != item._id)) : setServices([...services, item._id])} type="checkbox" />
+                                                        </div>
+                                                        <div className='item-detail'>
+                                                            <span className='item-name'>{item.name}</span>
+                                                            <span className='item-content'>{timesByIndex[item.priceAndDurations[0].time || 0].label}</span>
+                                                        </div>
+                                                    </div>
+                                                    <div className='item-price'>
+                                                        <span>RUB {item.priceAndDurations[0].price}</span>
+                                                    </div>
+                                                </div>
+
+                                                {
+                                                    key !== allServices.length - 1 &&
+                                                    <div className='item-spliter'></div>
+                                                }
+                                            </div>
+                                        ))
+                                    }
+                                </div>
+
+                            </div>
+                        </div>
+                        <div className='modal-footer'>
+                            <div className='actions-container'>
+                                <button className='modal-button modal-close' onClick={() => setServiceModal(false)}>Cancel</button>
+                                <button className='modal-button modal-continue' onClick={() => setServiceModal(false)}>Continue</button>
+                            </div>
+                        </div>
+                    </div>
+                }
             </div>
         </div>
     )

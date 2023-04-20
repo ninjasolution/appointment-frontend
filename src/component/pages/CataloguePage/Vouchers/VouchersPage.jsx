@@ -1,7 +1,17 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { getPosts } from '../../../../services/PostsService';
 import './vouchers.scss';
 
 const CatalogueVouchers = () => {
+
+    const [vouchers, setVouchers] = useState([]);
+
+    useEffect(() => {
+        getPosts(`/api/voucher`)
+            .then(res => {
+                setVouchers(res.data.data)
+            })
+    }, [])
 
     const [optionModal, setOptionModal] = useState(false);
 
@@ -20,11 +30,11 @@ const CatalogueVouchers = () => {
                             </span>
                         </button>
                         {
-                            optionModal ?
+                            optionModal &&
                                 <div className='option-modal'>
                                     <span className='modal-body'>Sell vouchers online</span>
                                     <span className='modal-body' onClick={() => window.location.href = '/setup/services-settings'}>Settings</span>
-                                </div> : <></>
+                                </div>
                         }
                     </div>
                     <div className='add-group'>
@@ -52,19 +62,24 @@ const CatalogueVouchers = () => {
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td className='voucher-info'>
-                                    <div id='voucher-logo'>
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M1 20.75A.75.75 0 01.25 20v-5a.75.75 0 01.75-.75 2.25 2.25 0 100-4.5A.75.75 0 01.25 9V4A.75.75 0 011 3.25h22a.75.75 0 01.75.75v5a.75.75 0 01-.75.75 2.25 2.25 0 100 4.5.75.75 0 01.75.75v5a.75.75 0 01-.75.75zm.75-1.5h20.5v-3.575a3.751 3.751 0 010-7.35V4.75H1.75v3.575a3.751 3.751 0 010 7.35v3.575zM8 10.75a.75.75 0 110-1.5h8a.75.75 0 110 1.5zm0 4a.75.75 0 110-1.5h8a.75.75 0 110 1.5z" fill="#FFF" fillRule="nonzero"></path></svg>
-                                    </div>
-                                    <div id='voucher-detail'>
-                                        <span id='voucher-name'>Mykhailo Savchuk</span>
-                                    </div>
-                                </td>
-                                <td className='voucher-service'>All services</td>
-                                <td className='voucher-price'>RUB 1,111 / RUB 1,123</td>
-                                <td className='voucher-sold'>0</td>
-                            </tr>
+                            {
+                                vouchers?.map((item, key) => (
+
+                                    <tr key={key}>
+                                        <td className='voucher-info'>
+                                            <div id='voucher-logo'>
+                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M1 20.75A.75.75 0 01.25 20v-5a.75.75 0 01.75-.75 2.25 2.25 0 100-4.5A.75.75 0 01.25 9V4A.75.75 0 011 3.25h22a.75.75 0 01.75.75v5a.75.75 0 01-.75.75 2.25 2.25 0 100 4.5.75.75 0 01.75.75v5a.75.75 0 01-.75.75zm.75-1.5h20.5v-3.575a3.751 3.751 0 010-7.35V4.75H1.75v3.575a3.751 3.751 0 010 7.35v3.575zM8 10.75a.75.75 0 110-1.5h8a.75.75 0 110 1.5zm0 4a.75.75 0 110-1.5h8a.75.75 0 110 1.5z" fill="#FFF" fillRule="nonzero"></path></svg>
+                                            </div>
+                                            <div id='voucher-detail'>
+                                                <span id='voucher-name'>{item.name}</span>
+                                            </div>
+                                        </td>
+                                        <td className='voucher-service'>{item.services?.length} Services</td>
+                                        <td className='voucher-price'>RUB {item.retailPrice} / RUB {item.value}</td>
+                                        <td className='voucher-sold'>0</td>
+                                    </tr>
+                                ))
+                            }
                         </tbody>
                     </table>
                     <div className='voucher-count'>

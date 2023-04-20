@@ -1,10 +1,11 @@
-import { SETUP_USER } from "../actions/GlobalAction"
+import { SELECT_CATEGORY_TYPE, SETUP_USER } from "../actions/GlobalAction"
 import { SET_IS_LOADING, SET_SIDE_BAR } from "../actions/GlobalAction"
 
 const initialState = {
     sidebar: 0,
     isLoading: false,
-    setupUser: {}
+    setupUser: {},
+    selectedCategoryType: 0
 }
 
 export default function GlobalSettingReducer(state = initialState, actions) {
@@ -22,6 +23,11 @@ export default function GlobalSettingReducer(state = initialState, actions) {
         return {
             ...state,
             setupUser: actions.payload
+        }
+    } else if(actions.type === SELECT_CATEGORY_TYPE) {
+        return {
+            ...state,
+            selectedCategoryType: actions.payload
         }
     } else {
         return state

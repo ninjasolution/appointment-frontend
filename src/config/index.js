@@ -36,6 +36,14 @@ export const calendarColorByIndex = {
     "9": "rgb(255, 191, 105)",
 }
 
+export const basicBgColorByIndex = {
+    "0": "rgb(11, 109, 217)",
+    "1": "rgb(16, 25, 40)",
+    "2": "rgb(0, 157, 98)",
+    "3": "rgb(237, 176, 27)",
+    "4": "rgb(190, 74, 244)",
+}
+
 export const timesByIndex = {
     "0": {
         "value": 5,
@@ -215,8 +223,61 @@ export const timesByIndex = {
     },
 }
 
+export const membershipDurationByIndex = {
+    "0": {
+        "value": 7,
+        "label": "7 days"
+    },
+    "1": {
+        "value": 14,
+        "label": "14 days"
+    },
+    "2": {
+        "value": 30,
+        "label": "1 month"
+    },
+    "3": {
+        "value": 30 * 2,
+        "label": "2 months"
+    },
+    "4": {
+        "value": 30 * 3,
+        "label": "3 months"
+    },
+    "5": {
+        "value": 30 * 4,
+        "label": "4 months"
+    },
+    "6": {
+        "value": 30 * 6,
+        "label": "6 months"
+    },
+    "7": {
+        "value": 30 * 8,
+        "label": "8 months"
+    },
+    "8": {
+        "value": 365,
+        "label": "1 year"
+    },
+    "9": {
+        "value": 30 * 18,
+        "label": "18 months"
+    },
+    "10": {
+        "value": 365 * 2,
+        "label": "2 years"
+    },
+    "11": {
+        "value": 365 * 5,
+        "label": "5 years"
+    }
+}
+
 export const priceTypeByIndex = {
     "0": "Free",
     "1": "From",
     "2": "Fixed"
 }
+
+export const numberOfSale = [10, 20, 30, 50, 100, 250, 500, 1000]
