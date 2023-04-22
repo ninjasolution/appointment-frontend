@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { useEffect } from 'react';
+import { getPosts } from '../../../../services/PostsService';
 import './products.scss';
 
 const CatalogueProducts = () => {
@@ -6,10 +8,19 @@ const CatalogueProducts = () => {
     const [filterModal, setFilterModal] = useState(false);
     const [optionModal, setOptionModal] = useState(false);
 
+    const [ products, setProducts ] = useState([]);
+
+    useEffect(() => {
+        getPosts(`/api/product`)
+        .then(res => {
+            setProducts(res.data.data)
+        })
+    }, [])
+
     return (
         <div className='catalogue-products-container'>
             {
-                filterModal ?
+                filterModal &&
                     <div className='filter-modal'>
                         <div className='modal-header'>
                             <span id='modal-title'>Filters</span>
@@ -59,7 +70,7 @@ const CatalogueProducts = () => {
                                 <button id='action-apply'>Apply</button>
                             </div>
                         </div>
-                    </div> : <></>
+                    </div> 
             }
             <div className='content-container'>
                 <div className='content-detail'>

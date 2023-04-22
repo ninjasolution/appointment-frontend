@@ -2,6 +2,10 @@ export const BACKEND_LINK = "http://localhost:5000"
 
 export const CATEGORY_TYPE_SERVICE = "service"
 
+export const A_Z = "QWERTYUIOPASDFGHJJKLZXCVVBNM";
+
+export const N0_9 = "0123456789";
+
 export const SERVICE_TARGET = {
     0: "Everyone",
     1: "Females only",
