@@ -1,7 +1,20 @@
 import React, { useState } from 'react';
+import { useEffect } from 'react';
+import { getPosts } from '../../../../services/PostsService';
+import { getLogo } from '../../../../utils';
 import './suppliers.scss';
 
 const SuppliersPage = () => {
+
+    const [suppliers, setSuppliers] = useState([]);
+
+    useEffect(() => {
+        getPosts(`/api/user/supplier`)
+            .then(res => {
+                console.log(res.data.data)
+                setSuppliers(res.data.data)
+            })
+    }, [])
 
     return (
         <div className='catalogue-suppliers-container'>
@@ -69,18 +82,23 @@ const SuppliersPage = () => {
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td className='font-left'>
-                                    <div className='supplier-info'>
-                                        <div className='supplier-avatar'>SS</div>
-                                        <span className='supplier-name'>Sample Supplier</span>
-                                    </div>
-                                </td>
-                                <td className='font-left'>+7 234234234234</td>
-                                <td className='font-left'>kafklsdf@jfksaf.com</td>
-                                <td className='font-left'></td>
-                                <td className='font-left'>3 Mar 2023 18:31</td>
-                            </tr>
+                            {
+                                suppliers?.map((item, key) => (
+
+                                    <tr key={key}>
+                                        <td className='font-left'>
+                                            <div className='supplier-info'>
+                                                <div className='supplier-avatar'>{getLogo(item.firstName, item.lastName)}</div>
+                                                <span className='supplier-name'>{`${item.firstName} ${item.lastName}`}</span>
+                                            </div>
+                                        </td>
+                                        <td className='font-left'>{item?.phone}</td>
+                                        <td className='font-left'>{item?.email}</td>
+                                        <td className='font-left'></td>
+                                        <td className='font-left'>3 Mar 2023 18:31</td>
+                                    </tr>
+                                ))
+                            }
                         </tbody>
                     </table>
                     <div className='product-count'>

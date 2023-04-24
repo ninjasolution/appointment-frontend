@@ -8,69 +8,70 @@ const CatalogueProducts = () => {
     const [filterModal, setFilterModal] = useState(false);
     const [optionModal, setOptionModal] = useState(false);
 
-    const [ products, setProducts ] = useState([]);
+    const [products, setProducts] = useState([]);
 
     useEffect(() => {
         getPosts(`/api/product`)
-        .then(res => {
-            setProducts(res.data.data)
-        })
+            .then(res => {
+                console.log(res.data.data)
+                setProducts(res.data.data)
+            })
     }, [])
 
     return (
         <div className='catalogue-products-container'>
             {
                 filterModal &&
-                    <div className='filter-modal'>
-                        <div className='modal-header'>
-                            <span id='modal-title'>Filters</span>
-                            <span id='modal-close' onClick={() => setFilterModal(false)}>
-                                <svg viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg"><path d="M17 1.914L16.086 1 9 8.086 1.914 1 1 1.914 8.086 9 1 16.086l.914.914L9 9.914 16.086 17l.914-.914L9.914 9z"></path></svg>
-                            </span>
+                <div className='filter-modal'>
+                    <div className='modal-header'>
+                        <span id='modal-title'>Filters</span>
+                        <span id='modal-close' onClick={() => setFilterModal(false)}>
+                            <svg viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg"><path d="M17 1.914L16.086 1 9 8.086 1.914 1 1 1.914 8.086 9 1 16.086l.914.914L9 9.914 16.086 17l.914-.914L9.914 9z"></path></svg>
+                        </span>
+                    </div>
+                    <div className='modal-body'>
+                        <div className='group'>
+                            <span className='group-title'>Categories</span>
+                            <select className='form-select'>
+                                <option>All categories</option>
+                                <option>No category</option>
+                                <option>a</option>
+                                <option>dsw</option>
+                            </select>
                         </div>
-                        <div className='modal-body'>
-                            <div className='group'>
-                                <span className='group-title'>Categories</span>
-                                <select className='form-select'>
-                                    <option>All categories</option>
-                                    <option>No category</option>
-                                    <option>a</option>
-                                    <option>dsw</option>
-                                </select>
-                            </div>
-                            <div className='group'>
-                                <span className='group-title'>Brands</span>
-                                <select className='form-select'>
-                                    <option>All brands</option>
-                                    <option>No brand</option>
-                                    <option>ewbe</option>
-                                </select>
-                            </div>
-                            <div className='group'>
-                                <span className='group-title'>Suppliers</span>
-                                <select className='form-select'>
-                                    <option>All suppliers</option>
-                                    <option>No supplier</option>
-                                    <option>dfs</option>
-                                </select>
-                            </div>
-                            <div className='group'>
-                                <span className='group-title'>Stock</span>
-                                <select className='form-select'>
-                                    <option>All products</option>
-                                    <option>Low in stock</option>
-                                    <option>Out of stock</option>
-                                </select>
-                            </div>
+                        <div className='group'>
+                            <span className='group-title'>Brands</span>
+                            <select className='form-select'>
+                                <option>All brands</option>
+                                <option>No brand</option>
+                                <option>ewbe</option>
+                            </select>
                         </div>
-                        <div className='modal-footer'>
-                            <span onClick={() => setFilterModal(false)}>Clear all filters</span>
-                            <div id='actions'>
-                                <button id='action-cancel' onClick={() => setFilterModal(false)}>Cancel</button>
-                                <button id='action-apply'>Apply</button>
-                            </div>
+                        <div className='group'>
+                            <span className='group-title'>Suppliers</span>
+                            <select className='form-select'>
+                                <option>All suppliers</option>
+                                <option>No supplier</option>
+                                <option>dfs</option>
+                            </select>
                         </div>
-                    </div> 
+                        <div className='group'>
+                            <span className='group-title'>Stock</span>
+                            <select className='form-select'>
+                                <option>All products</option>
+                                <option>Low in stock</option>
+                                <option>Out of stock</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div className='modal-footer'>
+                        <span onClick={() => setFilterModal(false)}>Clear all filters</span>
+                        <div id='actions'>
+                            <button id='action-cancel' onClick={() => setFilterModal(false)}>Cancel</button>
+                            <button id='action-apply'>Apply</button>
+                        </div>
+                    </div>
+                </div>
             }
             <div className='content-container'>
                 <div className='content-detail'>
@@ -172,31 +173,35 @@ const CatalogueProducts = () => {
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td className='font-left'>
-                                    <div className='form-check'>
-                                        <input className="form-check-input" id='check-product' type="checkbox" />
-                                    </div>
-                                </td>
-                                <td className='product-info'>
-                                    <div className='product-logo'>
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><path fill="#fff" d="M0 0h1000v1000H0z"></path><g opacity=".1"><path d="M566.64 267.54V237.6c0-6.74-5.46-12.2-12.2-12.2h-5.37v-68.2c0-6.74-5.46-12.2-12.2-12.2h-73.72c-6.74 0-12.2 5.46-12.2 12.2v68.18h-5.37c-6.74 0-12.2 5.46-12.2 12.2v29.94c-43.58 4.54-76.71 41.22-76.81 85.03v490.23c0 6.74 5.46 12.21 12.2 12.21h262.49c6.74 0 12.2-5.46 12.2-12.2V352.56c-.11-43.81-33.24-80.49-76.82-85.02zM500 166.48c15.23 0 27.58 12.35 27.58 27.58 0 15.23-12.35 27.58-27.58 27.58-15.23 0-27.58-12.35-27.58-27.58 0-15.23 12.35-27.58 27.58-27.58zm-42.23 83.32h84.46v17.33h-84.46V249.8zm161.27 580.79H380.96V352.56c.04-33.68 27.34-60.98 61.02-61.02h116.03c33.68.04 60.98 27.34 61.02 61.02v478.03z"></path><path d="M419.04 406.1c-6.74 0-12.2 5.46-12.2 12.2v263.14c0 6.74 5.46 12.2 12.2 12.2s12.2-5.46 12.2-12.2V418.31c.01-6.74-5.46-12.21-12.2-12.21z"></path></g></svg>
-                                    </div>
-                                    <div className='product-detail'>
-                                        <span className='product-name'>Mykhailo Savchuk</span>
-                                        <span className='product-content'>Barcode: ert</span>
-                                    </div>
-                                </td>
-                                <td className='product-category font-left'>a</td>
-                                <td className='product-supplier font-left'>-</td>
-                                <td className='product-quantity font-left'>42</td>
-                                <td className='product-price font-right'>
-                                    <div className='price-container'>
-                                        <span className='real-price'>RUB 4</span>
-                                        <span className='old-price'>RUB 11</span>
-                                    </div>
-                                </td>
-                            </tr>
+                            {
+                                products?.map((item, key) => (
+                                    <tr key={key}>
+                                        <td className='font-left'>
+                                            <div className='form-check'>
+                                                <input className="form-check-input" id='check-product' type="checkbox" />
+                                            </div>
+                                        </td>
+                                        <td className='product-info'>
+                                            <div className='product-logo'>
+                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><path fill="#fff" d="M0 0h1000v1000H0z"></path><g opacity=".1"><path d="M566.64 267.54V237.6c0-6.74-5.46-12.2-12.2-12.2h-5.37v-68.2c0-6.74-5.46-12.2-12.2-12.2h-73.72c-6.74 0-12.2 5.46-12.2 12.2v68.18h-5.37c-6.74 0-12.2 5.46-12.2 12.2v29.94c-43.58 4.54-76.71 41.22-76.81 85.03v490.23c0 6.74 5.46 12.21 12.2 12.21h262.49c6.74 0 12.2-5.46 12.2-12.2V352.56c-.11-43.81-33.24-80.49-76.82-85.02zM500 166.48c15.23 0 27.58 12.35 27.58 27.58 0 15.23-12.35 27.58-27.58 27.58-15.23 0-27.58-12.35-27.58-27.58 0-15.23 12.35-27.58 27.58-27.58zm-42.23 83.32h84.46v17.33h-84.46V249.8zm161.27 580.79H380.96V352.56c.04-33.68 27.34-60.98 61.02-61.02h116.03c33.68.04 60.98 27.34 61.02 61.02v478.03z"></path><path d="M419.04 406.1c-6.74 0-12.2 5.46-12.2 12.2v263.14c0 6.74 5.46 12.2 12.2 12.2s12.2-5.46 12.2-12.2V418.31c.01-6.74-5.46-12.21-12.2-12.21z"></path></g></svg>
+                                            </div>
+                                            <div className='product-detail'>
+                                                <span className='product-name'>{item.name}</span>
+                                                <span className='product-content'>Barcode: {item.barcode}</span>
+                                            </div>
+                                        </td>
+                                        <td className='product-category font-left'>{item.category}</td>
+                                        <td className='product-supplier font-left'>{item.supplier}</td>
+                                        <td className='product-quantity font-left'>{item.quantity}</td>
+                                        <td className='product-price font-right'>
+                                            <div className='price-container'>
+                                                <span className='real-price'>RUB {item.retailPrice}</span>
+                                                <span className='old-price'>RUB {item.price}</span>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                ))
+                            }
                         </tbody>
                     </table>
                     <div className='product-count'>
