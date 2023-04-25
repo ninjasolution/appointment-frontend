@@ -61,7 +61,7 @@ function NewSalePage() {
                             </div>
                             <div className='action-container'>
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fillRule="evenodd" d="M12 1a1 1 0 011 1v9h9a1 1 0 01.993.883L23 12a1 1 0 01-1 1h-9v9a1 1 0 01-.883.993L12 23a1 1 0 01-1-1v-9H2a1 1 0 01-.993-.883L1 12a1 1 0 011-1h9V2a1 1 0 01.883-.993z"></path></svg>
-                                <span id='add-client'>Create new client</span>
+                                <span id='add-client' onClick={() => {navigate("/clients/list/add")}}>Create new client</span>
                             </div>
                             <div className='list-container'>
                                 <div className="client-list">
