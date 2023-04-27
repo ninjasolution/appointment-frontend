@@ -1,9 +1,19 @@
 import React, { useState } from 'react';
+import { useEffect } from 'react';
+import { getPosts } from '../../../../../services/PostsService';
 import '../newsale.scss';
 
 const Memberships = () => {
 
     const [filterState, setFilterState] = useState(false);
+    const [memberships, setMemberships] = useState([])
+
+    useEffect(() => {
+        getPosts(`/api/membership`)
+            .then(res => {
+                setMemberships(res.data.data)
+            })
+    }, [])
 
     const showFilterModal = () => {
         setFilterState(true);
@@ -96,24 +106,28 @@ const Memberships = () => {
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td className='membership-info'>
-                                    <div id='membership-logo'>
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 14"><path d="M9.333 4.667A4.68 4.68 0 0114 9.333 4.68 4.68 0 019.333 14a4.68 4.68 0 01-4.666-4.667 4.68 4.68 0 014.666-4.666zm.187 2.8H8.4v2.8h2.8v-1.12H9.52v-1.68zM11.2 0c1.03 0 1.867.836 1.867 1.867l-.001 3.266h-.933v-.934L.933 4.2v4.2c0 .479.36.873.825.927l.109.006h1.399v.933h-1.4A1.867 1.867 0 010 8.4V1.867C0 .836.836 0 1.867 0H11.2zm0 .933H1.867a.933.933 0 00-.927.825l-.007.109v1.4l11.2-.001v-1.4A.933.933 0 0011.31.94L11.2.933z" fill="#FFF" fillRule="evenodd"></path></svg>
-                                    </div>
-                                    <div id='membership-detail'>
-                                        <span id='membership-name'>tyri</span>
-                                        <span id='membership-content'>All services</span>
-                                    </div>
-                                </td>
-                                <td className='membership-valid'>1 month</td>
-                                <td className='membership-quantity'>5 sessions</td>
-                                <td className='membership-price'>
-                                    <div>
-                                        <span id='current-price'>RUB 30</span>
-                                    </div>
-                                </td>
-                            </tr>
+                            {
+                                memberships?.map((item, key) => (
+                                    <tr key={key}>
+                                        <td className='membership-info'>
+                                            <div id='membership-logo'>
+                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 14"><path d="M9.333 4.667A4.68 4.68 0 0114 9.333 4.68 4.68 0 019.333 14a4.68 4.68 0 01-4.666-4.667 4.68 4.68 0 014.666-4.666zm.187 2.8H8.4v2.8h2.8v-1.12H9.52v-1.68zM11.2 0c1.03 0 1.867.836 1.867 1.867l-.001 3.266h-.933v-.934L.933 4.2v4.2c0 .479.36.873.825.927l.109.006h1.399v.933h-1.4A1.867 1.867 0 010 8.4V1.867C0 .836.836 0 1.867 0H11.2zm0 .933H1.867a.933.933 0 00-.927.825l-.007.109v1.4l11.2-.001v-1.4A.933.933 0 0011.31.94L11.2.933z" fill="#FFF" fillRule="evenodd"></path></svg>
+                                            </div>
+                                            <div id='membership-detail'>
+                                                <span id='membership-name'>{item.name}</span>
+                                                <span id='membership-content'>All services</span>
+                                            </div>
+                                        </td>
+                                        <td className='membership-valid'>1 month</td>
+                                        <td className='membership-quantity'>5 sessions</td>
+                                        <td className='membership-price'>
+                                            <div>
+                                                <span id='current-price'>RUB 30</span>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                ))
+                            }
                         </tbody>
                     </table>
                     <div className='membership-count'>

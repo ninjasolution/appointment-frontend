@@ -97,6 +97,7 @@ import LocationAddressPage from '../component/pages/Onboarding/LocationAddress/L
 import PreviousSoftwarePage from '../component/pages/Onboarding/PreviousSoftware/PreviousSoftwarePage';
 import RecommendationSourcePage from '../component/pages/Onboarding/RecommendationSource/RecommendationSourcePage';
 import AddEmpoyee from '../component/pages/SettingsPage/AddEmployee';
+import QuickSaleConfig from '../component/pages/SalesPage/NewSale/QuickSaleConfig';
 
 function AppRouter() {
     return (
@@ -200,6 +201,7 @@ function AppRouter() {
 
                 <Route element={<EmptyLayout />}>
                     <Route path='/clients/list/add' element={<AddClient />} />
+                    <Route path='/sales/new-sale/config-quick-sale' element={<QuickSaleConfig />} />
                     <Route path='/employee/add' element={<AddEmpoyee />} />
                     <Route path='/clients/automated-messages/configure/rules' element={<ConfigRulesPage />} />
                     <Route path='/clients/automated-messages/configure/channels' element={<ConfigChannelsPage />} />

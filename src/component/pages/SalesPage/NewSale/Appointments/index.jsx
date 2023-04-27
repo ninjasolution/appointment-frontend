@@ -1,9 +1,20 @@
 import React, { useState } from 'react';
+import { useEffect } from 'react';
+import { getPosts } from '../../../../../services/PostsService';
 import '../newsale.scss';
 
 const Appointments = () => {
 
     const [filterState, setFilterState] = useState(false);
+    const [ checkouts, setCheckouts ] = useState([{_id: 1}, {_id: 2}])
+    const [ selectedCheckout, setSelectedCheckout ] = useState(0)
+
+    useEffect(() => {
+        // getPosts(`/api/order`)
+        // .then(res => {
+        //     setCheckouts(res.data.data)
+        // })
+    }, [])
 
     const showFilterModal = () => {
         setFilterState(true);
@@ -12,6 +23,7 @@ const Appointments = () => {
     const hideFilterModal = () => {
         setFilterState(false);
     }
+
 
     return (
         <>
@@ -84,48 +96,32 @@ const Appointments = () => {
                     <span><a>show last 7 days</a> to see more results.</span>
                 </div>
                 <div className='appointment-details'>
-                    <div className='appointment-item active'>
-                        <div className='appointment-date'>20 FEB</div>
-                        <div className='appointment-content'>
-                            <div className='active-content'>
-                                <div id='active-time'>
-                                    <span id='time'>02:15 – 02:30</span>
-                                    <span id='day'>Monday</span>
-                                </div>
-                                <div id='active-content'>
-                                    <span id='title'>Walk-In</span>
-                                    <span id="content">15min with Mykhailo Savchuk • service-1, 321sadf</span>
-                                </div>
-                            </div>
-                            <div className='active-price'>
-                                <span id="price">RUB 56</span>
-                                <button id="action">
-                                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" clipRule="evenodd" d="M18 14a2 2 0 110-4 2 2 0 010 4zm-6 0a2 2 0 110-4 2 2 0 010 4zm-8-2a2 2 0 104 0 2 2 0 00-4 0z" fill="#101928"></path></svg>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    <div className='appointment-item'>
-                        <div className='appointment-date'>20 FEB</div>
-                        <div className='appointment-content'>
-                            <div className='active-content'>
-                                <div id='active-time'>
-                                    <span id='time'>02:15 – 02:30</span>
-                                    <span id='day'>Monday</span>
-                                </div>
-                                <div id='active-content'>
-                                    <span id='title'>Walk-In</span>
-                                    <span id="content">15min with Mykhailo Savchuk • service-1, 321sadf</span>
+
+                    {
+                        checkouts?.map((item, key) => (
+                            <div key={key} className={`appointment-item ${item._id == selectedCheckout && `active`}`} onClick={() => setSelectedCheckout(item._id)}>
+                                <div className='appointment-date'>20 FEB</div>
+                                <div className='appointment-content'>
+                                    <div className='active-content'>
+                                        <div id='active-time'>
+                                            <span id='time'>02:15 – 02:30</span>
+                                            <span id='day'>Monday</span>
+                                        </div>
+                                        <div id='active-content'>
+                                            <span id='title'>Walk-In</span>
+                                            <span id="content">15min with Mykhailo Savchuk • service-1, 321sadf</span>
+                                        </div>
+                                    </div>
+                                    <div className='active-price'>
+                                        <span id="price">RUB 56</span>
+                                        <button id="action">
+                                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" clipRule="evenodd" d="M18 14a2 2 0 110-4 2 2 0 010 4zm-6 0a2 2 0 110-4 2 2 0 010 4zm-8-2a2 2 0 104 0 2 2 0 00-4 0z" fill="#101928"></path></svg>
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
-                            <div className='active-price'>
-                                <span id="price">RUB 56</span>
-                                <button id="action">
-                                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" clipRule="evenodd" d="M18 14a2 2 0 110-4 2 2 0 010 4zm-6 0a2 2 0 110-4 2 2 0 010 4zm-8-2a2 2 0 104 0 2 2 0 00-4 0z" fill="#101928"></path></svg>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
+                        ))
+                    }
                 </div>
             </div>
         </>

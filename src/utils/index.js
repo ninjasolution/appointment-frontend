@@ -5,6 +5,12 @@ export const formatDate = time => {
     return `${_date.getDate()}/${_date.getMonth() + 1}/${_date.getFullYear()}`
 }
 
+export const formatInputDate = _time => {
+    const date = _time.getDate();
+    const month = _time.getMonth() + 1;
+    return `${_time.getFullYear()}-${ month > 9 ? month : `0${month}`}-${date > 9 ? date : `0${date}`}`
+}
+
 export const getLogo = (firstName, lastName) => {
     let _first = "";
     let _last = "";

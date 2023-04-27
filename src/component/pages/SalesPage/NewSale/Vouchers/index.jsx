@@ -1,9 +1,19 @@
 import React, { useState } from 'react';
+import { useEffect } from 'react';
+import { getPosts } from '../../../../../services/PostsService';
 import '../newsale.scss';
 
 const Vouchers = () => {
 
     const [voucherModal, setVoucherModal] = useState(false);
+    const [vouchers, setVouchers] = useState([])
+
+    useEffect(() => {
+        getPosts(`/api/voucher`)
+            .then(res => {
+                setVouchers(res.data.data)
+            })
+    }, [])
 
     const showNewVoucherModal = () => {
         setVoucherModal(true);
@@ -38,73 +48,73 @@ const Vouchers = () => {
                 <div className='vouchers-details'>
                     {
                         voucherModal ?
-                        <div className='voucher-modal'>
-                            <div className='modal-header'>
-                                <span id='modal-title'>Create one-off voucher</span>
-                                <span id='modal-close' onClick={hideVoucherModal}>
-                                    <svg viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg"><path d="M17 1.914L16.086 1 9 8.086 1.914 1 1 1.914 8.086 9 1 16.086l.914.914L9 9.914 16.086 17l.914-.914L9.914 9z"></path></svg>
-                                </span>
-                            </div>
-                            <div className='modal-body'>
-                                <div className="group">
-                                    <span id='select-title'>Included services</span>
-                                    <div id='select-service'>
-                                        <span id='service-type'>All services</span>
-                                        <span id='service-edit'>Edit</span>
-                                    </div>
+                            <div className='voucher-modal'>
+                                <div className='modal-header'>
+                                    <span id='modal-title'>Create one-off voucher</span>
+                                    <span id='modal-close' onClick={hideVoucherModal}>
+                                        <svg viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg"><path d="M17 1.914L16.086 1 9 8.086 1.914 1 1 1.914 8.086 9 1 16.086l.914.914L9 9.914 16.086 17l.914-.914L9.914 9z"></path></svg>
+                                    </span>
                                 </div>
-                                <div className='service-value-container'>
+                                <div className='modal-body'>
                                     <div className="group">
-                                        <span id='select-title'>Value</span>
-                                        <div className='value-group'>
-                                            <div id='currency'>
-                                                <span>RUB</span>
+                                        <span id='select-title'>Included services</span>
+                                        <div id='select-service'>
+                                            <span id='service-type'>All services</span>
+                                            <span id='service-edit'>Edit</span>
+                                        </div>
+                                    </div>
+                                    <div className='service-value-container'>
+                                        <div className="group">
+                                            <span id='select-title'>Value</span>
+                                            <div className='value-group'>
+                                                <div id='currency'>
+                                                    <span>RUB</span>
+                                                </div>
+                                                <div id='value-input'>
+                                                    <input type='text' />
+                                                </div>
                                             </div>
-                                            <div id='value-input'>
-                                                <input type='text' />
+                                        </div>
+                                        <div className="group">
+                                            <span id='select-title'>Retail price</span>
+                                            <div className='retail-price-group'>
+                                                <div id='currency'>
+                                                    <span>RUB</span>
+                                                </div>
+                                                <div id='value-input'>
+                                                    <input type='text' />
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                     <div className="group">
-                                        <span id='select-title'>Retail price</span>
-                                        <div className='retail-price-group'>
-                                            <div id='currency'>
-                                                <span>RUB</span>
-                                            </div>
-                                            <div id='value-input'>
-                                                <input type='text'/>
-                                            </div>
-                                        </div>
+                                        <span id='select-title'>Valid for</span>
+                                        <select className='form-select'>
+                                            <option>14 days</option>
+                                            <option>1 month</option>
+                                            <option>2 months</option>
+                                            <option>3 months</option>
+                                            <option>4 months</option>
+                                            <option>6 months</option>
+                                            <option>1 year</option>
+                                            <option>3 years</option>
+                                            <option>5 years</option>
+                                            <option>Forever</option>
+                                        </select>
+                                    </div>
+                                    <div className="group" id='check-group'>
+                                        <span id='select-title'>Voucher name</span>
+                                        <input type="text" id='check-all' />
                                     </div>
                                 </div>
-                                <div className="group">
-                                    <span id='select-title'>Valid for</span>
-                                    <select className='form-select'>
-                                        <option>14 days</option>
-                                        <option>1 month</option>
-                                        <option>2 months</option>
-                                        <option>3 months</option>
-                                        <option>4 months</option>
-                                        <option>6 months</option>
-                                        <option>1 year</option>
-                                        <option>3 years</option>
-                                        <option>5 years</option>
-                                        <option>Forever</option>
-                                    </select>
+                                <div className='modal-footer'>
+                                    <span onClick={hideVoucherModal}>Clear all filters</span>
+                                    <div id='actions'>
+                                        <button id='action-cancel' onClick={hideVoucherModal}>Cancel</button>
+                                        <button id='action-apply'>Apply</button>
+                                    </div>
                                 </div>
-                                <div className="group" id='check-group'>
-                                    <span id='select-title'>Voucher name</span>
-                                    <input type="text" id='check-all' />
-                                </div>
-                            </div>
-                            <div className='modal-footer'>
-                                <span onClick={hideVoucherModal}>Clear all filters</span>
-                                <div id='actions'>
-                                    <button id='action-cancel' onClick={hideVoucherModal}>Cancel</button>
-                                    <button id='action-apply'>Apply</button>
-                                </div>
-                            </div>
-                        </div> : <></>
+                            </div> : <></>
                     }
                     <table>
                         <thead>
@@ -129,19 +139,24 @@ const Vouchers = () => {
                                 <td></td>
                                 <td></td>
                             </tr>
-                            <tr>
-                                <td className='voucher-info'>
-                                    <div id='voucher-logo'>
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M1 20.75A.75.75 0 01.25 20v-5a.75.75 0 01.75-.75 2.25 2.25 0 100-4.5A.75.75 0 01.25 9V4A.75.75 0 011 3.25h22a.75.75 0 01.75.75v5a.75.75 0 01-.75.75 2.25 2.25 0 100 4.5.75.75 0 01.75.75v5a.75.75 0 01-.75.75zm.75-1.5h20.5v-3.575a3.751 3.751 0 010-7.35V4.75H1.75v3.575a3.751 3.751 0 010 7.35v3.575zM8 10.75a.75.75 0 110-1.5h8a.75.75 0 110 1.5zm0 4a.75.75 0 110-1.5h8a.75.75 0 110 1.5z" fill="#FFF" fillRule="nonzero"></path></svg>
-                                    </div>
-                                    <div id='voucher-detail'>
-                                        <span id='voucher-name'>Mykhailo Savchuk</span>
-                                    </div>
-                                </td>
-                                <td className='voucher-service'>All services</td>
-                                <td className='voucher-price'>RUB 1,111 / RUB 1,123</td>
-                                <td className='voucher-sold'>0</td>
-                            </tr>
+                            {
+                                vouchers?.map((item, key) => (
+
+                                    <tr>
+                                        <td className='voucher-info'>
+                                            <div id='voucher-logo'>
+                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M1 20.75A.75.75 0 01.25 20v-5a.75.75 0 01.75-.75 2.25 2.25 0 100-4.5A.75.75 0 01.25 9V4A.75.75 0 011 3.25h22a.75.75 0 01.75.75v5a.75.75 0 01-.75.75 2.25 2.25 0 100 4.5.75.75 0 01.75.75v5a.75.75 0 01-.75.75zm.75-1.5h20.5v-3.575a3.751 3.751 0 010-7.35V4.75H1.75v3.575a3.751 3.751 0 010 7.35v3.575zM8 10.75a.75.75 0 110-1.5h8a.75.75 0 110 1.5zm0 4a.75.75 0 110-1.5h8a.75.75 0 110 1.5z" fill="#FFF" fillRule="nonzero"></path></svg>
+                                            </div>
+                                            <div id='voucher-detail'>
+                                                <span id='voucher-name'>{item.name}</span>
+                                            </div>
+                                        </td>
+                                        <td className='voucher-service'>All services</td>
+                                        <td className='voucher-price'>RUB 1,111 / RUB 1,123</td>
+                                        <td className='voucher-sold'>0</td>
+                                    </tr>
+                                ))
+                            }
                         </tbody>
                     </table>
                     <div className='voucher-count'>
