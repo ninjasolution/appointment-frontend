@@ -12,7 +12,8 @@ const SignInPage = () => {
     const [ email, setEmail ] = useState("");
     const dispatch = useDispatch();
 
-    const checkUserHandler = () => {
+    const checkUserHandler = (e) => {
+        e.preventDefault();
         dispatch(setupUserAction({email}))
         headPosts(`/api/user/${email}`)
         .then(res => {
@@ -24,13 +25,13 @@ const SignInPage = () => {
 
     return (
         <div className='signin-container'>
-            <div className='group-container'>
+            <form onSubmit={checkUserHandler} className='group-container'>
                 <div className='title-container'>
                     <span className='title'>Fresha for business</span>
                     <span className='title-content'>Create an account or log in to manage your Fresha business.</span>
                 </div>
                 <div className='input-container'>
-                    <input type="text" placeholder='Enter your email address' value={email} onChange={e => setEmail(e.target.value)}/>
+                    <input type="text" placeholder='Enter your email address' value={email} onChange={e => setEmail(e.target.value)} autoFocus/>
                     <span className='group-hint'></span>
                 </div>
                 <button className='action-continue' onClick={checkUserHandler}>Continue</button>
@@ -52,7 +53,7 @@ const SignInPage = () => {
                     <span className='custom-content'>If you are a customer wishing to book a service</span>
                     <Link className='custom-link'>sign up as a customer</Link>
                 </div>
-            </div>
+            </form>
             <div className='footer-container'>
                 <div className='logo-container'>
                     <div className='logo'>

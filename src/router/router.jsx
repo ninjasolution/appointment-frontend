@@ -103,6 +103,7 @@ function AppRouter() {
         <BrowserRouter>
             <Routes>
                 <Route path='/' element={<MainLayout />}>
+                    <Route path='/' element={<Dashboard />} />
                     <Route path='/dashboard' element={<Dashboard />} />
 
                     <Route path='/calendar' element={<Calendar />} />

@@ -12,13 +12,14 @@ const PasswordPage = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
-    const signinHandler = () => {
+    const signinHandler = (e) => {
+        e.preventDefault();
         dispatch(loginAction(user.email, password, navigate))
     }
 
     return (
         <div className='signin-password-container'>
-            <div className='group-container'>
+            <form onSubmit={signinHandler} className='group-container'>
                 <div className='title-container'>
                     <span className='title'>Welcome back to your business account, Yuri</span>
                     <span className='title-content'>Enter your password to log in as</span>
@@ -27,7 +28,7 @@ const PasswordPage = () => {
                 <div className='group'>
                     <span className='group-title'>Password</span>
                     <div className='input-container'>
-                        <input type="password" placeholder='Enter a password' value={password} onChange={e => setPassword(e.target.value)}/>
+                        <input type="password" placeholder='Enter a password' value={password} onChange={e => setPassword(e.target.value)} autoFocus/>
                     </div>
                     <span className='group-hint'></span>
                 </div>
@@ -35,7 +36,7 @@ const PasswordPage = () => {
                     <Link className='custom-link' to='/users/forgot-password'>Forgor your password?</Link>
                 </div>
                 <button className='action-continue' onClick={signinHandler}>Log in</button>
-            </div>
+            </form>
         </div>
     )
 }
