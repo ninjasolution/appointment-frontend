@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { connect, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { setInfoModalStateAction } from '../../store/actions/GlobalAction';
 import './info.scss';
 
 const ItemInfoModal = (props) => {
@@ -318,7 +319,7 @@ const ItemInfoModal = (props) => {
         <div className='item-infos-container'>
             <div className='state-container'>
                 <div className='tool-group'>
-                    <span className='close-tool' onClick={() => dispatch({ type: 'HIDE_INFO', payload: false })}>
+                    <span className='close-tool' onClick={() => dispatch(setInfoModalStateAction(false))}>
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18"><path d="M17 1.914L16.086 1 9 8.086 1.914 1 1 1.914 8.086 9 1 16.086l.914.914L9 9.914 16.086 17l.914-.914L9.914 9z"></path></svg>
                     </span>
                 </div>
@@ -906,8 +907,4 @@ const ItemInfoModal = (props) => {
     )
 }
 
-export default connect((state) => {
-    return {
-        infoModal: state.infoModalState
-    }
-})(ItemInfoModal);
+export default ItemInfoModal;

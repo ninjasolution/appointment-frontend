@@ -5,7 +5,9 @@ const initialState = {
     sidebar: 0,
     isLoading: false,
     setupUser: {},
-    selectedCategoryType: 0
+    selectedCategoryType: 0,
+    infoModalState: false,
+    detailModalState: false
 }
 
 export default function GlobalSettingReducer(state = initialState, actions) {

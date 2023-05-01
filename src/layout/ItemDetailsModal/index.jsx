@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { connect, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { setDetailModalStateAction } from '../../store/actions/GlobalAction';
 import './details.scss';
 
 const ItemDetailsModal = (props) => {
@@ -52,7 +53,7 @@ const ItemDetailsModal = (props) => {
         <div className='item-details-container'>
             <div className='actions-container'>
                 <div className='tool-group'>
-                    <span className='close-tool' onClick={() => dispatch({ type: 'HIDE_DETAIL', payload: false })}>
+                    <span className='close-tool' onClick={() => dispatch(setDetailModalStateAction(false))}>
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18"><path d="M17 1.914L16.086 1 9 8.086 1.914 1 1 1.914 8.086 9 1 16.086l.914.914L9 9.914 16.086 17l.914-.914L9.914 9z"></path></svg>
                     </span>
                 </div>
@@ -278,8 +279,4 @@ const ItemDetailsModal = (props) => {
     )
 }
 
-export default connect((state) => {
-    return {
-        detailModal: state.detailModalState
-    }
-})(ItemDetailsModal);
+export default ItemDetailsModal;

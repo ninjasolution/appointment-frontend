@@ -1,13 +1,11 @@
 import React, { useEffect, useState, } from 'react';
-import { connect, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { setDetailModalStateAction } from '../../../../store/actions/GlobalAction';
 import './memberships.scss';
 
 const MembershipsPage = (props) => {
 
     const dispatch = useDispatch();
-    useEffect(() => {
-        console.log(props.detailModalState)
-    }, []);
 
     const [filterModalState, setFilterModalState] = useState(false);
 
@@ -106,7 +104,7 @@ const MembershipsPage = (props) => {
                                     <span>tyri</span>
                                 </td>
                                 <td className='font-left ref-name'>
-                                    <span onClick={() => dispatch({ type: 'SHOW_DETAIL', payload: true })}>Jack Doe</span>
+                                    <span onClick={() => dispatch(setDetailModalStateAction(true))}>Jack Doe</span>
                                 </td>
                                 <td className='font-left'>One-time</td>
                                 <td className='font-left'>25 Feb 2023</td>
@@ -127,8 +125,4 @@ const MembershipsPage = (props) => {
     )
 }
 
-export default connect((state) => {
-    return {
-        detailModalState: state.detailModalState.status,
-    }
-})(MembershipsPage);
+export default MembershipsPage;

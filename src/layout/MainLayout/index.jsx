@@ -5,12 +5,13 @@ import ItemInfoModal from '../ItemInfoModal';
 import LeftBar from '../../component/leftbar/Leftbar';
 import Topbar from '../../component/topbar/Topbar';
 import './layout.scss';
+import { useSelector } from 'react-redux';
 
 function MainLayout(props) {
 
     const navigate = useNavigate();
-    const [detailModalState, setDetailModalState] = useState(false);
-    const [infoModalState, setInfoModalState] = useState(false);
+    const detailModalState = useSelector(s => s.globals.detailModalState)
+    const infoModalState = useSelector(s => s.globals.infoModalState)
 
     
     return (

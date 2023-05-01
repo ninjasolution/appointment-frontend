@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { connect, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { setDetailModalStateAction, setInfoModalStateAction } from '../../../../store/actions/GlobalAction';
 import './paymenttransactions.scss';
 
 const PaymentTransactionsPage = () => {
@@ -17,13 +18,13 @@ const PaymentTransactionsPage = () => {
     }
 
     const visibleDetailModal = () => {
-        dispatch({ type: 'SHOW_DETAIL', payload: true });
-        dispatch({ type: 'HIDE_INFO', payload: false });
+        dispatch(setDetailModalStateAction(true));
+        dispatch(setInfoModalStateAction(false));
     }
 
     const visibleInfoModal = () => {
-        dispatch({ type: 'SHOW_INFO', payload: true });
-        dispatch({ type: 'HIDE_DETAIL', payload: false });
+        dispatch(setDetailModalStateAction(false));
+        dispatch(setInfoModalStateAction(true));
     }
 
     const visibleActionModal = () => {
@@ -37,7 +38,7 @@ const PaymentTransactionsPage = () => {
     return (
         <div className='payment-transactions-container'>
             {
-                filterModalState ?
+                filterModalState &&
                     <div className='filter-modal'>
                         <div className='modal-header'>
                             <span id='modal-title'>Filters</span>
@@ -90,7 +91,7 @@ const PaymentTransactionsPage = () => {
                                 <button id='action-apply'>Apply</button>
                             </div>
                         </div>
-                    </div> : <></>
+                    </div>
             }
             <div className='content-container'>
                 <div className='content-detail'>
@@ -105,7 +106,7 @@ const PaymentTransactionsPage = () => {
                         <span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 14.481l6.247-7.14a1 1 0 011.506 1.318l-7 8a1 1 0 01-1.506 0l-7-8a1 1 0 111.506-1.317L12 14.482z"></path></svg></span>
                     </button>
                     {
-                        actionModalState ?
+                        actionModalState &&
                             <div className='actions-modal'>
                                 <div className='action-item'>
                                     <span>PDF</span>
@@ -116,7 +117,7 @@ const PaymentTransactionsPage = () => {
                                 <div className='action-item'>
                                     <span>CSV</span>
                                 </div>
-                            </div> : <></>
+                            </div>
                     }
                 </div>
             </div>
@@ -227,9 +228,4 @@ const PaymentTransactionsPage = () => {
     )
 }
 
-export default connect((state) => {
-    return {
-        detailModal: state.detailModalState,
-        infoModal: state.infoModalState
-    }
-})(PaymentTransactionsPage);
+export default PaymentTransactionsPage;

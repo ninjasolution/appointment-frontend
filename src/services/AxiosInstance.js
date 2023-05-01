@@ -13,8 +13,6 @@ axiosInstance.interceptors.request.use((config) => {
         config.params = config.params || {};
         config.headers['x-access-token'] = `${token}`
     }
-    console.log(tokenDetailsString)
-    
 
     return config;
 });

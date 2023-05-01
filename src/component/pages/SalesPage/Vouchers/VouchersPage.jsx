@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { connect, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { setDetailModalStateAction } from '../../../../store/actions/GlobalAction';
 import './vouchers.scss';
 
 const VouchersPage = (props) => {
@@ -138,7 +139,7 @@ const VouchersPage = (props) => {
                                 <td className='font-left'>22 Feb 2023, 00:10</td>
                                 <td className='font-left'>22 May 2023</td>
                                 <td className='font-left ref-name'>
-                                    <span onClick={() => dispatch({ type: 'SHOW_DETAIL', payload: true })}>2</span>
+                                    <span onClick={() => dispatch(setDetailModalStateAction(true))}>2</span>
                                 </td>
                                 <td className='font-left'>Walk-In</td>
                                 <td className='font-left'>Gift Voucher</td>
@@ -161,8 +162,4 @@ const VouchersPage = (props) => {
     )
 }
 
-export default connect((state) => {
-    return {
-        detailModal: state.detailModalState
-    }
-})(VouchersPage);
+export default VouchersPage;

@@ -1,365 +1,44 @@
-.clients-list-container {
+.search-group {
     display: flex;
-    flex-direction: column;
-    padding: 30px;
-    position: relative;
+    align-items: center;
+    padding: 5px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+    background: white;
+    margin-left: 15px;
+    margin-right: 20px;
+    padding-left: 10px;
+    padding-right: 20px;
+    width: 100%;
     margin: auto;
-    max-width: 1100px;
 
-    .content-container {
-        width: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        flex-wrap: wrap;
-
-        .content-title {
-            font-size: 30px;
-            font-weight: 700;
-        }
-
-        .content-summary {
-            font-size: 16px;
-
-            a {
-                color: rgb(25, 144, 255);
-            }
-        }
-
-        .content-action {
-            margin-top: 15px;
-            display: flex;
-            position: relative;
-
-            .select-action {
-                height: 50px;
-                width: 120px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                background-color: white;
-                margin: 0 10px;
-                font-size: 16px;
-                font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
-                font-weight: 500;
-                border-radius: 5px;
-                border: 1px solid rgba(0, 0, 0, 0.2);
-
-                span {
-                    margin-left: 10px;
-
-                    svg {
-                        height: 20px;
-                    }
-                }
-            }
-
-            .select-action:hover {
-                border-color: #1b1b1b;
-                cursor: pointer;
-            }
-
-            .add-client {
-                height: 50px;
-                margin: 0 10px;
-                width: 120px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                background-color: rgb(8, 13, 32);
-                color: white;
-                font-size: 16px;
-                text-decoration: none;
-                font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
-                font-weight: 500;
-                border-radius: 5px;
-                border: 1px solid rgb(8, 13, 32);
-            }
-
-            .add-client:hover {
-                background-color: rgb(20, 28, 63);
-                cursor: pointer;
-            }
-
-            .options-list {
-                position: absolute;
-                background-color: #fff;
-                border: 1px solid rgba(0, 0, 0, 0.2);
-                border-radius: 5px;
-                padding: 2px 0px;
-                z-index: 99;
-                box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.2);
-                top: 60px;
-                right: 133px;
-
-                .option-item {
-                    padding: 8px 16px;
-
-                    span {
-                        font-size: 16px;
-                    }
-                }
-
-                .option-item:hover {
-                    cursor: pointer;
-                    background-color: #fcfcfc;
-                }
-            }
-        }
+    svg {
+        height: 30px;
     }
 
-    .content-advertisement {
+    input {
+        height: 25px;
+        font-size: 16px;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+        border: none;
+        outline: none;
+        width: calc(100% - 30px);
+    }
+
+    #result-list {
+        position: fixed;
         display: flex;
-        position: relative;
         flex-direction: column;
-        justify-content: flex-start;
-        background-color: #f8f8fb;
-        border-radius: 5px;
-        padding: 20px 35px;
-        margin-top: 30px;
-        border: 1px solid rgba(0, 0, 0, 0.2);
-
-        span#ad-title {
-            font-size: 24px;
-            font-weight: 700;
-            max-width: 510px;
-            padding: 5px;
-        }
-
-        span#ad-content {
-            font-size: 16px;
-            padding: 5px;
-        }
-
-        button#learn-more-ad {
-            font-size: 17px;
-            margin: 5px;
-            font-weight: 500;
-            width: 120px;
-            height: 50px;
-            background-color: white;
-            border: 1px solid rgba(0, 0, 0, 0.2);
-            border-radius: 5px;
-        }
-
-        button#learn-more-ad:hover {
-            border: 1px solid rgba(0, 0, 0, 0.5);
-            cursor: pointer;
-        }
-
-        span#ad-close {
-            position: absolute;
-            right: 30px;
-            cursor: pointer;
-
-            svg {
-                width: 15px;
-            }
-        }
-
-        img#ad-background {
-            position: absolute;
-        }
-    }
-
-    .content-setting {
-        display: flex;
-        padding: 15px;
-        background-color: #f5f5f5;
-        justify-content: flex-start;
-        width: calc(100%);
-        max-width: 1470px;
-        border-radius: 10px;
-        margin-top: 20px;
-        overflow-x: auto;
-
-        .search-container {
-            display: flex;
-            padding: 5px 15px;
-            border: 1px solid rgba(0, 0, 0, 0.2);
-            background-color: white;
-            border-radius: 25px;
-            align-items: center;
-            margin-right: 15px;
-
-            input {
-                height: 20px;
-                font-size: 16px;
-                font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
-                border: none;
-                outline: none;
-                margin-left: 10px;
-                margin-right: 10px;
-                width: 350px;
-            }
-
-            svg {
-                height: 30px;
-            }
-        }
-
-        .search-container:hover {
-            border: 1.5px solid rgba(0, 0, 0, 0.5);
-        }
-
-        .filter-group {
-            display: flex;
-            align-items: center;
-            padding-left: 20px;
-            padding-right: 20px;
-            border: 1px solid rgba(0, 0, 0, 0.2);
-            border-radius: 25px;
-            margin-right: 15px;
-            background-color: #fff;
-
-            span {
-                font-weight: 500;
-                font-size: 16px;
-                margin-right: 10px;
-            }
-
-            svg {
-                height: 30px;
-            }
-        }
-
-        .filter-group:hover {
-            border: 1px solid rgba(0, 0, 0, 0.5);
-            cursor: pointer;
-        }
-
-        .select-filter {
-            padding: 0px 20px;
-            background-color: #fff;
-            border: 1px solid rgba(0, 0, 0, 0.2);
-            border-radius: 25px;
-            display: flex;
-            align-items: center;
-
-            select {
-                border: none;
-                outline: none;
-                cursor: pointer;
-                height: 100%;
-                font-size: 16px;
-                font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
-                font-weight: 500;
-                width: 100%;
-            }
-        }
-
-        .select-filter:hover {
-            cursor: pointer;
-            border: 1px solid rgba(0, 0, 0, 0.5);
-        }
-    }
-
-    .content-details {
-        display: flex;
+        align-items: center;
+        top: 235px;
+        background-color: white;
+        height: 300px;
         width: 100%;
-        max-width: 1500px;
-        margin-top: 20px;
-        overflow-x: auto;
-
-        .table-container {
-            width: 100%;
-            min-width: 1000px;
-
-            table {
-                border-collapse: collapse;
-                width: 100%;
-
-                .table-header {
-                    width: 1500px;
-
-                    th {
-                        justify-content: space-between;
-                        padding: 15px;
-                        font-size: 15px;
-                        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-
-                        .header-content {
-                            float: left;
-                            font-weight: 600;
-                        }
-
-                        svg {
-                            height: 20px;
-                        }
-                    }
-                }
-
-                tbody {
-
-                    tr {
-
-                        td.ref-name {
-                            color: #037aff;
-                        }
-
-                        td {
-                            padding: 15px;
-                            font-size: 15px;
-                            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-
-                            .btn-action {
-                                background-color: white;
-                                border: none;
-                                outline: none;
-                                width: 80px;
-
-                                svg {
-                                    width: 20px;
-                                }
-                            }
-
-                            .btn-action:hover {
-                                cursor: pointer;
-                                background-color: #f5f5f5;
-                                border-radius: 5px;
-                            }
-
-                            div#client-container {
-                                display: flex;
-                                align-items: center;
-
-                                .client-avatar {
-                                    width: 60px;
-                                    height: 60px;
-                                    display: flex;
-                                    justify-content: center;
-                                    align-items: center;
-                                    background-color: #c4e3ff;
-                                    border-radius: 50%;
-
-                                    span {
-                                        font-size: 34px;
-                                        font-weight: 500;
-                                        color: #065ecb;
-                                    }
-                                }
-
-                                .client-info {
-                                    display: flex;
-                                    flex-direction: column;
-                                    margin-left: 20px;
-
-                                    span#client-name {
-                                        font-size: 17px;
-                                        font-weight: 500;
-                                        color: #464646;
-                                    }
-
-                                    span#client-email {
-                                        font-weight: 400;
-                                        color: #767676;
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
+        border: 1px solid #878c98;
+        border-radius: 6px;
     }
+}
+
+.search-group:hover {
+    border: 1px solid rgba(0, 0, 0, 0.5);
 }

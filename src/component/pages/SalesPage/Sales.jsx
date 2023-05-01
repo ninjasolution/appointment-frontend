@@ -7,10 +7,7 @@ const Sales = () => {
     const location = useLocation();
     const [hideState, setHideState] = useState(true);
 
-    useEffect(() => {
-
-        console.log(location)
-    }, []);
+   
 
     const hideMiniLeftBar = () => {
 
@@ -25,6 +22,7 @@ const Sales = () => {
         }
     }
 
+    
     useEffect(() => {
         if (hideState) {
 
