@@ -1,4 +1,4 @@
-import { SELECT_CATEGORY_TYPE, SETUP_USER } from "../actions/GlobalAction"
+import { SELECT_CATEGORY_TYPE, SETUP_USER, SET_DETAIL_MODAL_STATE, SET_INFO_MODAL_STATE } from "../actions/GlobalAction"
 import { SET_IS_LOADING, SET_SIDE_BAR } from "../actions/GlobalAction"
 
 const initialState = {
@@ -30,6 +30,16 @@ export default function GlobalSettingReducer(state = initialState, actions) {
         return {
             ...state,
             selectedCategoryType: actions.payload
+        }
+    } else if(actions.type === SET_DETAIL_MODAL_STATE) {
+        return {
+            ...state,
+            detailModalState: actions.payload
+        }
+    } else if(actions.type === SET_INFO_MODAL_STATE) {
+        return {
+            ...state,
+            infoModalState: actions.payload
         }
     } else {
         return state
