@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link, Outlet, useLocation, useNavigate } from 'react-router-dom';
+import { getPosts } from '../../../../services/PostsService';
 import './newsale.scss';
 
 function NewSalePage() {
@@ -7,9 +8,16 @@ function NewSalePage() {
     const location = useLocation();
     const navigate = useNavigate();
     const [listViewState, setListViewState] = useState(false);
+    const [ clients, setClients ] = useState([])
+
 
     useEffect(() => {
         setListViewState(false);
+
+        getPosts(`/api/client`)
+        .then(res => {
+            setClients(res.data.data)
+        })
 
         setTimeout(() => {
             navigate('/sales/new-sale/quick-sale', { replace: true });
