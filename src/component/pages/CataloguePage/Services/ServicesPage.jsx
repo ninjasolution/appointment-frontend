@@ -4,7 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { createPost, getPosts } from '../../../../services/PostsService';
 import { CATEGORY_TYPE_SERVICE, timesByIndex } from '../../../../config';
 import { useDispatch } from 'react-redux';
-import { selectCategoryType } from '../../../../store/actions/GlobalAction';
+import { selectCategoryTypeAction } from '../../../../store/actions/GlobalAction';
 
 const ServicesPage = () => {
 
@@ -159,7 +159,7 @@ const ServicesPage = () => {
                                     </span>
                                     <span className='title'>{item?.name}</span>
                                 </div>
-                                <div className='header-actions' onMouseDown={(e) => {visibleServiceActionModal(e); dispatch(selectCategoryType(item._id))}}>
+                                <div className='header-actions' onMouseDown={(e) => {visibleServiceActionModal(e); dispatch(selectCategoryTypeAction(item._id))}}>
                                     <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" clipRule="evenodd" d="M18 14a2 2 0 110-4 2 2 0 010 4zm-6 0a2 2 0 110-4 2 2 0 010 4zm-8-2a2 2 0 104 0 2 2 0 00-4 0z" fill="#101928"></path></svg>
                                 </div>
                             </div>

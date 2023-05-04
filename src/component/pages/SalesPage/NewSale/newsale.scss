@@ -1959,54 +1959,91 @@
                 max-height: calc(100vh - 71px - 152px);
                 height: calc(100vh - 71px - 152px);
 
-                .client-list {
-
-                    .client-item {
-                        height: 100px;
-                        display: flex;
-                        align-items: center;
-                        border-bottom: 1px solid #c4c4c4;
-
-                        .client-avatar {
-                            width: 60px;
-                            height: 60px;
-                            display: flex;
-                            justify-content: center;
-                            align-items: center;
-                            margin-left: 20px;
-                            background-color: #c9e6ff;
-                            border-radius: 50%;
-
-                            span {
-                                font-size: 36px;
-                                font-weight: 600;
-                                color: #3e8bfe;
-                            }
-                        }
-
-                        .client-data {
-                            display: flex;
-                            flex-direction: column;
-                            margin-left: 20px;
-
-                            span#client-name {
-                                font-size: 16px;
-                                font-weight: 500;
-                            }
-
-                            span#client-email {
-                                font-size: 16px;
-                                color: #959595;
-                            }
-                        }
-                    }
-
-                    .client-item:hover {
-                        background-color: rgba(0, 0, 0, 0.05);
-                        cursor: pointer;
-                    }
-                }
+                
             }
         }
     }
+}
+
+.client-list {
+
+    .client-item {
+        height: 100px;
+        display: flex;
+        align-items: center;
+        border-bottom: 1px solid #c4c4c4;
+
+        .client-avatar {
+            width: 60px;
+            height: 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-left: 20px;
+            background-color: #c9e6ff;
+            border-radius: 50%;
+
+            span {
+                font-size: 36px;
+                font-weight: 600;
+                color: #3e8bfe;
+            }
+        }
+
+        .client-data {
+            display: flex;
+            flex-direction: column;
+            margin-left: 20px;
+
+            span#client-name {
+                font-size: 16px;
+                font-weight: 500;
+            }
+
+            span#client-email {
+                font-size: 16px;
+                color: #959595;
+            }
+        }
+    }
+
+    .client-item:hover {
+        background-color: rgba(0, 0, 0, 0.05);
+        cursor: pointer;
+    }
+}
+
+.cart-title {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 16px 24px 0px 24px;
+    color: #878c93;
+    font-size: 15px;
+}
+
+.cart-item {
+    padding: 16px 24px 16px 24px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between; 
+    cursor: pointer;
+    // border-bottom: linear-gradient(to right, transparent 24px, #e7e8e9 24px) solid 1px;
+    border-bottom: black solid 1px;
+}
+
+.cart-item:hover {
+    background-color: #f8f8fb;
+}
+.cart-item-under-line {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(to right, transparent 24px, #e7e8e9 24px);
+}
+
+.blue-title {
+    color: #037aff;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 21px;
 }

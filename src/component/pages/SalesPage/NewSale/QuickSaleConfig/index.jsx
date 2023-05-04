@@ -16,7 +16,6 @@ const QuickSaleConfig = () => {
     useEffect(() => {
         getPosts(`/api/product?name=${productName}`)
             .then(res => {
-                console.log(res.data.data)
                 setResultProducts(res.data.data)
             })
     }, [productName])
